@@ -15,8 +15,7 @@
 </style>
 
 <section>
-  <h3>{name}</h3>
-  <input type="number" min="3" max="18" bind:value={score}>
+  <label>{name} <input type="number" min="3" max="18" bind:value={score}></label>
   <label>{debility} <input type="checkbox" bind:checked={isDebilitated}></label>
   <div class:bonus-positive={bonus >= 0}>{bonus}</div>
 </section>

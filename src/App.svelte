@@ -1,10 +1,14 @@
 <script>
-  import Stat from "./Stat.svelte";
+  import Stats from "./Stats.svelte";
+  import HitPoints from "./HitPoints.svelte";
+  import DamageDie from "./DamageDie.svelte";
 
-  export let name;
+  import {playbooks} from "./Playbooks";
 
   export let character = {
     name: "",
+    playbook: playbooks[0],
+    level: 1,
     stats: {
       strength: 16,
       dexterity: 15,
@@ -12,25 +16,31 @@
       intelligence: 12,
       wisdom: 10,
       charisma: 8
+    },
+    hitPoints: {
+      max: 0,
+      current: 0
     }
-  }
+  };
+  $: character.hitPoints.max = character.playbook.baseHitPoints + character.stats.constitution;
 </script>
 
 <main>
-  <h1>{character.name}</h1>
+  <h1>{character.name} {character.playbook.name}</h1>
 </main>
 
 <label>Name <input bind:value={character.name}></label>
-<label>Class <select></select></label>
+<label>Class
+  <select bind:value={character.playbook}>
+      {#each playbooks as playbook}
+        <option value={playbook}>{playbook.name}</option>
+      {/each}
+  </select>
+</label>
 
-<section id="stats">
-  <Stat name="Strength" debility="Weak" bind:score={character.stats.strength}/>
-  <Stat name="Dexterity" debility="Shaky" bind:score={character.stats.dexterity}/>
-  <Stat name="Constitution" debility="Sick" bind:score={character.stats.constitution}/>
-  <Stat name="Intelligence" debility="Stunned" bind:score={character.stats.intelligence}/>
-  <Stat name="Wisdom" debility="Confused" bind:score={character.stats.wisdom}/>
-  <Stat name="Charisma" debility="Scarred" bind:score={character.stats.charisma}/>
-</section>
+<Stats bind:character={character}/>
+<HitPoints bind:character={character}/>
+<DamageDie bind:character={character}/>
 
 <style>
   main {

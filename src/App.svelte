@@ -25,22 +25,22 @@
   $: character.hitPoints.max = character.playbook.baseHitPoints + character.stats.constitution;
 </script>
 
-<main>
+<main class="container">
   <h1>{character.name} {character.playbook.name}</h1>
+
+  <label>Name <input bind:value={character.name}></label>
+  <label>Class
+    <select bind:value={character.playbook}>
+        {#each playbooks as playbook}
+          <option value={playbook}>{playbook.name}</option>
+        {/each}
+    </select>
+  </label>
+
+  <Stats bind:character={character}/>
+  <HitPoints bind:character={character}/>
+  <DamageDie bind:character={character}/>
 </main>
-
-<label>Name <input bind:value={character.name}></label>
-<label>Class
-  <select bind:value={character.playbook}>
-      {#each playbooks as playbook}
-        <option value={playbook}>{playbook.name}</option>
-      {/each}
-  </select>
-</label>
-
-<Stats bind:character={character}/>
-<HitPoints bind:character={character}/>
-<DamageDie bind:character={character}/>
 
 <style>
   main {

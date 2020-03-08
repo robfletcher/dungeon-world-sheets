@@ -1,4 +1,6 @@
 <script>
+  import Tailwindcss from './Tailwindcss.svelte';
+
   import Stats from "./Stats.svelte";
   import HitPoints from "./HitPoints.svelte";
   import DamageDie from "./DamageDie.svelte";
@@ -25,6 +27,8 @@
   $: character.hitPoints.max = character.playbook.baseHitPoints + character.stats.constitution;
 </script>
 
+<Tailwindcss />
+
 <main class="container">
   <h1>{character.name} {character.playbook.name}</h1>
 
@@ -40,26 +44,5 @@
   <Stats bind:character={character}/>
   <HitPoints bind:character={character}/>
   <DamageDie bind:character={character}/>
+  <section id="armor"><h1>Armor</h1></section>
 </main>
-
-<style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
-</style>

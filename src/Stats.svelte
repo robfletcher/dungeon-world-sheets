@@ -30,3 +30,9 @@
     debility="Scarred"
     bind:score={character.stats.charisma}/>
 </section>
+
+<style>
+  section {
+    @apply flex bg-gray-200;
+  }
+</style>

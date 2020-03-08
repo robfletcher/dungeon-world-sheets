@@ -2,8 +2,8 @@
   export let character;
 </script>
 
-<section id="hp">
-  <h3>Hit Points</h3>
+<section id="hit-points">
+  <h1>Hit Points</h1>
   <dl>
     <dt>Max</dt>
     <dd>{character.hitPoints.max}</dd>

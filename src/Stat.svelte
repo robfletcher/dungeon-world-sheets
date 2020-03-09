@@ -25,6 +25,7 @@
 
   h1 {
     @apply col-span-2;
+    line-height: 2;
   }
 
   .score {

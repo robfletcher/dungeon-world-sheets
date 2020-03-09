@@ -8,6 +8,7 @@
     name: "",
     playbook: playbooks[0],
     level: 1,
+    xp: 0,
     stats: {
       strength: 16,
       dexterity: 15,
@@ -50,8 +51,11 @@
   h1 {
     @apply bg-gray-800 text-white text-lg;
     height: 2em;
-    line-height: 2;
     text-align: center;
     font-family: 'Uncial Antiqua', sans-serif;
+  }
+
+  header h1 {
+    line-height: 2;
   }
 </style>

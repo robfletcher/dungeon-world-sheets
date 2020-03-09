@@ -37,32 +37,35 @@
   </section>
 
   <section id="tracking">
-    <section id="hit-points" class="block">
+    <section id="hit-points">
       <h1>Hit Points</h1>
-      <div id="hit-points-max">
-        <h2>Max</h2>
-        <span>{character.hitPoints.max}</span>
-      </div>
-      <div id="hit-points-current">
-        <h2>Current</h2>
-        <span>{character.hitPoints.max - character.hitPoints.damage}</span>
-      </div>
+      <div class="block">{character.hitPoints.max - character.hitPoints.damage}</div>
     </section>
 
-    <section id="damage-die" class="block">
+    <section id="damage-die">
       <h1>Damage Die</h1>
-      <span>{character.playbook.damageDieFaces}</span>
+      <div class="block d{character.playbook.damageDieFaces}">{character.playbook.damageDieFaces}</div>
     </section>
 
-    <section id="armor" class="block">
+    <section id="armor">
       <h1>Armor</h1>
-      <span>{character.armor}</span>
+      <div class="block">{character.armor}</div>
+    </section>
+
+    <section>
+      <h1>Level</h1>
+      <div class="block">{character.level}</div>
+    </section>
+
+    <section>
+      <h1>Experience</h1>
+      <div class="block">{character.xp}</div>
     </section>
   </section>
 </main>
 
 <style>
-  main >  header {
+  main > header {
     @apply p-2;
   }
 
@@ -75,18 +78,65 @@
   }
 
   #stats, #tracking {
-    @apply flex;
+    @apply flex p-2;
   }
 
-  section > h1 {
-    /*@apply col-span-2;*/
+  #tracking section {
+    @apply m-2;
+  }
+
+  #tracking h1,
+  #tracking .block {
+    @apply p-2;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #tracking h1 {
+    height: 2.5rem;
+    line-height: 1.5;
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+
+  #tracking .block {
+    @apply text-3xl rounded-full;
+    height: 4rem;
+    width: 4rem;
+    line-height: 1.5;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    position: relative;
   }
 
   .block {
-    @apply flex-1 text-center m-2 bg-white grid grid-cols-2 border-solid border-2 border-gray-800 rounded-md;
+    @apply text-center bg-white border-solid border-2 border-gray-800 rounded-md;
   }
 
-  #damage-die span:before {
+  #damage-die .block {
+    color: transparent;
+    background-image: url('/dice.png');
+    background-size: cover;
+    background-position-x: -63px;
+    background-position-y: 0px;
+  }
+
+  #damage-die .d4 {
+    background-position-x: 5px;
+    background-position-y: -3px;
+  }
+
+  #damage-die .d8 {
+    background-position-x: 124px;
+    background-position-y: 0px;
+  }
+
+  #damage-die .d10 {
+    background-position-x: 60px;
+    background-position-y: 0px;
+  }
+
+  #damage-die .block:before {
     content: 'D';
   }
 </style>

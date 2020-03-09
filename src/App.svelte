@@ -1,11 +1,8 @@
 <script>
   import Tailwindcss from './Tailwindcss.svelte';
 
-  import Stats from "./Stats.svelte";
-  import HitPoints from "./HitPoints.svelte";
-  import DamageDie from "./DamageDie.svelte";
-
   import {playbooks} from "./Playbooks";
+  import CharacterSheet from "./CharacterSheet.svelte";
 
   export let character = {
     name: "",
@@ -21,28 +18,40 @@
     },
     hitPoints: {
       max: 0,
-      current: 0
-    }
+      damage: 0
+    },
+    armor: 0
   };
   $: character.hitPoints.max = character.playbook.baseHitPoints + character.stats.constitution;
 </script>
 
-<Tailwindcss />
+<Tailwindcss/>
 
-<main class="container">
-  <h1>{character.name} {character.playbook.name}</h1>
-
+<section>
   <label>Name <input bind:value={character.name}></label>
   <label>Class
     <select bind:value={character.playbook}>
         {#each playbooks as playbook}
-          <option value={playbook}>{playbook.name}</option>
+          <option
+            value={playbook}>{playbook.name} {#if playbook.source !== undefined}
+            ({playbook.source}){/if}</option>
         {/each}
     </select>
   </label>
+</section>
 
-  <Stats bind:character={character}/>
-  <HitPoints bind:character={character}/>
-  <DamageDie bind:character={character}/>
-  <section id="armor"><h1>Armor</h1></section>
-</main>
+<CharacterSheet bind:character={character}/>
+
+<style global>
+  * {
+    font-family: 'Charm', sans-serif;
+  }
+
+  h1 {
+    @apply bg-gray-800 text-white text-lg;
+    height: 2em;
+    line-height: 2;
+    text-align: center;
+    font-family: 'Uncial Antiqua', sans-serif;
+  }
+</style>

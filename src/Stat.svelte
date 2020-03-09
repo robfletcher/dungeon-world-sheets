@@ -13,22 +13,30 @@
   <div class="score">{score}</div>
   <div class="bonus" class:bonus-positive={bonus >= 0}>{bonus}</div>
   <label class="debility">
-    <input type="checkbox" bind:checked={isDebilitated}>
     <span>{debility}</span>
+    <input type="checkbox" bind:checked={isDebilitated}>
   </label>
 </section>
 
 <style>
   section {
-    @apply flex-1 text-center px-4 py-2 m-2 bg-white grid grid-cols-2 border-solid border-2 border-gray-600 rounded-md;
+    @apply flex-1 text-center m-2 bg-white grid grid-cols-2 border-solid border-2 border-gray-800 rounded-md;
   }
 
   h1 {
     @apply col-span-2;
   }
 
+  .score {
+    @apply m-2 text-lg;
+  }
+
   .bonus {
-    @apply row-span-2 border-double border-8 border-gray-600 rounded;
+    @apply row-span-2 border-double border-8 border-gray-800 rounded-full m-2 shadow-inner text-3xl;
+    line-height: 1.9;
+    width: 2.5em;
+    height: 2.5em;
+    font-family: 'Charm', serif;
   }
 
   .bonus-positive:before {

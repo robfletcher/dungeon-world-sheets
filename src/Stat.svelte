@@ -28,7 +28,7 @@
   }
 
   .score, .debility {
-    @apply inline-block align-top mx-2
+    @apply inline-block align-middle mx-2
   }
 
   .score {

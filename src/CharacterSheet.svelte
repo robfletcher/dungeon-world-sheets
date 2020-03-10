@@ -1,5 +1,6 @@
 <script>
   import Stat from "./Stat.svelte";
+  import Drives from "./Drives.svelte";
 
   export let character;
 </script>
@@ -65,17 +66,7 @@
     </section>
   </section>
 
-  <section id="drives">
-    <h1>Drives</h1>
-    <ul>
-      {#each character.playbook.drives as drive}
-        <li>
-          <h2>{drive.name}</h2>
-          <p>{drive.description}</p>
-        </li>
-      {/each}
-    </ul>
-  </section>
+  <Drives character={character}/>
 </main>
 
 <style>
@@ -88,19 +79,15 @@
   }
 
   header {
-    @apply col-span-2 flex bg-gray-800 p-2 pr-12 mb-2;
+    @apply col-span-2 flex bg-gray-800 p-2 pr-12 mb-2 items-center;
   }
 
   header > h1 {
-    @apply flex-grow text-4xl rounded-md mx-4;
+    @apply flex-grow text-4xl rounded-md mx-4 leading-none;
   }
 
   header section {
     @apply bg-transparent flex-initial my-1 ml-4;
-  }
-
-  h2 {
-    @apply font-bold mt-2;
   }
 
   #stats {
@@ -109,10 +96,6 @@
 
   #tracking {
     @apply flex flex-wrap p-2;
-  }
-
-  #drives {
-    @apply p-2;
   }
 
   #hit-points, #damage-die, #armor {
@@ -134,23 +117,12 @@
     @apply flex items-center h-10 px-10;
   }
 
-  #drives h1 {
-    @apply flex items-center h-10 px-2;
-  }
-
-  #drives ul {
-    @apply mx-2;
-  }
-
   #hit-points .value, #damage-die .value, #armor .value, #level .value, #xp .value {
     @apply flex items-center justify-center h-16 w-16 -mr-8 text-3xl bg-white border-solid border-2 border-gray-800 rounded-full;
     position: absolute;
     right: 0;
     top: -0.75rem;
     z-index: 1;
-  }
-
-  .value {
   }
 
   #damage-die .value {

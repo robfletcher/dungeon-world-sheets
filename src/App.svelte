@@ -21,7 +21,8 @@
       max: 0,
       damage: 0
     },
-    armor: 0
+    armor: 0,
+    drive: playbooks[0].drives[0]
   };
   $: character.hitPoints.max = character.playbook.baseHitPoints + character.stats.constitution;
 </script>
@@ -49,12 +50,7 @@
   }
 
   h1 {
-    @apply bg-gray-800 text-white text-lg;
-    height: 2em;
+    @apply bg-gray-800 text-white text-lg h-8;
     font-family: 'Uncial Antiqua', sans-serif;
-  }
-
-  header h1 {
-    line-height: 2;
   }
 </style>

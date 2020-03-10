@@ -24,8 +24,7 @@
   }
 
   .stat h1 {
-    @apply px-2 text-left;
-    line-height: 2;
+    @apply flex items-center px-2;
   }
 
   .score, .debility {
@@ -37,10 +36,9 @@
   }
 
   .bonus {
-    @apply absolute bg-white border-double border-8 border-gray-800 rounded-full text-center text-3xl;
+    @apply absolute flex items-center justify-center bg-white border-double border-8 border-gray-800 rounded-full text-3xl;
     right: -0.75em;
     top: -0.25em;
-    line-height: 1.9;
     width: 2.5em;
     height: 2.5em;
     font-family: 'Charm', serif;

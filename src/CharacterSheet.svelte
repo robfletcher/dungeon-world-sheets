@@ -19,7 +19,7 @@
     </section>
   </header>
 
-  <section class="left">
+  <section>
     <section id="stats">
       <Stat
         name="Strength"
@@ -64,15 +64,31 @@
       </section>
     </section>
   </section>
+
+  <section id="drives">
+    <h1>Drives</h1>
+    <ul>
+      {#each character.playbook.drives as drive}
+        <li>
+          <h2>{drive.name}</h2>
+          <p>{drive.description}</p>
+        </li>
+      {/each}
+    </ul>
+  </section>
 </main>
 
 <style>
+  main {
+    @apply grid grid-cols-2;
+  }
+
   section {
     @apply bg-gray-200;
   }
 
   header {
-    @apply flex bg-gray-800 p-2 pr-12 mb-2;
+    @apply col-span-2 flex bg-gray-800 p-2 pr-12 mb-2;
   }
 
   header > h1 {
@@ -83,8 +99,8 @@
     @apply bg-transparent flex-initial my-1 ml-4;
   }
 
-  .left {
-    width: 50%;
+  h2 {
+    @apply font-bold;
   }
 
   #stats {
@@ -99,28 +115,35 @@
     @apply m-2;
   }
 
+  #hit-points, #damage-die, #armor, #level, #xp {
+    position: relative;
+  }
+
   #hit-points h1, #damage-die h1, #armor h1, #level h1, #xp h1,
   #hit-points .value, #damage-die .value, #armor .value, #level .value, #xp .value {
-    @apply p-2;
+    @apply my-3 p-2;
     display: inline-block;
     vertical-align: middle;
   }
 
   #hit-points h1, #damage-die h1, #armor h1, #level h1, #xp h1 {
-    height: 2.5rem;
-    line-height: 1.5;
-    padding-left: 3rem;
-    padding-right: 2rem;
+    @apply flex items-center h-10 px-10;
+  }
+
+  #drives h1 {
+    @apply flex items-center h-10 px-2;
+  }
+
+  #drives ul {
+    @apply mx-2;
   }
 
   #hit-points .value, #damage-die .value, #armor .value, #level .value, #xp .value {
-    @apply text-3xl text-center bg-white border-solid border-2 border-gray-800 rounded-full;
-    height: 4rem;
-    width: 4rem;
-    line-height: 1.5;
-    margin-left: -2rem;
-    margin-right: -2rem;
-    position: relative;
+    @apply flex items-center justify-center h-16 w-16 -mr-8 text-3xl bg-white border-solid border-2 border-gray-800 rounded-full;
+    position: absolute;
+    right: 0;
+    top: -0.75rem;
+    z-index: 1;
   }
 
   .value {

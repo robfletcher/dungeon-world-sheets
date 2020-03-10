@@ -51,7 +51,6 @@
   h1 {
     @apply bg-gray-800 text-white text-lg;
     height: 2em;
-    text-align: center;
     font-family: 'Uncial Antiqua', sans-serif;
   }
 

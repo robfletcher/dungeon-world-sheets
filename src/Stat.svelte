@@ -8,7 +8,7 @@
   $: bonus = (score === 3 ? -3 : score <= 5 ? -2 : score <= 8 ? -1 : score <= 12 ? 0 : score <= 15 ? 1 : score <= 17 ? 2 : 3) - (isDebilitated ? 1 : 0);
 </script>
 
-<section>
+<section class="stat">
   <h1>{name}</h1>
   <div class="score">{score}</div>
   <div class="bonus" class:bonus-positive={bonus >= 0}>{bonus}</div>
@@ -19,21 +19,27 @@
 </section>
 
 <style>
-  section {
-    @apply flex-1 text-center m-2 bg-white grid grid-cols-2 border-solid border-2 border-gray-800 rounded-md;
+  .stat {
+    @apply relative ml-2 mr-6 my-4 bg-white border-solid border-2 border-gray-800 rounded-md;
   }
 
-  h1 {
-    @apply col-span-2;
+  .stat h1 {
+    @apply px-2 text-left;
     line-height: 2;
   }
 
+  .score, .debility {
+    @apply inline-block align-top mx-2
+  }
+
   .score {
-    @apply m-2 text-lg;
+    @apply text-lg;
   }
 
   .bonus {
-    @apply row-span-2 border-double border-8 border-gray-800 rounded-full m-2 shadow-inner text-3xl;
+    @apply absolute bg-white border-double border-8 border-gray-800 rounded-full text-center text-3xl;
+    right: -0.75em;
+    top: -0.25em;
     line-height: 1.9;
     width: 2.5em;
     height: 2.5em;
@@ -45,10 +51,10 @@
   }
 
   .debility input[type=checkbox] {
-    @apply mr-2 leading-tight;
+    @apply mr-2 leading-tight align-middle;
   }
 
   .debility span {
-    @apply text-sm;
+    @apply text-sm align-middle;
   }
 </style>

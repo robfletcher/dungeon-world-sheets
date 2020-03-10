@@ -45,7 +45,7 @@
 
 <style global>
   * {
-    font-family: 'Charm', sans-serif;
+    font-family: 'IM Fell English', sans-serif;
   }
 
   h1 {

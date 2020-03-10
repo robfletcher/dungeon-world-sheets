@@ -41,7 +41,6 @@
     top: -0.25em;
     width: 2.5em;
     height: 2.5em;
-    font-family: 'Charm', serif;
   }
 
   .bonus-positive:before {

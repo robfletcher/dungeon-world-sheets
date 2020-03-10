@@ -100,7 +100,7 @@
   }
 
   h2 {
-    @apply font-bold;
+    @apply font-bold mt-2;
   }
 
   #stats {

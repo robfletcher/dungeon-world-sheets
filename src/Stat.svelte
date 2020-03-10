@@ -20,7 +20,7 @@
 
 <style>
   .stat {
-    @apply relative ml-2 mr-6 my-4 bg-white border-solid border-2 border-gray-800 rounded-md;
+    @apply relative ml-2 mr-6 my-2 bg-white border-solid border-2 border-gray-800 rounded-md;
   }
 
   .stat h1 {

@@ -111,6 +111,10 @@
     @apply flex flex-wrap p-2;
   }
 
+  #drives {
+    @apply p-2;
+  }
+
   #hit-points, #damage-die, #armor {
     @apply m-2;
   }

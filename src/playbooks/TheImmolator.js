@@ -2,6 +2,24 @@ export const theImmolator = {
   name: "The Immolator",
   baseHitPoints: 4,
   damageDieFaces: 8,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["strange brands", "ritual scars", "perfect skin"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["smouldering", "warm", "searing"]
+    },
+    {
+      category: "Voice",
+      suggestions: ["crackling", "whispering", "roaring"]
+    },
+    {
+      category: "Clothes",
+      suggestions: ["flowing robes", "habit", "common"]
+    }
+  ],
   drives: [
     {
       name: "Exuberance",

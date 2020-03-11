@@ -2,6 +2,24 @@ export const theWizard = {
   name: "The Wizard",
   baseHitPoints: 4,
   damageDieFaces: 4,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["pudgy", "creepy", "thin"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["haunted", "sharp", "crazy"]
+    },
+    {
+      category: "Hair",
+      suggestions: ["styled", "wild", "pointed hat"]
+    },
+    {
+      category: "Robes",
+      suggestions: ["worn", "stylish", "strange"]
+    }
+  ],
   drives: [
     {
       name: "Curiosity",

@@ -2,6 +2,24 @@ export const thePaladin = {
   name: "The Paladin",
   baseHitPoints: 10,
   damageDieFaces: 10,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["fit", "bulky", "thin"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["kind", "fiery", "glowing"]
+    },
+    {
+      category: "Hair",
+      suggestions: ["bald", "styled", "helmet"]
+    },
+    {
+      category: "Holy symbol",
+      suggestions: ["worn", "fancy"]
+    }
+  ],
   drives: [
     {
       name: "Courage",

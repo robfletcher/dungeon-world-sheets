@@ -3,6 +3,24 @@ export const theRangerPW = {
   source: "Perilous Wilds",
   baseHitPoints: 8,
   damageDieFaces: 8,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["lithe", "wild", "sharp"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["wild", "sharp", "animal"]
+    },
+    {
+      category: "Hair",
+      suggestions: ["wild", "bald", "hooded"]
+    },
+    {
+      category: "Clothes",
+      suggestions: ["cape", "camouflage", "traveling clothes"]
+    }
+  ],
   drives: [
     {
       name: "Companionship",

@@ -2,6 +2,24 @@ export const theCleric = {
   name: "The Cleric",
   baseHitPoints: 8,
   damageDieFaces: 6,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["thin", "knobby", "flabby"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["kind", "sharp", "sad"]
+    },
+    {
+      category: "Hair",
+      suggestions: ["strange", "tonsure", "bald"]
+    },
+    {
+      category: "Clothes",
+      suggestions: ["flowing robes", "habit", "common"]
+    }
+  ],
   drives: [
     {
       name: "Ambition",

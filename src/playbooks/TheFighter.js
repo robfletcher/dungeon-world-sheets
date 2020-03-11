@@ -2,6 +2,24 @@ export const theFighter = {
   name: "The Fighter",
   baseHitPoints: 10,
   damageDieFaces: 10,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["built", "lithe", "ravaged"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["hard", "dead", "eager"]
+    },
+    {
+      category: "Hair",
+      suggestions: ["wild", "shorn", "battered helm"]
+    },
+    {
+      category: "Skin",
+      suggestions: ["calloused", "tanned", "scarred"]
+    }
+  ],
   drives: [
     {
       name: "Challenge",

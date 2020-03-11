@@ -2,6 +2,20 @@ export const theDruid = {
   name: "The Druid",
   baseHitPoints: 6,
   damageDieFaces: 6,
+  looks: [
+    {
+      category: "Hair",
+      suggestions: ["messy", "braided", "furry hood"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["wise", "wild", "haunting"]
+    },
+    {
+      category: "Clothes",
+      suggestions: ["ceremonial garb", "practical leathers", "weathered hides"]
+    }
+  ],
   drives: [
     {
       name: "Cultivation",

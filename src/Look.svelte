@@ -1,29 +1,51 @@
 <script>
   export let character;
   let editing = false;
+  let custom = {};
+  character.playbook.looks
+    .map(look => look.category)
+    .forEach(category => custom[category] = "");
+
+  function selectLook(e) {
+    character.playbook.looks
+      .map(look => look.category)
+      .forEach(category => {
+        character.look[category] = e.target.form[category].value
+      });
+    editing = false;
+  }
 </script>
 
 <section id="look" class:editing={editing}>
-  <h1>Look</h1>
-  <button class="edit" on:click={e => editing = true}>Edit</button>
-  <button class="save" on:click={e => editing = false}>Save</button>
-  <ul>
-      {#each character.playbook.looks as { category, suggestions }}
-        <li>
-          <h2>{category}</h2>
-            {#each suggestions as suggestion}
-              <label on:click={e => character.look[category] = suggestion}
-                     class:current={character.look[category] === suggestion}>{suggestion}</label>
-            {/each}
-          <label class:current={suggestions.indexOf(character.look[category]) === -1}>
-            <input type="text"
-                   on:change={e => character.look[category] = e.target.value}
-                   placeholder="write your own">
-            <span class="custom">{character.look[category] || ''}</span>
-          </label>
-        </li>
-      {/each}
-  </ul>
+  <form>
+    <h1>Look</h1>
+    <button type="button" class="edit" on:click={e => editing = true}>Edit</button>
+    <button type="button" class="save" on:click={selectLook}>Save</button>
+    <ul>
+        {#each character.playbook.looks as { category, suggestions }}
+          <li>
+            <h2>{category}</h2>
+              {#each suggestions as suggestion}
+                <label class:current={character.look[category] === suggestion}>
+                  <input type="radio"
+                         name={category}
+                         value={suggestion}>
+                    {suggestion}
+                </label>
+              {/each}
+            <label class:current={suggestions.indexOf(character.look[category]) === -1}>
+              <input type="radio"
+                     name={category}
+                     bind:value={custom[category]}>
+              <input type="text"
+                     placeholder="write your own"
+                     bind:value={custom[category]}>
+              <span class="custom">{character.look[category] || ''}</span>
+            </label>
+          </li>
+        {/each}
+    </ul>
+  </form>
 </section>
 
 <style>
@@ -74,18 +96,18 @@
   }
 
   label {
-    @apply hidden;
+    @apply hidden mr-2;
   }
 
   .current {
     @apply inline-block;
   }
 
-  input[type=text] {
+  input {
     @apply hidden;
   }
 
-  .editing input[type=text] {
+  .editing input {
     @apply inline-block;
   }
 
@@ -95,13 +117,5 @@
 
   .editing label {
     @apply inline-block cursor-pointer;
-  }
-
-  .editing .current {
-    @apply underline;
-  }
-
-  .editing label:not(:last-child):after {
-    content: ',\00a0';
   }
 </style>

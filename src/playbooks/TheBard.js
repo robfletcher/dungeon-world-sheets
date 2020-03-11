@@ -2,6 +2,24 @@ export const theBard = {
   name: "The Bard",
   baseHitPoints: 6,
   damageDieFaces: 6,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["fit", "well-fed", "thin"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["knowing", "fiery" , "joyous"]
+    },
+    {
+      category: "Hair",
+      suggestions: ["fancy", "wild", "stylish cap"]
+    },
+    {
+      category: "Clothes",
+      suggestions: ["finery", "traveling", "poor"]
+    }
+  ],
   drives: [
     {
       name: "Fame",

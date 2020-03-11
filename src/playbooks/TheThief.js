@@ -2,6 +2,24 @@ export const theThief = {
   name: "The Thief",
   baseHitPoints: 6,
   damageDieFaces: 8,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["lithe", "knobby", "flabby"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["shifty", "criminal"]
+    },
+    {
+      category: "Hair",
+      suggestions: ["cropped", "messy", "hooded"]
+    },
+    {
+      category: "Clothes",
+      suggestions: ["dark", "fancy", "common"]
+    }
+  ],
   drives: [
     {
       name: "Defiance",

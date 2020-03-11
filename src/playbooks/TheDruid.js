@@ -5,15 +5,15 @@ export const theDruid = {
   looks: [
     {
       category: "Hair",
-      suggestions: ["messy", "braided", "furry hood"]
+      suggestions: "Messy, braided, furry hood…"
     },
     {
       category: "Eyes",
-      suggestions: ["wise", "wild", "haunting"]
+      suggestions: "Wise, wild, haunting…"
     },
     {
       category: "Clothes",
-      suggestions: ["ceremonial garb", "practical leathers", "weathered hides"]
+      suggestions: "Ceremonial garb, practical leathers, weathered hides…"
     }
   ],
   drives: [

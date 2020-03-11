@@ -5,19 +5,19 @@ export const theWizard = {
   looks: [
     {
       category: "Body",
-      suggestions: ["pudgy", "creepy", "thin"]
+      suggestions: "Pudgy, creepy, thin…"
     },
     {
       category: "Eyes",
-      suggestions: ["haunted", "sharp", "crazy"]
+      suggestions: "Haunted, sharp, crazy…"
     },
     {
       category: "Hair",
-      suggestions: ["styled", "wild", "pointed hat"]
+      suggestions: "Styled, wild, pointed hat…"
     },
     {
       category: "Robes",
-      suggestions: ["worn", "stylish", "strange"]
+      suggestions: "Worn, stylish, strange…"
     }
   ],
   drives: [

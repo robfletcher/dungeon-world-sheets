@@ -5,19 +5,19 @@ export const theBarbarian = {
   looks: [
     {
       category: "Body",
-      suggestions: ["mighty thews", "long shanks", "scrawny", "supple"]
+      suggestions: "Mighty thews, long shanks, scrawny, supple…"
     },
     {
       category: "Eyes",
-      suggestions: ["tormented", "haunted", "wild", "shrouded"]
+      suggestions: "Tormented, haunted, wild, shrouded…"
     },
     {
       category: "Decoration",
-      suggestions: ["tattoos", "bejeweled", "unmarred"]
+      suggestions: "Tattoos, bejeweled, unmarred…"
     },
     {
       category: "Clothes",
-      suggestions: ["scraps", "silks", "scavenger’s outfit", "weather-inappropriate"]
+      suggestions: "Scraps, silks, scavenger’s outfit, weather-inappropriate…"
     }
   ],
   drives: [

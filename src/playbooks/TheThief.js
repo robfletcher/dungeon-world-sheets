@@ -5,19 +5,19 @@ export const theThief = {
   looks: [
     {
       category: "Body",
-      suggestions: ["lithe", "knobby", "flabby"]
+      suggestions: "Lithe, knobby, flabby…"
     },
     {
       category: "Eyes",
-      suggestions: ["shifty", "criminal"]
+      suggestions: "Shifty, criminal…"
     },
     {
       category: "Hair",
-      suggestions: ["cropped", "messy", "hooded"]
+      suggestions: "Cropped, messy, hooded…"
     },
     {
       category: "Clothes",
-      suggestions: ["dark", "fancy", "common"]
+      suggestions: "Dark, fancy, common…"
     }
   ],
   drives: [

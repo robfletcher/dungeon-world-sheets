@@ -6,19 +6,19 @@ export const theRangerPW = {
   looks: [
     {
       category: "Body",
-      suggestions: ["lithe", "wild", "sharp"]
+      suggestions: "Lithe, wild, sharp…"
     },
     {
       category: "Eyes",
-      suggestions: ["wild", "sharp", "animal"]
+      suggestions: "Wild, sharp, animal…"
     },
     {
       category: "Hair",
-      suggestions: ["wild", "bald", "hooded"]
+      suggestions: "Wild, bald, hooded…"
     },
     {
       category: "Clothes",
-      suggestions: ["cape", "camouflage", "traveling clothes"]
+      suggestions: "Cape, camouflage, traveling clothes…"
     }
   ],
   drives: [

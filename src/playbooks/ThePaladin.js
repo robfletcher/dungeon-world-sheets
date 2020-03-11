@@ -5,19 +5,19 @@ export const thePaladin = {
   looks: [
     {
       category: "Body",
-      suggestions: ["fit", "bulky", "thin"]
+      suggestions: "Fit, bulky, thin…"
     },
     {
       category: "Eyes",
-      suggestions: ["kind", "fiery", "glowing"]
+      suggestions: "Kind, fiery, glowing…"
     },
     {
       category: "Hair",
-      suggestions: ["bald", "styled", "helmet"]
+      suggestions: "Bald, styled, helmet…"
     },
     {
       category: "Holy symbol",
-      suggestions: ["worn", "fancy"]
+      suggestions: "Worn, fancy…"
     }
   ],
   drives: [

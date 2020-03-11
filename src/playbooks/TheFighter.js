@@ -5,19 +5,19 @@ export const theFighter = {
   looks: [
     {
       category: "Body",
-      suggestions: ["built", "lithe", "ravaged"]
+      suggestions: "Built, lithe, ravaged…"
     },
     {
       category: "Eyes",
-      suggestions: ["hard", "dead", "eager"]
+      suggestions: "Hard, dead, eager…"
     },
     {
       category: "Hair",
-      suggestions: ["wild", "shorn", "battered helm"]
+      suggestions: "Wild, shorn, battered helm…"
     },
     {
       category: "Skin",
-      suggestions: ["calloused", "tanned", "scarred"]
+      suggestions: "Calloused, tanned, scarred…"
     }
   ],
   drives: [

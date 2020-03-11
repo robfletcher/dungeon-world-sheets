@@ -5,19 +5,19 @@ export const theImmolator = {
   looks: [
     {
       category: "Body",
-      suggestions: ["strange brands", "ritual scars", "perfect skin"]
+      suggestions: "Strange brands, ritual scars, perfect skin…"
     },
     {
       category: "Eyes",
-      suggestions: ["smouldering", "warm", "searing"]
+      suggestions: "Smouldering, warm, searing…"
     },
     {
       category: "Voice",
-      suggestions: ["crackling", "whispering", "roaring"]
+      suggestions: "Crackling, whispering, roaring…"
     },
     {
-      category: "Clothes",
-      suggestions: ["flowing robes", "habit", "common"]
+      category: "Demeanor",
+      suggestions: "Imperious bearing, manic attitude, barely-hidden rage…"
     }
   ],
   drives: [

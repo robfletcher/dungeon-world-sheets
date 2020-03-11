@@ -1,51 +1,36 @@
 <script>
   export let character;
   let editing = false;
-  let custom = {};
-  character.playbook.looks
-    .map(look => look.category)
-    .forEach(category => custom[category] = "");
 
-  function selectLook(e) {
+  function edit(e) {
     character.playbook.looks
       .map(look => look.category)
-      .forEach(category => {
-        character.look[category] = e.target.form[category].value
-      });
+      .forEach(category => character.look[category] = character.look[category] || '');
+    editing = true;
+  }
+
+  function save(e) {
     editing = false;
   }
 </script>
 
 <section id="look" class:editing={editing}>
-  <form>
-    <h1>Look</h1>
-    <button type="button" class="edit" on:click={e => editing = true}>Edit</button>
-    <button type="button" class="save" on:click={selectLook}>Save</button>
-    <ul>
-        {#each character.playbook.looks as { category, suggestions }}
-          <li>
-            <h2>{category}</h2>
-              {#each suggestions as suggestion}
-                <label class:current={character.look[category] === suggestion}>
-                  <input type="radio"
-                         name={category}
-                         value={suggestion}>
-                    {suggestion}
-                </label>
-              {/each}
-            <label class:current={suggestions.indexOf(character.look[category]) === -1}>
-              <input type="radio"
-                     name={category}
-                     bind:value={custom[category]}>
-              <input type="text"
-                     placeholder="write your own"
-                     bind:value={custom[category]}>
-              <span class="custom">{character.look[category] || ''}</span>
-            </label>
-          </li>
-        {/each}
-    </ul>
-  </form>
+  <h1>Look</h1>
+  <button type="button" class="edit" on:click={edit}>Edit</button>
+  <button type="button" class="save" on:click={save}>Save</button>
+  <ul>
+      {#each character.playbook.looks as { category, suggestions }}
+        <li>
+          <label>
+            <span class="category">{category}</span>
+            <span class="look">{character.look[category] || ''}</span>
+            <input type="text"
+                   placeholder={suggestions}
+                   bind:value={character.look[category]}>
+          </label>
+        </li>
+      {/each}
+  </ul>
 </section>
 
 <style>
@@ -83,24 +68,24 @@
     @apply my-2;
   }
 
-  h2 {
-    @apply inline-block font-bold;
+  label {
+    @apply flex;
   }
 
-  h2, label {
-    @apply align-middle;
+  .category {
+    @apply flex-initial font-bold;
   }
 
-  h2:after {
+  .look {
+    @apply flex-grow;
+  }
+
+  .category:after {
     content: ':';
   }
 
-  label {
-    @apply hidden mr-2;
-  }
-
-  .current {
-    @apply inline-block;
+  input, .look {
+    @apply px-1;
   }
 
   input {
@@ -108,14 +93,14 @@
   }
 
   .editing input {
-    @apply inline-block;
+    @apply flex flex-grow;
   }
 
-  .editing .custom {
+  .editing .look {
     @apply hidden;
   }
 
   .editing label {
-    @apply inline-block cursor-pointer;
+    @apply cursor-pointer;
   }
 </style>

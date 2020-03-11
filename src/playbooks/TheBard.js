@@ -5,19 +5,19 @@ export const theBard = {
   looks: [
     {
       category: "Body",
-      suggestions: ["fit", "well-fed", "thin"]
+      suggestions: "Fit, well-fed, thin…"
     },
     {
       category: "Eyes",
-      suggestions: ["knowing", "fiery" , "joyous"]
+      suggestions: "Knowing, fiery , joyous…"
     },
     {
       category: "Hair",
-      suggestions: ["fancy", "wild", "stylish cap"]
+      suggestions: "Fancy, wild, stylish cap…"
     },
     {
       category: "Clothes",
-      suggestions: ["finery", "traveling", "poor"]
+      suggestions: "Finery, traveling, poor…"
     }
   ],
   drives: [

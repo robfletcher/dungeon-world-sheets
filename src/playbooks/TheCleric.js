@@ -5,19 +5,19 @@ export const theCleric = {
   looks: [
     {
       category: "Body",
-      suggestions: ["thin", "knobby", "flabby"]
+      suggestions: "Thin, knobby, flabby…"
     },
     {
       category: "Eyes",
-      suggestions: ["kind", "sharp", "sad"]
+      suggestions: "Kind, sharp, sad…"
     },
     {
       category: "Hair",
-      suggestions: ["strange", "tonsure", "bald"]
+      suggestions: "Strange, tonsure, bald…"
     },
     {
       category: "Clothes",
-      suggestions: ["flowing robes", "habit", "common"]
+      suggestions: "Flowing robes, habit, common…"
     }
   ],
   drives: [

@@ -2,6 +2,24 @@ export const theBarbarian = {
   name: "The Barbarian",
   baseHitPoints: 8,
   damageDieFaces: 10,
+  looks: [
+    {
+      category: "Body",
+      suggestions: ["mighty thews", "long shanks", "scrawny", "supple"]
+    },
+    {
+      category: "Eyes",
+      suggestions: ["tormented", "haunted", "wild", "shrouded"]
+    },
+    {
+      category: "Decoration",
+      suggestions: ["tattoos", "bejeweled", "unmarred"]
+    },
+    {
+      category: "Clothes",
+      suggestions: ["scraps", "silks", "scavenger’s outfit", "weather-inappropriate"]
+    }
+  ],
   drives: [
     {
       name: "Contempt",

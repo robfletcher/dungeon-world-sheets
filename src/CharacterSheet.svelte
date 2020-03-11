@@ -1,5 +1,6 @@
 <script>
   import Stat from "./Stat.svelte";
+  import Look from "./Look.svelte";
   import Drives from "./Drives.svelte";
 
   export let character;
@@ -66,6 +67,7 @@
     </section>
   </section>
 
+  <Look character={character}/>
   <Drives character={character}/>
 </main>
 

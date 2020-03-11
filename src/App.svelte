@@ -22,6 +22,7 @@
       damage: 0
     },
     armor: 0,
+    look: {},
     drive: playbooks[0].drives[0]
   };
   $: character.hitPoints.max = character.playbook.baseHitPoints + character.stats.constitution;
@@ -51,6 +52,6 @@
 
   h1 {
     @apply bg-gray-800 text-white text-lg h-8;
-    font-family: 'Uncial Antiqua', sans-serif;
+    font-family: 'IM Fell English SC', sans-serif;
   }
 </style>

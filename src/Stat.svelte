@@ -2,10 +2,8 @@
   export let name;
   export let debility;
   export let score;
-  let bonus;
-  let isDebilitated = false;
-
-  $: bonus = (score === 3 ? -3 : score <= 5 ? -2 : score <= 8 ? -1 : score <= 12 ? 0 : score <= 15 ? 1 : score <= 17 ? 2 : 3) - (isDebilitated ? 1 : 0);
+  export let bonus;
+  export let isDebilitated;
 </script>
 
 <section class="stat">

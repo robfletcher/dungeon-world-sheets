@@ -1,21 +1,15 @@
 <script>
-  import {get} from "svelte/store"; // TODO: better way?
   import {look, playbook} from "./character";
 
   let editing = false;
-  let newLook = {};
 
   look.subscribe(it => console.log("updated look to", it));
 
   function edit(e) {
-    get(playbook).looks
-      .map(look => look.category)
-      .forEach(category => newLook[category] = newLook[category] || '');
     editing = true;
   }
 
   function save(e) {
-    look.set(newLook);
     editing = false;
   }
 </script>
@@ -29,10 +23,10 @@
         <li>
           <label>
             <span class="category">{category}</span>
-            <span class="look">{newLook[category] || ''}</span>
+            <span class="look">{$look[category] || ''}</span>
             <input type="text"
                    placeholder={suggestions}
-                   bind:value={newLook[category]}>
+                   bind:value={$look[category]}>
           </label>
         </li>
       {/each}

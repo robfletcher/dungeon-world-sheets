@@ -1,5 +1,31 @@
 <script>
-  import {name, playbook, level, xp, strength, dexterity, constitution, intelligence, wisdom, charisma, hitPointsMax, damage, armor} from "./character";
+  import {
+    name,
+    playbook,
+    level,
+    xp,
+    strength,
+    str,
+    weak,
+    dexterity,
+    dex,
+    shaky,
+    constitution,
+    con,
+    sick,
+    intelligence,
+    int,
+    stunned,
+    wisdom,
+    wis,
+    confused,
+    charisma,
+    cha,
+    scarred,
+    hitPointsMax,
+    damage,
+    armor
+  } from "./character";
 
   import Stat from "./Stat.svelte";
   import Look from "./Look.svelte";
@@ -27,27 +53,39 @@
       <Stat
         name="Strength"
         debility="Weak"
-        bind:score={$strength}/>
+        bind:score={$strength}
+        bonus={$str}
+        bind:isDebilitated={$weak}/>
       <Stat
         name="Dexterity"
         debility="Shaky"
-        bind:score={$dexterity}/>
+        bind:score={$dexterity}
+        bonus={$dex}
+        bind:isDebilitated={$shaky}/>
       <Stat
         name="Constitution"
         debility="Sick"
-        bind:score={$constitution}/>
+        bind:score={$constitution}
+        bonus={$con}
+        bind:isDebilitated={$sick}/>
       <Stat
         name="Intelligence"
         debility="Stunned"
-        bind:score={$intelligence}/>
+        bind:score={$intelligence}
+        bonus={$int}
+        bind:isDebilitated={$stunned}/>
       <Stat
         name="Wisdom"
         debility="Confused"
-        bind:score={$wisdom}/>
+        bind:score={$wisdom}
+        bonus={$wis}
+        bind:isDebilitated={$confused}/>
       <Stat
         name="Charisma"
         debility="Scarred"
-        bind:score={$charisma}/>
+        bind:score={$charisma}
+        bonus={$cha}
+        bind:isDebilitated={$scarred}/>
     </section>
 
     <section id="tracking">

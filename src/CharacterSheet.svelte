@@ -1,23 +1,24 @@
 <script>
+  import {name, playbook, level, xp, strength, dexterity, constitution, intelligence, wisdom, charisma, hitPointsMax, damage, armor} from "./character";
+
   import Stat from "./Stat.svelte";
   import Look from "./Look.svelte";
   import Drives from "./Drives.svelte";
-
-  export let character;
+  import Gear from "./Gear.svelte";
 </script>
 
 <main class="container">
   <header>
-    <h1>{character.name} {character.playbook.name}</h1>
+    <h1>{$name} {$playbook.name}</h1>
 
     <section id="level">
       <h1>Level</h1>
-      <div class="value">{character.level}</div>
+      <div class="value">{$level}</div>
     </section>
 
     <section id="xp">
       <h1>Experience</h1>
-      <div class="value">{character.xp}</div>
+      <div class="value">{$xp}</div>
     </section>
   </header>
 
@@ -26,49 +27,50 @@
       <Stat
         name="Strength"
         debility="Weak"
-        bind:score={character.stats.strength}/>
+        bind:score={$strength}/>
       <Stat
         name="Dexterity"
         debility="Shaky"
-        bind:score={character.stats.dexterity}/>
+        bind:score={$dexterity}/>
       <Stat
         name="Constitution"
         debility="Sick"
-        bind:score={character.stats.constitution}/>
+        bind:score={$constitution}/>
       <Stat
         name="Intelligence"
         debility="Stunned"
-        bind:score={character.stats.intelligence}/>
+        bind:score={$intelligence}/>
       <Stat
         name="Wisdom"
         debility="Confused"
-        bind:score={character.stats.wisdom}/>
+        bind:score={$wisdom}/>
       <Stat
         name="Charisma"
         debility="Scarred"
-        bind:score={character.stats.charisma}/>
+        bind:score={$charisma}/>
     </section>
 
     <section id="tracking">
       <section id="hit-points">
         <h1>Hit Points</h1>
-        <div class="value">{character.hitPoints.max - character.hitPoints.damage}</div>
+        <div class="value">{$hitPointsMax - $damage}</div>
       </section>
 
       <section id="damage-die">
         <h1>Damage Die</h1>
-        <div class="value d{character.playbook.damageDieFaces}">{character.playbook.damageDieFaces}</div>
+        <div class="value d{$playbook.damageDieFaces}">{$playbook.damageDieFaces}</div>
       </section>
 
       <section id="armor">
         <h1>Armor</h1>
-        <div class="value">{character.armor}</div>
+        <div class="value">{$armor}</div>
       </section>
     </section>
   </section>
 
-  <Look character={character}/>
-  <Drives character={character}/>
+  <Look/>
+  <Drives/>
+  <Gear/>
 </main>
 
 <style>

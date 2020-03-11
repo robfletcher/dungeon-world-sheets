@@ -6,7 +6,6 @@ import {theFighter} from "./playbooks/TheFighter";
 import {theImmolator} from "./playbooks/TheImmolator";
 import {thePaladin} from "./playbooks/ThePaladin";
 import {theRanger} from "./playbooks/TheRanger";
-import {theRangerPW} from "./playbooks/TheRangerPW";
 import {theThief} from "./playbooks/TheThief";
 import {theWizard} from "./playbooks/TheWizard";
 
@@ -19,7 +18,6 @@ export const playbooks = [
   theImmolator,
   thePaladin,
   theRanger,
-  theRangerPW,
   theThief,
   theWizard
 ];

@@ -1,15 +1,21 @@
 <script>
-  export let character;
+  import {get} from "svelte/store"; // TODO: better way?
+  import {look, playbook} from "./character";
+
   let editing = false;
+  let newLook = {};
+
+  look.subscribe(it => console.log("updated look to", it));
 
   function edit(e) {
-    character.playbook.looks
+    get(playbook).looks
       .map(look => look.category)
-      .forEach(category => character.look[category] = character.look[category] || '');
+      .forEach(category => newLook[category] = newLook[category] || '');
     editing = true;
   }
 
   function save(e) {
+    look.set(newLook);
     editing = false;
   }
 </script>
@@ -19,14 +25,14 @@
   <button type="button" class="edit" on:click={edit}>Edit</button>
   <button type="button" class="save" on:click={save}>Save</button>
   <ul>
-      {#each character.playbook.looks as { category, suggestions }}
+      {#each $playbook.looks as { category, suggestions }}
         <li>
           <label>
             <span class="category">{category}</span>
-            <span class="look">{character.look[category] || ''}</span>
+            <span class="look">{newLook[category] || ''}</span>
             <input type="text"
                    placeholder={suggestions}
-                   bind:value={character.look[category]}>
+                   bind:value={newLook[category]}>
           </label>
         </li>
       {/each}

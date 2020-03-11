@@ -1,10 +1,13 @@
 <script>
-  export let character;
+  import {drive, playbook} from "./character";
+
   let editing = false;
 
-  function selectDrive(drive) {
+  drive.subscribe(it => console.log("updated drive to", it));
+
+  function selectDrive(it) {
     if (editing) {
-      character.drive = drive;
+      drive.set(it);
       editing = false;
     }
   }
@@ -14,11 +17,11 @@
   <h1>Drives</h1>
   <button on:click={e => editing = true}>Edit</button>
   <ul>
-    {#each character.playbook.drives as drive}
-      <li on:click={e => selectDrive(drive)}
-          class:current={character.drive != null && character.drive.name === drive.name}>
-        <h2>{drive.name}</h2>
-        <p>{drive.description}</p>
+    {#each $playbook.drives as it}
+      <li on:click={e => selectDrive(it)}
+          class:current={$drive != null && $drive.name === it.name}>
+        <h2>{it.name}</h2>
+        <p>{it.description}</p>
       </li>
     {/each}
   </ul>

@@ -41,5 +41,6 @@ export const theBard = {
       name: "Wonder",
       description: "Expose someone else to a thing of beauty, majesty, or awe."
     }
-  ]
+  ],
+  baseLoad: 9
 };

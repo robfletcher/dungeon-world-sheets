@@ -41,5 +41,6 @@ export const theImmolator = {
       name: "Vehemence",
       description: "Sacrifice an unwilling victim to the flames."
     }
-  ]
+  ],
+  baseLoad: 9
 };

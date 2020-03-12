@@ -37,5 +37,6 @@ export const theDruid = {
       name: "Restoration",
       description: "Deface, destroy, or bury a symbol or artifice of civilization."
     }
-  ]
+  ],
+  baseLoad: 6
 };

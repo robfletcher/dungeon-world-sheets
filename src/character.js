@@ -56,7 +56,7 @@ class Character {
   }
 
   get nextLevel() {
-    return level + 7;
+    return this.level + 7;
   }
 
   get hitPointsMax() {
@@ -66,10 +66,22 @@ class Character {
   get hitPointsCurrent() {
     return this.hitPointsMax - this.damage;
   }
+
+  get maxLoad() {
+    return this.playbook.baseLoad + this.strength.bonus;
+  }
+
+  static fromJSON(json) {
+    let c = JSON.parse(json);
+    ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].forEach(name =>
+      c[name] = Object.assign(new Stat, c[name])
+    );
+    return Object.assign(new Character, c);
+  }
 }
 
-export const character = writable(new Character("The Barbarian"));
+let saved = localStorage.getItem("character");
+let recovered = saved == null ?  new Character("The Barbarian") : Character.fromJSON(saved);
+export const character = writable(recovered);
 
 character.subscribe(c => localStorage.setItem("character", JSON.stringify(c)));
-
-character.subscribe(c=>console.log(c));

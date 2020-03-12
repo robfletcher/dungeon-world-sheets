@@ -41,5 +41,6 @@ export const theFighter = {
       name: "Vengeance",
       description: "Avenge a wrong or hurt done to you or your allies."
     }
-  ]
+  ],
+  baseLoad: 12
 };

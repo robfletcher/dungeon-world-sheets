@@ -41,5 +41,6 @@ export const thePaladin = {
       name: "Sacrifice",
       description: "Suffer pain and hardship so that someone does not need to."
     }
-  ]
+  ],
+  baseLoad: 12
 };

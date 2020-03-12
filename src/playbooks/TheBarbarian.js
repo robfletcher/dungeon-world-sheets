@@ -41,5 +41,6 @@ export const theBarbarian = {
       name: "Pride",
       description: "Refuse an order or request that is beneath you."
     }
-  ]
+  ],
+  baseLoad: 8
 };

@@ -41,5 +41,6 @@ export const theCleric = {
       name: "Orthodoxy",
       description: "Start trouble (for yourself or others) by adhering strictly to doctrine.",
     }
-  ]
+  ],
+  baseLoad: 10
 };

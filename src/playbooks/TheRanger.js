@@ -41,5 +41,6 @@ export const theRanger = {
       name: "Wonder",
       description: "Show someone a place or thing of natural beauty that they have not seen before."
     }
-  ]
+  ],
+  baseLoad: 11
 };

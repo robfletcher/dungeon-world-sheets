@@ -1,11 +1,11 @@
 <script>
-  // import {} from "./character";
+  import {character} from "./character";
 </script>
 
 <section id="gear">
   <section id="load">
-    <h1>Load</h1>
-    <div class="value"></div>
+    <h1>Max Load</h1>
+    <div class="value">{$character.maxLoad}</div>
   </section>
 </section>
 

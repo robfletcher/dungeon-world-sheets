@@ -9,7 +9,7 @@
 
 <main class="container">
   <header>
-    <h1>{$character.name} {$character.playbook.name}</h1>
+    <h1>{$character.name} {$character.characterClass}</h1>
 
     <section id="level">
       <h1>Level</h1>

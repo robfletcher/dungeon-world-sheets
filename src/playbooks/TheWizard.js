@@ -41,5 +41,6 @@ export const theWizard = {
       name: "Obeisance",
       description: "Get an NPC to acknowledge your superiority."
     }
-  ]
+  ],
+  baseLoad: 7
 };

@@ -41,5 +41,6 @@ export const theThief = {
       name: "Trickery",
       description: "Get someone to act on false information"
     }
-  ]
+  ],
+  baseLoad: 9
 };

@@ -5,23 +5,11 @@
     level,
     xp,
     strength,
-    str,
-    weak,
     dexterity,
-    dex,
-    shaky,
     constitution,
-    con,
-    sick,
     intelligence,
-    int,
-    stunned,
     wisdom,
-    wis,
-    confused,
     charisma,
-    cha,
-    scarred,
     hitPointsMax,
     damage,
     armor
@@ -53,39 +41,27 @@
       <Stat
         name="Strength"
         debility="Weak"
-        bind:score={$strength}
-        bonus={$str}
-        bind:isDebilitated={$weak}/>
+        bind:stat={$strength}/>
       <Stat
         name="Dexterity"
         debility="Shaky"
-        bind:score={$dexterity}
-        bonus={$dex}
-        bind:isDebilitated={$shaky}/>
+        bind:stat={$dexterity}/>
       <Stat
         name="Constitution"
         debility="Sick"
-        bind:score={$constitution}
-        bonus={$con}
-        bind:isDebilitated={$sick}/>
+        bind:stat={$constitution}/>
       <Stat
         name="Intelligence"
         debility="Stunned"
-        bind:score={$intelligence}
-        bonus={$int}
-        bind:isDebilitated={$stunned}/>
+        bind:stat={$intelligence}/>
       <Stat
         name="Wisdom"
         debility="Confused"
-        bind:score={$wisdom}
-        bonus={$wis}
-        bind:isDebilitated={$confused}/>
+        bind:stat={$wisdom}/>
       <Stat
         name="Charisma"
         debility="Scarred"
-        bind:score={$charisma}
-        bonus={$cha}
-        bind:isDebilitated={$scarred}/>
+        bind:stat={$charisma}/>
     </section>
 
     <section id="tracking">

@@ -3,8 +3,6 @@
 
   let editing = false;
 
-  drive.subscribe(it => console.log("updated drive to", it));
-
   function selectDrive(it) {
     if (editing) {
       drive.set(it);

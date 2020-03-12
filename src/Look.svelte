@@ -3,8 +3,6 @@
 
   let editing = false;
 
-  look.subscribe(it => console.log("updated look to", it));
-
   function edit(e) {
     editing = true;
   }

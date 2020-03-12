@@ -1,18 +1,16 @@
 <script>
   export let name;
   export let debility;
-  export let score;
-  export let bonus;
-  export let isDebilitated;
+  export let stat;
 </script>
 
 <section class="stat">
   <h1>{name}</h1>
-  <div class="score">{score}</div>
-  <div class="bonus" class:bonus-positive={bonus >= 0}>{bonus}</div>
+  <div class="score">{stat.value}</div>
+  <div class="bonus" class:bonus-positive={stat.bonus >= 0}>{stat.bonus}</div>
   <label class="debility">
     <span>{debility}</span>
-    <input type="checkbox" bind:checked={isDebilitated}>
+    <input type="checkbox" bind:checked={stat.isDebilitated}>
   </label>
 </section>
 

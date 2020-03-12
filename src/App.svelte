@@ -2,7 +2,7 @@
   import Tailwindcss from './Tailwindcss.svelte';
 
   import {playbooks} from "./Playbooks";
-  import {name, characterClass} from "./character";
+  import {character} from "./character";
 
   import CharacterSheet from "./CharacterSheet.svelte";
 </script>
@@ -10,9 +10,9 @@
 <Tailwindcss/>
 
 <section>
-  <label>Name <input bind:value={$name}></label>
+  <label>Name <input bind:value={$character.name}></label>
   <label>Class
-    <select bind:value={$characterClass}>
+    <select bind:value={$character.characterClass}>
       {#each playbooks as playbook}
         <option value={playbook.name}>{playbook.name}</option>
       {/each}

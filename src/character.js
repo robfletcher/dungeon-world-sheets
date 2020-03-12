@@ -33,20 +33,43 @@ class Stat {
   }
 }
 
-export const name = writable("");
-export const characterClass = writable("The Barbarian");
-export const playbook = derived(characterClass, $class => playbooks.find(it => it.name === $class));
-export const level = writable(1);
-export const xp = writable(0);
-export const nextLevel = derived(level, $level => $level + 7);
-export const strength = writable(new Stat(16));
-export const dexterity = writable(new Stat(15));
-export const constitution = writable(new Stat(13));
-export const intelligence = writable(new Stat(12));
-export const wisdom = writable(new Stat(10));
-export const charisma = writable(new Stat(8));
-export const hitPointsMax = derived([constitution, playbook], ([$constitution, $playbook]) => $constitution.value + $playbook.baseHitPoints);
-export const damage = writable(0);
-export const armor = writable(0);
-export const look = writable({});
-export const drive = writable({});
+class Character {
+  constructor(characterClass) {
+    this.name = "";
+    this.characterClass = characterClass;
+    this.level = 1;
+    this.xp = 0;
+    this.strength = new Stat(16);
+    this.dexterity = new Stat(15);
+    this.constitution = new Stat(13);
+    this.intelligence = new Stat(12);
+    this.wisdom = new Stat(9);
+    this.charisma = new Stat(8);
+    this.damage = 0;
+    this.armor = 0;
+    this.look = {};
+    this.drive = {};
+  }
+
+  get playbook() {
+    return playbooks.find(it => it.name === this.characterClass);
+  }
+
+  get nextLevel() {
+    return level + 7;
+  }
+
+  get hitPointsMax() {
+    return this.playbook.baseHitPoints + this.constitution.value;
+  }
+
+  get hitPointsCurrent() {
+    return this.hitPointsMax - this.damage;
+  }
+}
+
+export const character = writable(new Character("The Barbarian"));
+
+character.subscribe(c => localStorage.setItem("character", JSON.stringify(c)));
+
+character.subscribe(c=>console.log(c));

@@ -1,5 +1,5 @@
 <script>
-  import {look, playbook} from "./character";
+  import {character} from "./character";
 
   let editing = false;
 
@@ -17,14 +17,14 @@
   <button type="button" class="edit" on:click={edit}>Edit</button>
   <button type="button" class="save" on:click={save}>Save</button>
   <ul>
-      {#each $playbook.looks as { category, suggestions }}
+      {#each $character.playbook.looks as { category, suggestions }}
         <li>
           <label>
             <span class="category">{category}</span>
-            <span class="look">{$look[category] || ''}</span>
+            <span class="look">{$character.look[category] || ''}</span>
             <input type="text"
                    placeholder={suggestions}
-                   bind:value={$look[category]}>
+                   bind:value={$character.look[category]}>
           </label>
         </li>
       {/each}

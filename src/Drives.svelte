@@ -1,5 +1,5 @@
 <script>
-  import {drive, playbook} from "./character";
+  import {character} from "./character";
 
   let editing = false;
 
@@ -15,9 +15,9 @@
   <h1>Drives</h1>
   <button on:click={e => editing = true}>Edit</button>
   <ul>
-    {#each $playbook.drives as it}
+    {#each $character.playbook.drives as it}
       <li on:click={e => selectDrive(it)}
-          class:current={$drive != null && $drive.name === it.name}>
+          class:current={$character.drive != null && $character.drive.name === it.name}>
         <h2>{it.name}</h2>
         <p>{it.description}</p>
       </li>

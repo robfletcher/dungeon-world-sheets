@@ -22,35 +22,35 @@
     </section>
   </header>
 
-  <section>
-    <section id="stats">
-      <Stat
-        name="Strength"
-        debility="Weak"
-        bind:stat={$character.strength}/>
-      <Stat
-        name="Dexterity"
-        debility="Shaky"
-        bind:stat={$character.dexterity}/>
-      <Stat
-        name="Constitution"
-        debility="Sick"
-        bind:stat={$character.constitution}/>
-      <Stat
-        name="Intelligence"
-        debility="Stunned"
-        bind:stat={$character.intelligence}/>
-      <Stat
-        name="Wisdom"
-        debility="Confused"
-        bind:stat={$character.wisdom}/>
-      <Stat
-        name="Charisma"
-        debility="Scarred"
-        bind:stat={$character.charisma}/>
-    </section>
+  <section id="stats">
+    <Stat
+      name="Strength"
+      debility="Weak"
+      bind:stat={$character.strength}/>
+    <Stat
+      name="Dexterity"
+      debility="Shaky"
+      bind:stat={$character.dexterity}/>
+    <Stat
+      name="Constitution"
+      debility="Sick"
+      bind:stat={$character.constitution}/>
+    <Stat
+      name="Intelligence"
+      debility="Stunned"
+      bind:stat={$character.intelligence}/>
+    <Stat
+      name="Wisdom"
+      debility="Confused"
+      bind:stat={$character.wisdom}/>
+    <Stat
+      name="Charisma"
+      debility="Scarred"
+      bind:stat={$character.charisma}/>
+  </section>
 
-    <section class="bar">
+  <section id="combat">
+    <header>
       <section id="hit-points" class="labelled-score">
         <h1>Hit Points</h1>
         <div class="value">{$character.hitPointsCurrent}</div>
@@ -58,14 +58,15 @@
 
       <section id="damage-die" class="labelled-score">
         <h1>Damage Die</h1>
-        <div class="value d{$character.playbook.damageDieFaces}">{$character.playbook.damageDieFaces}</div>
+        <div
+          class="value d{$character.playbook.damageDieFaces}">{$character.playbook.damageDieFaces}</div>
       </section>
 
       <section id="armor" class="labelled-score">
         <h1>Armor</h1>
         <div class="value">{$character.armor}</div>
       </section>
-    </section>
+    </header>
   </section>
 
   <Look/>
@@ -75,27 +76,19 @@
 
 <style>
   main {
-    @apply grid grid-cols-2;
+    @apply grid grid-cols-2 bg-gray-200;
   }
 
-  section {
-    @apply bg-gray-200;
+  main > header {
+    @apply mb-6;
   }
 
-  header {
-    @apply col-span-2 flex bg-gray-800 p-2 pr-12 mb-2 items-center;
-  }
-
-  header > h1 {
-    @apply flex-grow text-4xl rounded-md mx-4 leading-none;
-  }
-
-  header section {
-    @apply bg-transparent flex-initial my-1 ml-4;
+  main > header > h1 {
+    @apply text-4xl mx-4;
   }
 
   #stats {
-    @apply grid grid-cols-3 p-2
+    @apply grid grid-cols-3 row-gap-4 p-2
   }
 
   #damage-die .value {

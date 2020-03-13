@@ -5,15 +5,17 @@
 
   function selectDrive(it) {
     if (editing) {
-      drive.set(it);
+      $character.drive = it;
       editing = false;
     }
   }
 </script>
 
 <section id="drives" class:editing={editing}>
-  <h1>Drives</h1>
-  <button on:click={e => editing = true}>Edit</button>
+  <header>
+    <h1>Drives</h1>
+    <button on:click={e => editing = true}>Edit</button>
+  </header>
   <ul>
     {#each $character.playbook.drives as it}
       <li on:click={e => selectDrive(it)}
@@ -26,22 +28,8 @@
 </section>
 
 <style>
-  #drives {
-    @apply py-2 bg-gray-200 relative;
-  }
-
-  button {
-    @apply absolute text-white;
-    right: 0.5rem;
-    top: 1rem;
-  }
-
   .selected {
     color: red;
-  }
-
-  h1 {
-    @apply flex items-center h-10 px-2;
   }
 
   ul {

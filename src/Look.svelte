@@ -13,9 +13,11 @@
 </script>
 
 <section id="look" class:editing={editing}>
-  <h1>Look</h1>
-  <button type="button" class="edit" on:click={edit}>Edit</button>
-  <button type="button" class="save" on:click={save}>Save</button>
+  <header>
+    <h1>Look</h1>
+    <button type="button" class="edit" on:click={edit}>Edit</button>
+    <button type="button" class="save" on:click={save}>Save</button>
+  </header>
   <ul>
       {#each $character.playbook.looks as { category, suggestions }}
         <li>
@@ -32,16 +34,6 @@
 </section>
 
 <style>
-  #look {
-    @apply py-2 bg-gray-200 relative;
-  }
-
-  button {
-    @apply absolute text-white;
-    right: 0.5rem;
-    top: 1rem;
-  }
-
   button.save {
     @apply hidden;
   }
@@ -52,10 +44,6 @@
 
   .editing button.save {
     @apply block;
-  }
-
-  h1 {
-    @apply flex items-center h-10 px-2;
   }
 
   ul {

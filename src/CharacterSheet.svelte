@@ -11,12 +11,12 @@
   <header>
     <h1>{$character.name} {$character.characterClass}</h1>
 
-    <section id="level">
+    <section id="level" class="labelled-score">
       <h1>Level</h1>
       <div class="value">{$character.level}</div>
     </section>
 
-    <section id="xp">
+    <section id="xp" class="labelled-score">
       <h1>Experience</h1>
       <div class="value">{$character.xp}</div>
     </section>
@@ -50,18 +50,18 @@
         bind:stat={$character.charisma}/>
     </section>
 
-    <section id="tracking">
-      <section id="hit-points">
+    <section class="bar">
+      <section id="hit-points" class="labelled-score">
         <h1>Hit Points</h1>
         <div class="value">{$character.hitPointsCurrent}</div>
       </section>
 
-      <section id="damage-die">
+      <section id="damage-die" class="labelled-score">
         <h1>Damage Die</h1>
         <div class="value d{$character.playbook.damageDieFaces}">{$character.playbook.damageDieFaces}</div>
       </section>
 
-      <section id="armor">
+      <section id="armor" class="labelled-score">
         <h1>Armor</h1>
         <div class="value">{$character.armor}</div>
       </section>
@@ -96,37 +96,6 @@
 
   #stats {
     @apply grid grid-cols-3 p-2
-  }
-
-  #tracking {
-    @apply flex flex-wrap p-2;
-  }
-
-  #hit-points, #damage-die, #armor {
-    @apply m-2;
-  }
-
-  #hit-points, #damage-die, #armor, #level, #xp {
-    position: relative;
-  }
-
-  #hit-points h1, #damage-die h1, #armor h1, #level h1, #xp h1,
-  #hit-points .value, #damage-die .value, #armor .value, #level .value, #xp .value {
-    @apply my-3 p-2;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  #hit-points h1, #damage-die h1, #armor h1, #level h1, #xp h1 {
-    @apply flex items-center h-10 px-10;
-  }
-
-  #hit-points .value, #damage-die .value, #armor .value, #level .value, #xp .value {
-    @apply flex items-center justify-center h-16 w-16 -mr-8 text-3xl bg-white border-solid border-2 border-gray-800 rounded-full;
-    position: absolute;
-    right: 0;
-    top: -0.75rem;
-    z-index: 1;
   }
 
   #damage-die .value {

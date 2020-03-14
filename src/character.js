@@ -34,11 +34,11 @@ class Stat {
 }
 
 export class InventoryItem {
-  constructor(name, uses, weight, armor) {
+  constructor(name, tags, uses, weight) {
     this.name = name;
+    this.tags = tags || [];
     this.uses = uses || null;
     this.weight = weight || 0;
-    this.armor = armor || 0;
   }
 }
 

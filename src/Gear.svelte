@@ -6,22 +6,25 @@
   let showModal = false;
 
   let itemForm = {
-    index : -1,
+    index: -1,
     hasUses: false,
-    item: new InventoryItem()
+    item: new InventoryItem(),
+    tags: ""
   };
 
-  function openAddItem() {
+  function addItem() {
     itemForm.index = -1;
     itemForm.item = new InventoryItem();
     itemForm.hasUses = false;
+    itemForm.tags = "";
     showModal = true;
   }
 
-  function openEditItem(index, item) {
+  function editItem(index, item) {
     itemForm.index = index;
     itemForm.item = item;
     itemForm.hasUses = item.uses != null;
+    itemForm.tags = (item.tags || []).join(", ");
     showModal = true;
   }
 
@@ -29,6 +32,8 @@
     if (!itemForm.hasUses) {
       itemForm.item.uses = null;
     }
+
+    itemForm.item.tags = itemForm.tags.split(",").map(it => it.trim());
 
     character.update(c => {
       if (itemForm.index >= 0) {
@@ -83,9 +88,11 @@
     {#each $character.gear as item, i}
       <tr>
           {#if item.uses == null}
-            <td colspan="2">{item.name}</td>
+            <td class="item" on:click={_=>editItem(i, item)} colspan="2">{item.name} <span
+              class="tags">{(item.tags || []).join(", ")}</span></td>
           {:else}
-            <td>{item.name}</td>
+            <td class="item" on:click={_=>editItem(i, item)}>{item.name} <span
+              class="tags">{(item.tags || []).join(", ")}</span></td>
             <td class="uses">
               <button type="button" on:click={_=>decrementUses(i)}>-</button>
               <span>{item.uses}</span>
@@ -99,18 +106,25 @@
   </table>
 
   <footer>
-    <button type="button" on:click={openAddItem}>Add</button>
+    <button type="button" on:click={addItem}>Add</button>
   </footer>
 </section>
 
 {#if showModal}
   <Modal on:cancel={() => showModal = false} on:ok={updateItem}>
-    <h2 slot="header">Manage Gear</h2>
+    <h1 slot="header">Manage Gear</h1>
 
     <fieldset>
       <label>
         Item:
-        <input type="text" bind:value={itemForm.item.name}>
+        <input type="text" bind:value={itemForm.item.name} class="focus:outline-none focus:shadow-outline">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <label>
+        Tags:
+        <input type="text" bind:value={itemForm.tags} class="focus:outline-none focus:shadow-outline">
       </label>
     </fieldset>
 
@@ -123,7 +137,7 @@
       <label>
         Uses:
         <input type="range" min="0" max="10" bind:value={itemForm.item.uses} disabled={!itemForm.hasUses}>
-        <span>{itemForm.item.uses}</span>
+        <span>{itemForm.item.uses || 0}</span>
       </label>
     </fieldset>
 
@@ -132,14 +146,6 @@
         Weight:
         <input type="range" min="0" max="5" bind:value={itemForm.item.weight}>
         <span>{itemForm.item.weight}</span>
-      </label>
-    </fieldset>
-
-    <fieldset>
-      <label>
-        Armor:
-        <input type="range" min="0" max="5" bind:value={itemForm.item.armor}>
-        <span>{itemForm.item.armor}</span>
       </label>
     </fieldset>
   </Modal>
@@ -162,6 +168,10 @@
     width: 100%;
   }
 
+  .item {
+    @apply cursor-pointer;
+  }
+
   .uses {
     @apply whitespace-no-wrap;
   }
@@ -170,7 +180,23 @@
     @apply inline-block align-middle w-6 text-center;
   }
 
+  .tags {
+    @apply text-xs;
+  }
+
   footer {
     @apply text-right;
+  }
+
+  fieldset {
+    @apply m-2;
+  }
+
+  label * {
+    @apply align-middle;
+  }
+
+  input[type=text] {
+    @apply shadow;
   }
 </style>

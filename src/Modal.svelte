@@ -67,7 +67,7 @@
   }
 
   .modal {
-    position: absolute;
+    @apply absolute p-2 bg-white;
     left: 50%;
     top: 50%;
     width: calc(100vw - 4em);
@@ -75,13 +75,19 @@
     max-height: calc(100vh - 4em);
     overflow: auto;
     transform: translate(-50%, -50%);
-    padding: 1em;
     border-radius: 0.2em;
-    background: white;
     z-index: 2;
   }
 
+  .modal header {
+    @apply px-2;
+  }
+
+  .modal footer {
+    @apply text-right;
+  }
+
   button {
-    display: block;
+    @apply inline-block mx-2 text-center;
   }
 </style>

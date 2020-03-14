@@ -76,7 +76,7 @@
 
 <style>
   main {
-    @apply grid grid-cols-2 bg-gray-200;
+    @apply grid grid-cols-2 bg-gray-200 mt-4;
   }
 
   main > header {

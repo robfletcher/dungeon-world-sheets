@@ -5,16 +5,37 @@
 
   let showModal = false;
 
-  let addedItemHasUses = false;
-  let addedItem = new InventoryItem();
+  let itemForm = {
+    index : -1,
+    hasUses: false,
+    item: new InventoryItem()
+  };
+
   function openAddItem() {
-    addedItem = new InventoryItem();
+    itemForm.index = -1;
+    itemForm.item = new InventoryItem();
+    itemForm.hasUses = false;
+    showModal = true;
+  }
+
+  function openEditItem(index, item) {
+    itemForm.index = index;
+    itemForm.item = item;
+    itemForm.hasUses = item.uses != null;
     showModal = true;
   }
 
   function addItem() {
+    if (!itemForm.hasUses) {
+      itemForm.item.uses = null;
+    }
+
     character.update(c => {
-      c.gear.push(addedItem);
+      if (itemForm.index >= 0) {
+        c.gear[itemForm.index] = itemForm.item
+      } else {
+        c.gear.push(itemForm.item);
+      }
       return c;
     });
     showModal = false;
@@ -46,8 +67,8 @@
     </tr>
     </thead>
     <tbody>
-    {#each $character.gear as item}
-      <tr>
+    {#each $character.gear as item, i}
+      <tr on:click={e=> openEditItem(i, item)}>
           {#if item.uses !== null}
             <td>{item.name}</td>
             <td>{item.uses}</td>
@@ -72,36 +93,36 @@
     <fieldset>
       <label>
         Item:
-        <input type="text" bind:value={addedItem.name}>
+        <input type="text" bind:value={itemForm.item.name}>
       </label>
     </fieldset>
 
     <fieldset>
       <label>
         Has uses?
-        <input type="checkbox" bind:checked={addedItemHasUses}>
+        <input type="checkbox" bind:checked={itemForm.hasUses}>
       </label>
 
       <label>
         Uses:
-        <input type="range" min="0" max="10" bind:value={addedItem.uses} disabled={!addedItemHasUses}>
-        <span>{addedItem.uses}</span>
+        <input type="range" min="0" max="10" bind:value={itemForm.item.uses} disabled={!itemForm.hasUses}>
+        <span>{itemForm.item.uses}</span>
       </label>
     </fieldset>
 
     <fieldset>
       <label>
         Weight:
-        <input type="range" min="0" max="5" bind:value={addedItem.weight}>
-        <span>{addedItem.weight}</span>
+        <input type="range" min="0" max="5" bind:value={itemForm.item.weight}>
+        <span>{itemForm.item.weight}</span>
       </label>
     </fieldset>
 
     <fieldset>
       <label>
         Armor:
-        <input type="range" min="0" max="5" bind:value={addedItem.armor}>
-        <span>{addedItem.armor}</span>
+        <input type="range" min="0" max="5" bind:value={itemForm.item.armor}>
+        <span>{itemForm.item.armor}</span>
       </label>
     </fieldset>
   </Modal>

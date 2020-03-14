@@ -25,7 +25,7 @@
     showModal = true;
   }
 
-  function addItem() {
+  function updateItem() {
     if (!itemForm.hasUses) {
       itemForm.item.uses = null;
     }
@@ -40,10 +40,23 @@
     });
     showModal = false;
   }
+
+  function incrementUses(index) {
+    character.update(c => {
+      c.gear[index].uses++;
+      return c;
+    });
+  }
+
+  function decrementUses(index) {
+    character.update(c => {
+      c.gear[index].uses--;
+      return c;
+    });
+  }
 </script>
 
 <section id="gear">
-
   <header>
     <h1>Gear</h1>
 
@@ -68,12 +81,16 @@
     </thead>
     <tbody>
     {#each $character.gear as item, i}
-      <tr on:click={e=> openEditItem(i, item)}>
-          {#if item.uses !== null}
-            <td>{item.name}</td>
-            <td>{item.uses}</td>
-          {:else}
+      <tr>
+          {#if item.uses == null}
             <td colspan="2">{item.name}</td>
+          {:else}
+            <td>{item.name}</td>
+            <td class="uses">
+              <button type="button" on:click={_=>decrementUses(i)}>-</button>
+              <span>{item.uses}</span>
+              <button type="button" on:click={_=>incrementUses(i)}>+</button>
+            </td>
           {/if}
         <td>{item.weight}</td>
       </tr>
@@ -87,8 +104,8 @@
 </section>
 
 {#if showModal}
-  <Modal on:cancel={() => showModal = false} on:ok={addItem}>
-    <h2 slot="header">Add to Gear</h2>
+  <Modal on:cancel={() => showModal = false} on:ok={updateItem}>
+    <h2 slot="header">Manage Gear</h2>
 
     <fieldset>
       <label>
@@ -143,6 +160,14 @@
 
   th:first-child, td:first-child {
     width: 100%;
+  }
+
+  .uses {
+    @apply whitespace-no-wrap;
+  }
+
+  .uses button, .uses span {
+    @apply inline-block align-middle w-6 text-center;
   }
 
   footer {

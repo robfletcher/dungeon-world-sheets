@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher, onDestroy } from 'svelte';
+  import {createEventDispatcher, onDestroy} from 'svelte';
 
   const dispatch = createEventDispatcher();
   const ok = () => dispatch('ok');
@@ -43,14 +43,17 @@
 <div class="modal-background" on:click={cancel}></div>
 
 <div class="modal" role="dialog" aria-modal="true" bind:this={modal}>
-  <slot name="header"></slot>
-  <hr>
+  <header>
+    <slot name="header"></slot>
+  </header>
+
   <slot></slot>
-  <hr>
 
   <!-- svelte-ignore a11y-autofocus -->
-  <button autofocus on:click={ok}>Ok</button>
-  <button autofocus on:click={cancel}>Cancel</button>
+  <footer>
+    <button autofocus on:click={ok}>Ok</button>
+    <button autofocus on:click={cancel}>Cancel</button>
+  </footer>
 </div>
 
 <style>
@@ -60,7 +63,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .modal {
@@ -71,7 +74,7 @@
     max-width: 32em;
     max-height: calc(100vh - 4em);
     overflow: auto;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     padding: 1em;
     border-radius: 0.2em;
     background: white;

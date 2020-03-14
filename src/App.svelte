@@ -75,4 +75,17 @@
     z-index: 1;
   }
 
+  section ul,
+  section table,
+  section footer {
+    @apply m-2;
+  }
+
+  li {
+    @apply my-2;
+  }
+
+  main  input {
+    @apply px-1;
+  }
 </style>

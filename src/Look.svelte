@@ -46,14 +46,6 @@
     @apply block;
   }
 
-  ul {
-    @apply m-2;
-  }
-
-  li {
-    @apply my-2;
-  }
-
   label {
     @apply flex;
   }

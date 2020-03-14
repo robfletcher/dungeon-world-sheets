@@ -1,4 +1,4 @@
-import {derived, writable} from 'svelte/store';
+import {writable} from 'svelte/store';
 import {playbooks} from "./Playbooks";
 
 class Stat {
@@ -33,6 +33,15 @@ class Stat {
   }
 }
 
+export class InventoryItem {
+  constructor(name, uses, weight, armor) {
+    this.name = name;
+    this.uses = uses || null;
+    this.weight = weight || 0;
+    this.armor = armor || 0;
+  }
+}
+
 class Character {
   constructor(characterClass) {
     this.name = "";
@@ -49,6 +58,9 @@ class Character {
     this.armor = 0;
     this.look = {};
     this.drive = {};
+    this.gear = [
+      new InventoryItem("Adventuring Gear", 5, 1)
+    ];
   }
 
   get playbook() {
@@ -67,6 +79,12 @@ class Character {
     return this.hitPointsMax - this.damage;
   }
 
+  get load() {
+    return this.gear
+      .map(it => it.weight)
+      .reduce((a, b) => a + b, 0);
+  }
+
   get maxLoad() {
     return this.playbook.baseLoad + this.strength.bonus;
   }
@@ -81,7 +99,7 @@ class Character {
 }
 
 let saved = localStorage.getItem("character");
-let recovered = saved == null ?  new Character("The Barbarian") : Character.fromJSON(saved);
+let recovered = saved == null ? new Character("The Barbarian") : Character.fromJSON(saved);
 export const character = writable(recovered);
 
 character.subscribe(c => localStorage.setItem("character", JSON.stringify(c)));

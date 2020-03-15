@@ -13,6 +13,11 @@
       return;
     }
 
+    if (e.key === 'Enter') {
+      ok();
+      return;
+    }
+
     if (e.key === 'Tab') {
       // trap focus
       const nodes = modal.querySelectorAll('*');

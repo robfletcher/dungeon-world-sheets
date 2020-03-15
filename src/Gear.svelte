@@ -59,6 +59,13 @@
       return c;
     });
   }
+
+  function removeItem(index) {
+    character.update(c => {
+      c.gear.splice(index, 1);
+      return c;
+    });
+  }
 </script>
 
 <section id="gear">
@@ -100,13 +107,16 @@
             </td>
           {/if}
         <td>{item.weight}</td>
+        <td>
+          <button type="button" on:click={_=>removeItem(i)} class="remove">-</button>
+        </td>
       </tr>
     {/each}
     </tbody>
   </table>
 
   <footer>
-    <button type="button" on:click={addItem}>Add</button>
+    <button type="button" on:click={addItem} class="remove">Add</button>
   </footer>
 </section>
 
@@ -182,6 +192,10 @@
 
   .tags {
     @apply text-xs;
+  }
+
+  button.remove {
+    @apply ml-4;
   }
 
   footer {

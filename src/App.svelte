@@ -2,7 +2,7 @@
   import Tailwindcss from './Tailwindcss.svelte';
 
   import {playbooks} from "./Playbooks";
-  import {character} from "./character";
+  import {character} from "./store";
 
   import CharacterSheet from "./CharacterSheet.svelte";
 </script>
@@ -75,7 +75,8 @@
   section > table,
   section > footer,
   section > h2,
-  section > p {
+  section > p,
+  section > article {
     @apply m-2;
   }
 

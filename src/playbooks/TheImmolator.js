@@ -42,5 +42,12 @@ export const theImmolator = {
       description: "Sacrifice an unwilling victim to the flames."
     }
   ],
-  baseLoad: 9
+  baseLoad: 9,
+  startingMoves: [
+    "Burning Brand",
+    "Fighting Fire with Fire",
+    "Give Me Fuel, Give Me Fire",
+    "Zuko Style",
+    "Hand Crafted"
+  ]
 };

@@ -1,48 +1,8 @@
-import {writable} from 'svelte/store';
 import {playbooks} from "./Playbooks";
+import {Stat} from "./stat";
+import {Gear} from "./gear";
 
-export class Stat {
-  constructor(value) {
-    this.value = value;
-    this.isDebilitated = false;
-  }
-
-  get bonus() {
-    return Stat.statToBonus(this.value) - (this.isDebilitated ? 1 : 0);
-  }
-
-  static statToBonus(stat) {
-    switch (true) {
-      case stat < 3 || stat > 18:
-        throw `Stat value ${stat} is out of range`;
-      case stat === 3:
-        return -3;
-      case stat <= 5:
-        return -2;
-      case stat <= 8:
-        return -1;
-      case stat <= 12:
-        return 0;
-      case stat <= 15:
-        return 1;
-      case stat <= 17:
-        return 2;
-      case stat === 18:
-        return 3;
-    }
-  }
-}
-
-export class Gear {
-  constructor(name, tags, uses, weight) {
-    this.name = name;
-    this.tags = tags || [];
-    this.uses = uses || null;
-    this.weight = weight || 0;
-  }
-}
-
-class Character {
+export class Character {
   constructor(characterClass) {
     this.name = "";
     this.characterClass = characterClass;
@@ -62,6 +22,7 @@ class Character {
     this.gear = [
       new Gear("Adventuring Gear", 5, 1)
     ];
+    this.moves = [];
   }
 
   get playbook() {
@@ -98,9 +59,3 @@ class Character {
     return Object.assign(new Character, c);
   }
 }
-
-let saved = localStorage.getItem("character");
-let recovered = saved == null ? new Character("The Barbarian") : Character.fromJSON(saved);
-export const character = writable(recovered);
-
-character.subscribe(c => localStorage.setItem("character", JSON.stringify(c)));

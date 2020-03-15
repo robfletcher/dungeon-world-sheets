@@ -1,5 +1,5 @@
 <script>
-  import {character} from "./character";
+  import {character} from "./store";
 
   import Stat from "./Stat.svelte";
   import Look from "./Look.svelte";

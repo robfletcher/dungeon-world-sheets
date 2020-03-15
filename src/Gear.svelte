@@ -2,7 +2,8 @@
   import Modal from './Modal.svelte';
   import Coin from './Coin.svelte';
 
-  import {character, Gear} from "./character";
+  import {character} from "./store";
+  import {Gear} from "./gear";
 
   let showModal = false;
 

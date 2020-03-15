@@ -1,7 +1,7 @@
 <script>
   import Modal from './Modal.svelte';
 
-  import {character} from "./character";
+  import {character} from "./store";
 </script>
 
 <section id="coin" class="labelled-score">

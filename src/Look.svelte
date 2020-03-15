@@ -1,84 +1,75 @@
 <script>
+  import Modal from "./Modal.svelte";
+
   import {character} from "./character";
 
-  let editing = false;
+  let showModal = false;
+  let look = {};
 
-  function edit(e) {
-    editing = true;
+  function edit() {
+    look = $character.look;
+    showModal = true;
   }
 
-  function save(e) {
-    editing = false;
+  function save() {
+    character.update(c => {
+      c.look = look;
+      return c;
+    });
+    showModal = false;
   }
 </script>
 
-<section id="look" class:editing={editing}>
+<section id="look" class:editing={showModal}>
   <header>
     <h1>Look</h1>
-    <button type="button" class="edit" on:click={edit}>Edit</button>
-    <button type="button" class="save" on:click={save}>Save</button>
+    <button type="button" on:click={edit}>Edit</button>
   </header>
   <ul>
-      {#each $character.playbook.looks as { category, suggestions }}
+      {#each $character.playbook.looks as { category, _ }}
         <li>
-          <label>
-            <span class="category">{category}</span>
-            <span class="look">{$character.look[category] || ''}</span>
-            <input type="text"
-                   placeholder={suggestions}
-                   bind:value={$character.look[category]}>
-          </label>
+          <span class="category">{category}:</span>
+          <span class="look">{$character.look[category] || ''}</span>
         </li>
       {/each}
   </ul>
 </section>
 
+{#if showModal}
+  <Modal on:cancel={() => showModal = false} on:ok={save}>
+    <h1 slot="header">Manage Look</h1>
+    <fieldset>
+      {#each $character.playbook.looks as { category, suggestions }}
+        <label>
+          <span>{category}:</span>
+          <input type="text"
+                 placeholder={suggestions}
+                 bind:value={look[category]}>
+        </label>
+      {/each}
+    </fieldset>
+  </Modal>
+{/if}
+
 <style>
-  button.save {
-    @apply hidden;
-  }
-
-  .editing button.edit {
-    @apply hidden;
-  }
-
-  .editing button.save {
-    @apply block;
-  }
-
-  label {
-    @apply flex;
+  .category, .look {
+    @apply inline-block align-middle;
   }
 
   .category {
-    @apply flex-initial font-bold;
+    @apply font-bold;
   }
 
-  .look {
-    @apply flex-grow;
+  fieldset {
+    @apply grid grid-cols-1 row-gap-2 m-2;
   }
 
-  .category:after {
-    content: ':';
+  fieldset > label {
+    @apply grid col-gap-2;
+    grid-template-columns: 5rem auto;
   }
 
-  input, .look {
-    @apply px-1;
-  }
-
-  input {
-    @apply hidden;
-  }
-
-  .editing input {
-    @apply flex flex-grow;
-  }
-
-  .editing .look {
-    @apply hidden;
-  }
-
-  .editing label {
-    @apply cursor-pointer;
+  label > span {
+    @apply text-right;
   }
 </style>

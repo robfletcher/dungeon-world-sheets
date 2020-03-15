@@ -87,7 +87,8 @@
     @apply px-1;
   }
 
-  input[type=text] {
+  input[type=text],
+  input[type=number] {
     @apply border-b-2 border-solid border-gray-400 bg-gray-100;
   }
 </style>

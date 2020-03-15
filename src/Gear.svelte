@@ -92,6 +92,7 @@
       <th>&nbsp;</th>
       <th>uses</th>
       <th>weight</th>
+      <th>&nbsp;</th>
     </tr>
     </thead>
     <tbody>
@@ -129,36 +130,28 @@
 
     <fieldset>
       <label>
-        Item:
+        <span>Item:</span>
         <input type="text" bind:value={itemForm.item.name} class="focus:outline-none focus:shadow-outline">
       </label>
-    </fieldset>
 
-    <fieldset>
       <label>
-        Tags:
+        <span>Tags:</span>
         <input type="text" bind:value={itemForm.tags} class="focus:outline-none focus:shadow-outline">
       </label>
-    </fieldset>
 
-    <fieldset>
       <label>
-        Has uses?
+        <span>Has uses?</span>
         <input type="checkbox" bind:checked={itemForm.hasUses}>
       </label>
 
       <label>
-        Uses:
-        <input type="range" min="0" max="10" bind:value={itemForm.item.uses} disabled={!itemForm.hasUses}>
-        <span>{itemForm.item.uses || 0}</span>
+        <span>Uses:</span>
+        <input type="number" min="0" bind:value={itemForm.item.uses} disabled={!itemForm.hasUses}>
       </label>
-    </fieldset>
 
-    <fieldset>
       <label>
-        Weight:
-        <input type="range" min="0" max="5" bind:value={itemForm.item.weight}>
-        <span>{itemForm.item.weight}</span>
+        <span>Weight:</span>
+        <input type="number" min="0" bind:value={itemForm.item.weight}>
       </label>
     </fieldset>
   </Modal>
@@ -210,14 +203,15 @@
   }
 
   fieldset {
-    @apply m-2;
+    @apply grid grid-cols-1 row-gap-2 m-2;
   }
 
-  label * {
-    @apply align-middle;
+  fieldset > label {
+    @apply grid col-gap-2;
+    grid-template-columns: 5rem auto;
   }
 
-  input[type=text] {
-    @apply shadow;
+  label > :first-child {
+    @apply text-right;
   }
 </style>

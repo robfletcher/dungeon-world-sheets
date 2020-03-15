@@ -76,11 +76,11 @@
 
 <style>
   main {
-    @apply grid grid-cols-2 bg-gray-200 mt-4;
+    @apply grid grid-cols-5 bg-gray-200 mt-4;
   }
 
   main > header {
-    @apply mb-6;
+    @apply col-span-5 mb-6;
   }
 
   main > header > h1 {
@@ -88,7 +88,11 @@
   }
 
   #stats {
-    @apply grid grid-cols-3 gap-2 bg-transparent border-none;
+    @apply col-span-3 grid grid-cols-3 col-gap-2 row-gap-4 bg-transparent border-none;
+  }
+
+  #combat {
+    @apply col-span-2;
   }
 
   #damage-die .value {

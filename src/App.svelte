@@ -32,7 +32,7 @@
   }
 
   header {
-    @apply col-span-2 flex mb-2 items-center bg-gray-800 text-white h-12;
+    @apply flex mb-2 items-center bg-gray-800 text-white h-12;
   }
 
   header > h1 {

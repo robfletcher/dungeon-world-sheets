@@ -16,7 +16,7 @@
 
 <style>
   .stat {
-    @apply relative pr-10 mb-3 bg-white border-solid border-2 border-gray-800 rounded-r-full;
+    @apply relative pr-10 bg-white border-solid border-2 border-gray-800 rounded-r-full;
   }
 
   .stat h1 {

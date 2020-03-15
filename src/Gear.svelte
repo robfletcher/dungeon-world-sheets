@@ -165,6 +165,10 @@
 {/if}
 
 <style>
+  #gear {
+    @apply col-span-3;
+  }
+
   table {
     @apply table-auto border-separate;
   }

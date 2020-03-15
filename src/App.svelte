@@ -71,9 +71,11 @@
     z-index: 1;
   }
 
-  section ul,
-  section table,
-  section footer {
+  section > ul,
+  section > table,
+  section > footer,
+  section > h2,
+  section > p {
     @apply m-2;
   }
 
@@ -83,5 +85,9 @@
 
   main  input {
     @apply px-1;
+  }
+
+  input[type=text] {
+    @apply border-b-2 border-solid border-gray-400 bg-gray-100;
   }
 </style>

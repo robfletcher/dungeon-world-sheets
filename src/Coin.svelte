@@ -6,7 +6,7 @@
 
 <section id="coin" class="labelled-score">
   <h1>Coin</h1>
-  <div class="value" on:click={_=>alert($character.coin)}>{$character.coin}</div>
+  <div class="value" on:click={() => alert($character.coin)}>{$character.coin}</div>
 </section>
 
 <style>

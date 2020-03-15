@@ -68,7 +68,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 98;
   }
 
   .modal {
@@ -80,7 +81,7 @@
     max-height: calc(100vh - 4em);
     overflow: auto;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 99;
   }
 
   .modal header {

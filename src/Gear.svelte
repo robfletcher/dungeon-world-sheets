@@ -98,20 +98,20 @@
     {#each $character.gear as item, i}
       <tr>
           {#if item.uses == null}
-            <td class="item" on:click={_=>editItem(i, item)} colspan="2">{item.name} <span
+            <td class="item" on:click={() => editItem(i, item)} colspan="2">{item.name} <span
               class="tags">{(item.tags || []).join(", ")}</span></td>
           {:else}
-            <td class="item" on:click={_=>editItem(i, item)}>{item.name} <span
+            <td class="item" on:click={() => editItem(i, item)}>{item.name} <span
               class="tags">{(item.tags || []).join(", ")}</span></td>
             <td class="uses">
-              <button type="button" on:click={_=>decrementUses(i)}>-</button>
+              <button type="button" on:click={() => decrementUses(i)}>-</button>
               <span>{item.uses}</span>
-              <button type="button" on:click={_=>incrementUses(i)}>+</button>
+              <button type="button" on:click={() => incrementUses(i)}>+</button>
             </td>
           {/if}
         <td>{item.weight}</td>
         <td>
-          <button type="button" on:click={_=>removeItem(i)} class="remove">-</button>
+          <button type="button" on:click={() => removeItem(i)} class="remove">-</button>
         </td>
       </tr>
     {/each}

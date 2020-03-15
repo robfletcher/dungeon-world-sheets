@@ -58,6 +58,7 @@ class Character {
     this.armor = 0;
     this.look = {};
     this.drive = {};
+    this.coin = 0;
     this.gear = [
       new InventoryItem("Adventuring Gear", 5, 1)
     ];

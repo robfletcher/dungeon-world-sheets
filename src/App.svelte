@@ -48,15 +48,11 @@
   }
 
   main > section {
-    @apply relative p-2;
+    @apply relative m-2 bg-white border-solid border-2 border-gray-800 ;
   }
 
   header .labelled-score {
     @apply flex-initial my-0;
-  }
-
-  .bar {
-    @apply flex flex-wrap p-2;
   }
 
   .labelled-score {

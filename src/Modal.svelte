@@ -72,7 +72,7 @@
   }
 
   .modal {
-    @apply absolute p-2 bg-white;
+    @apply absolute p-2 bg-white border-solid border-2 border-gray-800;
     left: 50%;
     top: 50%;
     width: calc(100vw - 4em);
@@ -80,7 +80,6 @@
     max-height: calc(100vh - 4em);
     overflow: auto;
     transform: translate(-50%, -50%);
-    border-radius: 0.2em;
     z-index: 2;
   }
 

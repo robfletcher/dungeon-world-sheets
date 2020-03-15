@@ -1,5 +1,6 @@
 <script>
   import Modal from './Modal.svelte';
+  import Coin from './Coin.svelte';
 
   import {character, InventoryItem} from "./character";
 
@@ -71,6 +72,8 @@
 <section id="gear">
   <header>
     <h1>Gear</h1>
+
+    <Coin/>
 
     <section id="load" class="labelled-score">
       <h1>Load</h1>

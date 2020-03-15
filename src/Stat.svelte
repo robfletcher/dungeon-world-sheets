@@ -16,7 +16,7 @@
 
 <style>
   .stat {
-    @apply relative ml-2 mr-10 mb-3 bg-white border-solid border-2 border-gray-800 rounded-br-lg rounded-tl-lg;
+    @apply relative pr-10 mb-3 bg-white border-solid border-2 border-gray-800 rounded-r-full;
   }
 
   .stat h1 {
@@ -33,8 +33,8 @@
 
   .bonus {
     @apply absolute flex items-center justify-center h-20 w-20 bg-white border-double border-8 border-gray-800 rounded-full text-3xl;
-    right: -2.5rem;
-    top: -1rem;
+    right: -2px;
+    top: -2px;
   }
 
   .bonus-positive:before {

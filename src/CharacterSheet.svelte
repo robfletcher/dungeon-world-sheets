@@ -88,7 +88,7 @@
   }
 
   #stats {
-    @apply grid grid-cols-3 row-gap-4 p-2
+    @apply grid grid-cols-3 gap-2 bg-transparent border-none;
   }
 
   #damage-die .value {

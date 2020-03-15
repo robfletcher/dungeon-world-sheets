@@ -5,6 +5,7 @@
   import Look from "./Look.svelte";
   import Drives from "./Drives.svelte";
   import Gear from "./Gear.svelte";
+  import Moves from "./Moves.svelte";
 </script>
 
 <main class="container">
@@ -72,6 +73,7 @@
   <Look/>
   <Drives/>
   <Gear/>
+  <Moves/>
 </main>
 
 <style>

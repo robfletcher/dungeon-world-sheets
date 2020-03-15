@@ -1,7 +1,7 @@
 import {writable} from 'svelte/store';
 import {playbooks} from "./Playbooks";
 
-class Stat {
+export class Stat {
   constructor(value) {
     this.value = value;
     this.isDebilitated = false;
@@ -33,7 +33,7 @@ class Stat {
   }
 }
 
-export class InventoryItem {
+export class Gear {
   constructor(name, tags, uses, weight) {
     this.name = name;
     this.tags = tags || [];
@@ -60,7 +60,7 @@ class Character {
     this.drive = {};
     this.coin = 0;
     this.gear = [
-      new InventoryItem("Adventuring Gear", 5, 1)
+      new Gear("Adventuring Gear", 5, 1)
     ];
   }
 

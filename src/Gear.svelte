@@ -2,45 +2,45 @@
   import Modal from './Modal.svelte';
   import Coin from './Coin.svelte';
 
-  import {character, InventoryItem} from "./character";
+  import {character, Gear} from "./character";
 
   let showModal = false;
 
-  let itemForm = {
+  let gearForm = {
     index: -1,
     hasUses: false,
-    item: new InventoryItem(),
+    item: new Gear(),
     tags: ""
   };
 
-  function addItem() {
-    itemForm.index = -1;
-    itemForm.item = new InventoryItem();
-    itemForm.hasUses = false;
-    itemForm.tags = "";
+  function addGear() {
+    gearForm.index = -1;
+    gearForm.item = new Gear();
+    gearForm.hasUses = false;
+    gearForm.tags = "";
     showModal = true;
   }
 
-  function editItem(index, item) {
-    itemForm.index = index;
-    itemForm.item = item;
-    itemForm.hasUses = item.uses != null;
-    itemForm.tags = (item.tags || []).join(", ");
+  function editGear(index, item) {
+    gearForm.index = index;
+    gearForm.item = item;
+    gearForm.hasUses = item.uses != null;
+    gearForm.tags = (item.tags || []).join(", ");
     showModal = true;
   }
 
-  function updateItem() {
-    if (!itemForm.hasUses) {
-      itemForm.item.uses = null;
+  function updateGear() {
+    if (!gearForm.hasUses) {
+      gearForm.item.uses = null;
     }
 
-    itemForm.item.tags = itemForm.tags.split(",").map(it => it.trim());
+    gearForm.item.tags = gearForm.tags.split(",").map(it => it.trim());
 
     character.update(c => {
-      if (itemForm.index >= 0) {
-        c.gear[itemForm.index] = itemForm.item
+      if (gearForm.index >= 0) {
+        c.gear[gearForm.index] = gearForm.item
       } else {
-        c.gear.push(itemForm.item);
+        c.gear.push(gearForm.item);
       }
       return c;
     });
@@ -61,7 +61,7 @@
     });
   }
 
-  function removeItem(index) {
+  function removeGear(index) {
     character.update(c => {
       c.gear.splice(index, 1);
       return c;
@@ -99,10 +99,10 @@
     {#each $character.gear as item, i}
       <tr>
           {#if item.uses == null}
-            <td class="item" on:click={() => editItem(i, item)} colspan="2">{item.name} <span
+            <td class="item" on:click={() => editGear(i, item)} colspan="2">{item.name} <span
               class="tags">{(item.tags || []).join(", ")}</span></td>
           {:else}
-            <td class="item" on:click={() => editItem(i, item)}>{item.name} <span
+            <td class="item" on:click={() => editGear(i, item)}>{item.name} <span
               class="tags">{(item.tags || []).join(", ")}</span></td>
             <td class="uses">
               <button type="button" on:click={() => decrementUses(i)}>-</button>
@@ -112,7 +112,7 @@
           {/if}
         <td>{item.weight}</td>
         <td>
-          <button type="button" on:click={() => removeItem(i)} class="remove">-</button>
+          <button type="button" on:click={() => removeGear(i)} class="remove">-</button>
         </td>
       </tr>
     {/each}
@@ -120,38 +120,38 @@
   </table>
 
   <footer>
-    <button type="button" on:click={addItem} class="remove">Add</button>
+    <button type="button" on:click={addGear} class="remove">Add</button>
   </footer>
 </section>
 
 {#if showModal}
-  <Modal on:cancel={() => showModal = false} on:ok={updateItem}>
+  <Modal on:cancel={() => showModal = false} on:ok={updateGear}>
     <h1 slot="header">Manage Gear</h1>
 
     <fieldset>
       <label>
         <span>Item:</span>
-        <input type="text" bind:value={itemForm.item.name} class="focus:outline-none focus:shadow-outline">
+        <input type="text" bind:value={gearForm.item.name} class="focus:outline-none focus:shadow-outline">
       </label>
 
       <label>
         <span>Tags:</span>
-        <input type="text" bind:value={itemForm.tags} class="focus:outline-none focus:shadow-outline">
+        <input type="text" bind:value={gearForm.tags} class="focus:outline-none focus:shadow-outline">
       </label>
 
       <label>
         <span>Has uses?</span>
-        <input type="checkbox" bind:checked={itemForm.hasUses}>
+        <input type="checkbox" bind:checked={gearForm.hasUses}>
       </label>
 
       <label>
         <span>Uses:</span>
-        <input type="number" min="0" bind:value={itemForm.item.uses} disabled={!itemForm.hasUses}>
+        <input type="number" min="0" bind:value={gearForm.item.uses} disabled={!gearForm.hasUses}>
       </label>
 
       <label>
         <span>Weight:</span>
-        <input type="number" min="0" bind:value={itemForm.item.weight}>
+        <input type="number" min="0" bind:value={gearForm.item.weight}>
       </label>
     </fieldset>
   </Modal>

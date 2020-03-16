@@ -1,6 +1,7 @@
 <script>
   import {character} from "../store";
   import Move from "../Move.svelte";
+  import MoveOption from "../MoveOption.svelte";
 </script>
 
 {#if $character.playbook.name === "The Barbarian"}
@@ -40,12 +41,12 @@
       complication or danger that comes about due to your heedless pursuits.
     </p>
     <fieldset>
-      <label><input type="checkbox"> Pure destruction</label>
-      <label><input type="checkbox"> Power over others</label>
-      <label><input type="checkbox"> Mortal pleasures</label>
-      <label><input type="checkbox"> Conquest</label>
-      <label><input type="checkbox"> Riches and property</label>
-      <label><input type="checkbox"> Fame and glory</label>
+      <MoveOption value="Pure destruction"/>
+      <MoveOption value="Power over others"/>
+      <MoveOption value="Mortal pleasures"/>
+      <MoveOption value="Conquest"/>
+      <MoveOption value="Riches and property"/>
+      <MoveOption value="Fame and glory"/>
     </fieldset>
   </Move>
 

@@ -1,6 +1,7 @@
 <script>
   import {character} from "./store";
   import BarbarianMoves from "./moves/TheBarbarian.svelte";
+  import BardMoves from "./moves/TheBard.svelte";
   import ImmolatorMoves from "./moves/TheImmolator.svelte";
 </script>
 
@@ -10,6 +11,7 @@
   </header>
 
   <BarbarianMoves/>
+  <BardMoves/>
   <ImmolatorMoves/>
 </section>
 

@@ -1,6 +1,7 @@
 <script>
   import {character} from "../store";
   import Move from "../Move.svelte";
+  import MoveOption from "../MoveOption.svelte";
 </script>
 
 {#if $character.playbook.name === "The Bard"}
@@ -38,13 +39,13 @@
   <Move name="Bardic Lore">
     <p>Choose an area of expertise:</p>
     <fieldset>
-      <label><input type="checkbox"> Spells and Magicks</label>
-      <label><input type="checkbox"> The Dead and Undead</label>
-      <label><input type="checkbox"> Grand Histories of the Known World</label>
-      <label><input type="checkbox"> A Bestiary of Creatures Unusual</label>
-      <label><input type="checkbox"> The Planar Spheres</label>
-      <label><input type="checkbox"> Legends of Heroes Past</label>
-      <label><input type="checkbox"> Gods and Their Servants</label>
+      <MoveOption value="Spells and Magicks"/>
+      <MoveOption value="The Dead and Undead"/>
+      <MoveOption value="Grand Histories of the Known World"/>
+      <MoveOption value="A Bestiary of Creatures Unusual"/>
+      <MoveOption value="The Planar Spheres"/>
+      <MoveOption value="Legends of Heroes Past"/>
+      <MoveOption value="Gods and Their Servants"/>
     </fieldset>
     <p>
       When you <strong>first encounter an important creature, location, or item</strong> (your call) covered by your

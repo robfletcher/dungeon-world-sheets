@@ -57,7 +57,9 @@
 
   function decrementUses(index) {
     character.update(c => {
-      c.gear[index].uses--;
+      if (c.gear[index].uses > 0) {
+        c.gear[index].uses--;
+      }
       return c;
     });
   }
@@ -106,7 +108,7 @@
             <td class="item" on:click={() => editGear(i, item)}>{item.name} <span
               class="tags">{(item.tags || []).join(", ")}</span></td>
             <td class="uses">
-              <button type="button" on:click={() => decrementUses(i)}>-</button>
+              <button type="button" on:click={() => decrementUses(i)} disabled={item.uses < 1}>-</button>
               <span>{item.uses}</span>
               <button type="button" on:click={() => incrementUses(i)}>+</button>
             </td>
@@ -197,6 +199,10 @@
 
   button.remove {
     @apply ml-4;
+  }
+
+  button[disabled] {
+    @apply text-gray-400;
   }
 
   footer {

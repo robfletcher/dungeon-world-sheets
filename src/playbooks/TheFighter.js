@@ -42,5 +42,6 @@ export const theFighter = {
       description: "Avenge a wrong or hurt done to you or your allies."
     }
   ],
-  baseLoad: 12
+  baseLoad: 12,
+  startingMoves: []
 };

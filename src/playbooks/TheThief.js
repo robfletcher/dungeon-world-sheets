@@ -42,5 +42,6 @@ export const theThief = {
       description: "Get someone to act on false information"
     }
   ],
-  baseLoad: 9
+  baseLoad: 9,
+  startingMoves: []
 };

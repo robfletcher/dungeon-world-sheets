@@ -42,5 +42,6 @@ export const theRanger = {
       description: "Show someone a place or thing of natural beauty that they have not seen before."
     }
   ],
-  baseLoad: 11
+  baseLoad: 11,
+  startingMoves: []
 };

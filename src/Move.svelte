@@ -4,12 +4,14 @@
   export let name;
   export let requiresLevel = 0;
   export let requiresMove = null;
+  export let replacesMove = null;
 
   $: hasMove = $character.moves.includes(name);
   let isStarting = $character.playbook.startingMoves.includes(name);
   $: hasRequiredLevel = $character.level >= requiresLevel;
   $: hasRequiredMove = requiresMove === null || $character.moves.includes(requiresMove);
-  $: isDisabled = isStarting || !hasRequiredLevel || !hasRequiredMove;
+  $: hasReplacedMove = replacesMove === null || $character.moves.includes(replacesMove);
+  $: isDisabled = isStarting || !hasRequiredLevel || !hasRequiredMove || !hasReplacedMove;
 </script>
 
 {#if hasMove}
@@ -19,6 +21,9 @@
     <h2>{name}</h2>
     {#if requiresMove != null}
       <p><em>Requires: {requiresMove}</em></p>
+    {/if}
+    {#if replacesMove != null}
+      <p><em>Replaces: {replacesMove}</em></p>
     {/if}
     <slot></slot>
   </article>

@@ -38,5 +38,6 @@ export const theDruid = {
       description: "Deface, destroy, or bury a symbol or artifice of civilization."
     }
   ],
-  baseLoad: 6
+  baseLoad: 6,
+  startingMoves: []
 };

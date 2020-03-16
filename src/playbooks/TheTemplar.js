@@ -42,5 +42,6 @@ export const theTemplar = {
       description: "Suffer pain and hardship so that someone does not need to."
     }
   ],
-  baseLoad: 12
+  baseLoad: 12,
+  startingMoves: []
 };

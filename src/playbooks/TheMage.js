@@ -42,5 +42,6 @@ export const theMage = {
       description: "Get an NPC to acknowledge your superiority."
     }
   ],
-  baseLoad: 7
+  baseLoad: 7,
+  startingMoves: []
 };

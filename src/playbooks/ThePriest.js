@@ -42,5 +42,6 @@ export const thePriest = {
       description: "Start trouble (for yourself or others) by adhering strictly to doctrine.",
     }
   ],
-  baseLoad: 7
+  baseLoad: 7,
+  startingMoves: []
 };

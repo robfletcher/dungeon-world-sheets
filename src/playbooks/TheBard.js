@@ -42,5 +42,11 @@ export const theBard = {
       description: "Expose someone else to a thing of beauty, majesty, or awe."
     }
   ],
-  baseLoad: 9
+  baseLoad: 9,
+  startingMoves: [
+    "Arcane Art",
+    "Charming & Open",
+    "Bardic Lore",
+    "A Port In The Storm"
+  ]
 };

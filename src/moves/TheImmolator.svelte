@@ -149,8 +149,7 @@
     </p>
   </Move>
 
-  <Move name="Fanning The Flames" requiresLevel="6">
-    <p><em>Requires: Firebrand</em></p>
+  <Move name="Fanning The Flames" requiresLevel="6" requiresMove="Firebrand">
     <p>
       You may apply the effects of your <em>Firebrand</em> move to a group of people - a dozen or so - all at once.
     </p>

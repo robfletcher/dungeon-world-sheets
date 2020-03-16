@@ -139,8 +139,7 @@
     </p>
   </Move>
 
-  <Move name="Kill ‘Em All" requiresLevel="6">
-    <p><em>Requires: Appetite for Destruction</em></p>
+  <Move name="Kill ‘Em All" requiresLevel="6" requiresMove="Appetite for Destruction">
     <p>
       Take another move from the Fighter, Bard, or Thief class list. You may not take multiclass moves from those
       classes.

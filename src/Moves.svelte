@@ -23,7 +23,7 @@
   }
 
   #moves hr {
-    @apply col-span-3 mx-4 mb-4;
+    @apply col-span-3 border-gray-400 mx-4 mb-4;
   }
 
   .move {

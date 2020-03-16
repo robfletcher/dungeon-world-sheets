@@ -51,11 +51,118 @@
     </p>
   </Move>
 
-  <Move name="Lore Of Flame">
+  <hr>
+
+  <Move name="Lore Of Flame" requiresLevel="2">
     <p>
       When you <strong>stare into a source of fire</strong>, looking for answers, roll+WIS. On a hit, the GM will tell
       you something new and interesting about the current situation. On a 10+, the GM will give you good detail. On a
       7–9, the GM will give you an impression. If you already know all there is to know, the GM will tell you that.
+    </p>
+  </Move>
+
+  <Move name="Burns Twice As Bright" requiresLevel="2">
+    <p>
+      When you <strong>channel the flames of fate</strong>, you may treat a missed roll as a 7-9 or a 7-9 result as a
+      10+. This may be a roll you or another character has made. Tell the GM something you’ve lost; an emotion, a memory
+      or some innate piece of your being. You may not use this move again until you’ve used <em>Burns Half As Long</em>.
+    </p>
+  </Move>
+
+  <Move name="Burns Half As Long" requiresLevel="2">
+    <p>You gain this move when you gain <em>Burns Twice As Bright</em></p>.
+    <p>When you <strong>sacrifice a victory to the flames of fate</strong>, treat any roll of 10+ as a miss.</p>
+  </Move>
+
+  <Move name="This Killing Fire" requiresLevel="2">
+    <p>
+      Add the following tags to your options for <em>Burning Brand</em>: <em>messy</em>, <em>forceful</em>,
+      <em>reach</em>, <em>near</em>,<em>far</em>.
+    </p>
+  </Move>
+
+  <Move name="Firebrand" requiresLevel="2">
+    <p>
+      When you <strong>introduce a new idea to an NPC</strong>, roll+CHA. On a 10+ They believe the idea to be their own
+      and take to it with fervour. On a 7-9, Their passion fades after a day or two. On a miss, they respond negatively,
+      speaking out against the idea.
+    </p>
+  </Move>
+
+  <Move name="Ogdru Jahad" requiresLevel="2">
+    <p>
+      Gain the Wizard move <em>Ritual</em>. The GM will always tell you what you have to sacrifice to gain the effect
+      you desire.
+    </p>
+  </Move>
+
+  <Move name="Moth To The Flame" requiresLevel="2">
+    <p>
+      When you <strong>tempt a weak mind with your inner fire</strong>, roll+WIS. On a 10+ their will is suppressed,
+      they’ll follow you and do as you desire, so long as nothing startles or surprises them. On a 7-9, the effect is
+      only strong enough to distract or confuse them. On a miss, they become agitated and upset, your fire having
+      sparked their hidden desires.
+    </p>
+  </Move>
+
+  <Move name="Burning Bridges" requiresLevel="2">
+    <p>
+      When you <strong>would take your last breath</strong>, don’t. Instead, you may erase one of your Bonds. This is
+      permanent and lowers your total available Bonds forever. You are alive and have 1d6 hp. If you have no more Bonds,
+      take your last breath as normal.
+    </p>
+  </Move>
+
+  <Move name="The Enkindler" requiresLevel="2">
+    <p>
+      When you <strong>bolster the courage of others</strong> roll+CHA. On a 10+ they shake off all fear and doubt,
+      becoming brave in an instant. On a 7-9, this effect is fleeting, they realize its superficiality and resort to
+      cowardice after a moment or two. On a miss, they’re cowed or terrified by your presence.
+    </p>
+  </Move>
+
+  <Move name="Sick Burn" requiresLevel="2">
+    <p>
+      When you <strong>insult an NPC</strong>, roll + CHA. On a 10+ you leave them no room to react, they bear your
+      insult and the scorn of all who hear it. On a 7-9 you cross a line, they will have their revenge, someday. On a
+      miss you've gone too far, they blow up here and now.
+    </p>
+  </Move>
+
+  <hr>
+
+  <Move name="From Hell’s Heart" requiresLevel="6">
+    <p>
+      When you <strong>summon fire</strong> with any of your moves, you can replace it with the black fires of hell
+      itself. This fire does not burn with heat and ignores armor, scorching the soul itself. Those creatures without
+      souls cannot be harmed by this type of flame.
+    </p>
+  </Move>
+
+  <Move name="Burning Ring Of Fire" requiresLevel="6">
+    <p>
+      When you <strong>fuse a willing person’s soul to yours</strong>, roll+CHA. On a hit you are bound together, able
+      to sense each other at any distance, as well as sharing your emotional state. On a 7-9, the connection is unstable
+      and dangerous, when you take a debility, so do they (and vice versa). On a miss, the branding is rejected and you
+      both erase any Bonds you have to each other. You may write new Bonds with them at the <em>End of Session</em> as
+      usual. This fusion, once performed, cannot be undone by mortal means.
+    </p>
+  </Move>
+
+  <Move name="Fanning The Flames" requiresLevel="6">
+    <p><em>Requires: Firebrand</em></p>
+    <p>
+      You may apply the effects of your <em>Firebrand</em> move to a group of people - a dozen or so - all at once.
+    </p>
+  </Move>
+
+  <Move name="Watch The World Burn" requiresLevel="6">
+    <p>
+      When you <strong>open a channel to the burning planes</strong> and call a firestorm, tell the GM what you’re
+      sacrificing and roll+WIS. The sky opens up and fire pours like rain from it within an area about equal to a small
+      village. Everyone and everything in the area takes damage as appropriate. On a 10+ you can extinguish the storm
+      with a little effort. On a 7-9 the fires rage out of your control, spreading and gusting where they are carried by
+      wind and weather. On a miss, something cruel, intelligent and hungry comes with the storm.
     </p>
   </Move>
 {/if}

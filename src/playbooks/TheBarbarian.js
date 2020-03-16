@@ -42,5 +42,11 @@ export const theBarbarian = {
       description: "Refuse an order or request that is beneath you."
     }
   ],
-  baseLoad: 8
+  baseLoad: 8,
+  startingMoves: [
+    "The Upper Hand",
+    "What Are You Waiting For?",
+    "Herculean Appetites",
+    "Musclebound"
+  ]
 };

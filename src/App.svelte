@@ -75,8 +75,7 @@
   section > table,
   section > footer,
   section > h2,
-  section > p,
-  section > article {
+  section > p {
     @apply m-2;
   }
 

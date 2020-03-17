@@ -43,5 +43,10 @@ export const thePaladin = {
     }
   ],
   baseLoad: 12,
-  startingMoves: []
+  startingMoves: [
+    "Quest",
+    "Lay On Hands",
+    "I Am The Law",
+    "Armored"
+  ]
 };

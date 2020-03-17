@@ -6,6 +6,8 @@
   import DruidMoves from "./moves/TheDruid.svelte";
   import FighterMoves from "./moves/TheFighter.svelte";
   import ImmolatorMoves from "./moves/TheImmolator.svelte";
+  import MageMoves from "./moves/TheMage.svelte";
+  import PaladinMoves from "./moves/ThePaladin.svelte";
 
   // TODO: well, this is garbage
   function classToMoveSet() {
@@ -22,6 +24,10 @@
         return FighterMoves;
       case "The Immolator":
         return ImmolatorMoves;
+      case "The Mage":
+        return MageMoves;
+      case "The Paladin":
+        return PaladinMoves;
       default:
         throw `No moves defined for ${$character.characterClass}`;
     }

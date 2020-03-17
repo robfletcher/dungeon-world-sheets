@@ -10,7 +10,6 @@
 
   function updateOptions(event) {
     character.update(c => {
-      const move = c.moves.find(it => it.name === name);
       if (move != null) {
         const index = (move.options || []).indexOf(value);
         if (event.target.checked) {

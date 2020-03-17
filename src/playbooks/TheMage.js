@@ -43,5 +43,9 @@ export const theMage = {
     }
   ],
   baseLoad: 7,
-  startingMoves: []
+  startingMoves: [
+    "Arcane Learning",
+    "Cast A Spell (INT)",
+    "Spell Focus"
+  ]
 };

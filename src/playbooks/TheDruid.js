@@ -39,5 +39,11 @@ export const theDruid = {
     }
   ],
   baseLoad: 6,
-  startingMoves: []
+  startingMoves: [
+    "Born Of The Soil",
+    "By Nature Sustained",
+    "Spirit Tongue",
+    "Shapeshifter",
+    "Studied Essence"
+  ]
 };

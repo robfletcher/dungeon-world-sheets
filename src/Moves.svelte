@@ -3,6 +3,8 @@
   import BarbarianMoves from "./moves/TheBarbarian.svelte";
   import BardMoves from "./moves/TheBard.svelte";
   import ClericMoves from "./moves/TheCleric.svelte";
+  import DruidMoves from "./moves/TheDruid.svelte";
+  import FighterMoves from "./moves/TheFighter.svelte";
   import ImmolatorMoves from "./moves/TheImmolator.svelte";
 
   // TODO: well, this is garbage
@@ -14,6 +16,10 @@
         return BardMoves;
       case "The Cleric":
         return ClericMoves;
+      case "The Druid":
+        return DruidMoves;
+      case "The Fighter":
+        return FighterMoves;
       case "The Immolator":
         return ImmolatorMoves;
       default:
@@ -62,6 +68,10 @@
     @apply list-disc list-inside m-0;
   }
 
+  .move li ul {
+    @apply ml-6;
+  }
+
   .move .move-selector {
     @apply mt-2;
     justify-self: end;
@@ -73,7 +83,11 @@
   }
 
   .move fieldset label {
-    @apply flex items-center;
+    @apply inline-block;
+  }
+
+  .move fieldset label > * {
+    @apply align-middle;
   }
 
   .move fieldset input[type=checkbox] {

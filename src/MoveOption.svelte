@@ -32,4 +32,7 @@
   }
 </script>
 
-<label><input type="checkbox" on:change={updateOptions} checked={checked} value={value}> {value}</label>
+<label>
+  <input type="checkbox" on:change={updateOptions} checked={checked} value={value} disabled={move == null}>
+  <slot>{value}</slot>
+</label>

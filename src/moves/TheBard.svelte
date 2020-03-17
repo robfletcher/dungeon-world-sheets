@@ -1,5 +1,4 @@
 <script>
-  import {character} from "../store";
   import Move from "../Move.svelte";
   import MoveOption from "../MoveOption.svelte";
 </script>

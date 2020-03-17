@@ -43,5 +43,9 @@ export const theFighter = {
     }
   ],
   baseLoad: 12,
-  startingMoves: []
+  startingMoves: [
+    "Signature Weapon",
+    "Bend Bars, Lift Gates",
+    "Armored"
+  ]
 };

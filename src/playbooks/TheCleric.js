@@ -43,5 +43,11 @@ export const theCleric = {
     }
   ],
   baseLoad: 10,
-  startingMoves: []
+  startingMoves: [
+    "Deity",
+    "Divine Guidance",
+    "Cast A Spell (WIS)",
+    "Commune",
+    "Turn Undead"
+  ]
 };

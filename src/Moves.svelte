@@ -2,7 +2,26 @@
   import {character} from "./store";
   import BarbarianMoves from "./moves/TheBarbarian.svelte";
   import BardMoves from "./moves/TheBard.svelte";
+  import ClericMoves from "./moves/TheCleric.svelte";
   import ImmolatorMoves from "./moves/TheImmolator.svelte";
+
+  // TODO: well, this is garbage
+  function classToMoveSet() {
+    switch ($character.characterClass) {
+      case "The Barbarian":
+        return BarbarianMoves;
+      case "The Bard":
+        return BardMoves;
+      case "The Cleric":
+        return ClericMoves;
+      case "The Immolator":
+        return ImmolatorMoves;
+      default:
+        throw `No moves defined for ${$character.characterClass}`;
+    }
+  }
+
+  $: moveSet = classToMoveSet();
 </script>
 
 <section id="moves">
@@ -10,9 +29,7 @@
     <h1>Moves</h1>
   </header>
 
-  <BarbarianMoves/>
-  <BardMoves/>
-  <ImmolatorMoves/>
+  <svelte:component this={moveSet}/>
 </section>
 
 <style global>

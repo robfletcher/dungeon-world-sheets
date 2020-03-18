@@ -8,6 +8,11 @@
   import ImmolatorMoves from "./moves/TheImmolator.svelte";
   import MageMoves from "./moves/TheMage.svelte";
   import PaladinMoves from "./moves/ThePaladin.svelte";
+  import PriestMoves from "./moves/ThePriest.svelte";
+  import RangerMoves from "./moves/TheRanger.svelte";
+  import TemplarMoves from "./moves/TheTemplar.svelte";
+  import ThiefMoves from "./moves/TheThief.svelte";
+  import WizardMoves from "./moves/TheWizard.svelte";
 
   // TODO: well, this is garbage
   function classToMoveSet() {
@@ -28,6 +33,16 @@
         return MageMoves;
       case "The Paladin":
         return PaladinMoves;
+      case "The Priest":
+        return PriestMoves;
+      case "The Ranger":
+        return RangerMoves;
+      case "The Templar":
+        return TemplarMoves;
+      case "The Thief":
+        return ThiefMoves;
+      case "The Wizard":
+        return WizardMoves;
       default:
         throw `No moves defined for ${$character.characterClass}`;
     }
@@ -70,6 +85,10 @@
     @apply font-bold text-lg;
   }
 
+  .move h3 {
+    @apply font-bold ml-4;
+  }
+
   .move li {
     @apply list-disc list-inside m-0;
   }
@@ -88,8 +107,16 @@
     @apply grid grid-cols-1;
   }
 
+  .move fieldset.inline-options {
+    @apply block ml-4;
+  }
+
   .move fieldset label {
     @apply inline-block;
+  }
+
+  .move fieldset.inline-options label {
+    @apply whitespace-no-wrap;
   }
 
   .move fieldset label > * {
@@ -98,5 +125,13 @@
 
   .move fieldset input[type=checkbox] {
     @apply mr-2;
+  }
+
+  .move fieldset.inline-options input[type=checkbox] {
+    @apply ml-2 mr-0;
+  }
+
+  .move dt {
+    @apply float-left font-bold mr-1;
   }
 </style>

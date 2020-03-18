@@ -43,5 +43,9 @@ export const thePriest = {
     }
   ],
   baseLoad: 7,
-  startingMoves: []
+  startingMoves: [
+    "Invocation",
+    "Divine Ward",
+    "Lead the Flock"
+  ]
 };

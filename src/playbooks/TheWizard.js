@@ -43,5 +43,11 @@ export const theWizard = {
     }
   ],
   baseLoad: 7,
-  startingMoves: []
+  startingMoves: [
+    "Cast A Spell (INT)",
+    "Prepare Spells",
+    "Spellbook",
+    "Spell Defense",
+    "Ritual"
+  ]
 };

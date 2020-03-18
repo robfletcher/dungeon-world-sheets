@@ -80,12 +80,9 @@
 
     <section id="load" class="labelled-score">
       <h1>Load</h1>
-      <div class="value">{$character.load}</div>
-    </section>
-
-    <section id="max-load" class="labelled-score">
-      <h1>Max Load</h1>
-      <div class="value">{$character.maxLoad}</div>
+      <div class="value">
+        <span class="current">{$character.load}</span>/<span class="max">{$character.maxLoad}</span>
+      </div>
     </section>
   </header>
 
@@ -163,6 +160,18 @@
 <style>
   #gear {
     @apply col-span-3;
+  }
+
+  #load .value {
+    @apply whitespace-no-wrap text-2xl;
+  }
+
+  #load .current {
+    @apply -mt-4;
+  }
+
+  #load .max {
+    @apply -mb-2;
   }
 
   table {

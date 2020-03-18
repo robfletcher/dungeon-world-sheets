@@ -39,12 +39,12 @@
     @apply flex-grow leading-none text-xl;
   }
 
-  header button {
+  header > button {
     @apply flex-initial text-white mx-2;
   }
 
   section header > h1 {
-    @apply flex items-center mx-2 h-10;
+    @apply mx-2;
   }
 
   main > section {
@@ -56,19 +56,19 @@
   }
 
   .labelled-score {
-    @apply bg-transparent m-2 relative;
+    @apply flex items-center bg-transparent m-2 relative;
   }
 
   .labelled-score h1 {
-    @apply flex items-center h-10 my-0 mr-16 pr-2 bg-gray-800 text-white;
+    @apply mr-2 bg-gray-800 text-white;
   }
 
   .labelled-score .value {
     @apply flex items-center justify-center h-16 w-16 text-3xl bg-white text-black border-solid border-2 border-gray-800 rounded-full;
-    position: absolute;
-    right: 0;
-    top: -0.75rem;
-    z-index: 1;
+  }
+
+  .labelled-score .increment-decrement {
+    @apply flex flex-col;
   }
 
   section > ul,

@@ -6,6 +6,7 @@
   import Drives from "./Drives.svelte";
   import Gear from "./Gear.svelte";
   import Moves from "./Moves.svelte";
+  import Combat from "./Combat.svelte";
 </script>
 
 <main class="container">
@@ -50,26 +51,7 @@
       bind:stat={$character.charisma}/>
   </section>
 
-  <section id="combat">
-    <header>
-      <section id="hit-points" class="labelled-score">
-        <h1>Hit Points</h1>
-        <div class="value">{$character.hitPointsCurrent}</div>
-      </section>
-
-      <section id="damage-die" class="labelled-score">
-        <h1>Damage Die</h1>
-        <div
-          class="value d{$character.playbook.damageDieFaces}">{$character.playbook.damageDieFaces}</div>
-      </section>
-
-      <section id="armor" class="labelled-score">
-        <h1>Armor</h1>
-        <div class="value">{$character.armor}</div>
-      </section>
-    </header>
-  </section>
-
+  <Combat/>
   <Look/>
   <Drives/>
   <Gear/>
@@ -91,36 +73,5 @@
 
   #stats {
     @apply col-span-3 grid grid-cols-3 col-gap-2 row-gap-4 bg-transparent border-none;
-  }
-
-  #combat {
-    @apply col-span-2;
-  }
-
-  #damage-die .value {
-    color: transparent;
-    background-image: url('/dice.png');
-    background-size: cover;
-    background-position-x: -63px;
-    background-position-y: 0px;
-  }
-
-  #damage-die .d4 {
-    background-position-x: 5px;
-    background-position-y: -3px;
-  }
-
-  #damage-die .d8 {
-    background-position-x: 124px;
-    background-position-y: 0px;
-  }
-
-  #damage-die .d10 {
-    background-position-x: 60px;
-    background-position-y: 0px;
-  }
-
-  #damage-die .value:before {
-    content: 'D';
   }
 </style>

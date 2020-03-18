@@ -8,6 +8,9 @@
   import Moves from "./Moves.svelte";
   import Combat from "./Combat.svelte";
   import IncrementableValue from "./IncrementableValue.svelte";
+  import LevelUp from "./LevelUp.svelte";
+
+  let showLevelUpModal = false;
 </script>
 
 <main class="container">
@@ -16,6 +19,8 @@
 
     <IncrementableValue id="level" bind:value={$character.level} readonly={true}>Level</IncrementableValue>
     <IncrementableValue id="xp" bind:value={$character.xp}>Experience</IncrementableValue>
+
+    <button on:click={() => showLevelUpModal = true} disabled={$character.xp < $character.nextLevel}>Level Up</button>
   </header>
 
   <section id="stats">
@@ -51,6 +56,8 @@
   <Gear/>
   <Moves/>
 </main>
+
+<LevelUp bind:show={showLevelUpModal}/>
 
 <style>
   main {

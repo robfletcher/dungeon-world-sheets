@@ -19,9 +19,7 @@
 </Move>
 
 <Move name="What Are You Waiting For?">
-  <p>
-    When you cry out a challenge to your
-    enemies, roll+Con.</p>
+  <p>When you <strong>cry out a challenge to your enemies</strong>, roll+Con.</p>
   <ul>
     <li>On a 10+ they treat you as the most obvious threat to be dealt with and ignore your companions, take +2 damage
       ongoing against them.

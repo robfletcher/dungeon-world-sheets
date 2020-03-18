@@ -43,32 +43,16 @@
     @apply flex-initial text-white mx-2;
   }
 
+  header button[disabled] {
+    @apply text-gray-500;
+  }
+
   section header > h1 {
     @apply mx-2;
   }
 
   main > section {
     @apply relative m-2 bg-white border-solid border-2 border-gray-800 ;
-  }
-
-  header .labelled-score {
-    @apply flex-initial my-0;
-  }
-
-  .labelled-score {
-    @apply flex items-center bg-transparent m-2 relative;
-  }
-
-  .labelled-score h1 {
-    @apply mr-2 bg-gray-800 text-white;
-  }
-
-  .labelled-score .value {
-    @apply flex items-center justify-center h-16 w-16 text-3xl bg-white text-black border-solid border-2 border-gray-800 rounded-full;
-  }
-
-  .labelled-score .increment-decrement {
-    @apply flex flex-col;
   }
 
   section > ul,

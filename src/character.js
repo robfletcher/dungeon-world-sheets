@@ -41,6 +41,12 @@ export class Character {
     return this.hitPointsMax - this.damage;
   }
 
+  set hitPointsCurrent(value) {
+    this.damage = this.hitPointsMax - value;
+    if (this.damage > this.hitPointsMax) this.damage = this.hitPointsMax;
+    else if (this.damage < 0) this.damage = 0;
+  }
+
   get load() {
     return this.gear
       .map(it => it.weight)

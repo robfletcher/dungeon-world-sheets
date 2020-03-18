@@ -7,21 +7,15 @@
   import Gear from "./Gear.svelte";
   import Moves from "./Moves.svelte";
   import Combat from "./Combat.svelte";
+  import IncrementableValue from "./IncrementableValue.svelte";
 </script>
 
 <main class="container">
   <header>
     <h1>{$character.name} {$character.characterClass}</h1>
 
-    <section id="level" class="labelled-score">
-      <h1>Level</h1>
-      <div class="value">{$character.level}</div>
-    </section>
-
-    <section id="xp" class="labelled-score">
-      <h1>Experience</h1>
-      <div class="value">{$character.xp}</div>
-    </section>
+    <IncrementableValue id="level" bind:value={$character.level} readonly={true}>Level</IncrementableValue>
+    <IncrementableValue id="xp" bind:value={$character.xp}>Experience</IncrementableValue>
   </header>
 
   <section id="stats">

@@ -1,9 +1,9 @@
 <script>
   import Modal from './Modal.svelte';
-  import Coin from './Coin.svelte';
 
   import {character} from "./store";
   import {Gear} from "./gear";
+  import IncrementableValue from "./IncrementableValue.svelte";
 
   let showModal = false;
 
@@ -76,14 +76,8 @@
   <header>
     <h1>Gear</h1>
 
-    <Coin/>
-
-    <section id="load" class="labelled-score">
-      <h1>Load</h1>
-      <div class="value">
-        <span class="current">{$character.load}</span>/<span class="max">{$character.maxLoad}</span>
-      </div>
-    </section>
+    <IncrementableValue id="coin" bind:value={$character.coin}>Coin</IncrementableValue>
+    <IncrementableValue id="load" value={$character.load} max={$character.maxLoad} readonly={true}>Load</IncrementableValue>
   </header>
 
   <table>

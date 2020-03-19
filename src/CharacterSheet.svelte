@@ -11,6 +11,8 @@
   import LevelUp from "./LevelUp.svelte";
 
   let showLevelUpModal = false;
+
+  $: canLevelUp = $character.xp >= $character.nextLevel && $character.level < 10;
 </script>
 
 <main class="container">
@@ -20,7 +22,7 @@
     <IncrementableValue id="level" bind:value={$character.level} readonly={true}>Level</IncrementableValue>
     <IncrementableValue id="xp" bind:value={$character.xp}>Experience</IncrementableValue>
 
-    <button on:click={() => showLevelUpModal = true} disabled={$character.xp < $character.nextLevel}>Level Up</button>
+    <button on:click={() => showLevelUpModal = true} disabled={!canLevelUp}>Level Up</button>
   </header>
 
   <section id="stats">

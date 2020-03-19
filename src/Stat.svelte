@@ -20,7 +20,7 @@
   }
 
   .stat h1 {
-    @apply flex items-center px-2 bg-gray-800 text-white h-12;
+    @apply flex items-center px-2 bg-gray-800 text-white text-xl h-12;
   }
 
   .score, .debility {

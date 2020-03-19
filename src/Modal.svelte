@@ -1,6 +1,8 @@
 <script>
   import {createEventDispatcher, onDestroy} from 'svelte';
 
+  export let valid = true;
+
   const dispatch = createEventDispatcher();
   const ok = () => dispatch('ok');
   const cancel = () => dispatch('cancel');
@@ -56,7 +58,7 @@
 
   <!-- svelte-ignore a11y-autofocus -->
   <footer>
-    <button autofocus on:click={ok}>Ok</button>
+    <button autofocus on:click={ok} disabled={!valid}>Ok</button>
     <button autofocus on:click={cancel}>Cancel</button>
   </footer>
 </div>

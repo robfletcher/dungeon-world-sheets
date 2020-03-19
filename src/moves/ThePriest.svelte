@@ -59,8 +59,6 @@
   </ul>
 </Move>
 
-<hr>
-
 <Move name="Deity's Insight" requiresLevel="2">
   <p>When you <strong>take a moment to consult your deity</strong>, you can Spout Lore using +WIS instead of +INT.</p>
 </Move>
@@ -130,8 +128,6 @@
 <Move name="The Scales of Life and Death" requiresLevel="2">
   <p>When <strong>someone else takes their Last Breath in your presence</strong>, they take +1 to the roll.</p>
 </Move>
-
-<hr>
 
 <Move name="Anathema" requiresLevel="6">
   <p>When you <strong>strike down an Enemy of your deity</strong>, roll +WIS.</p>

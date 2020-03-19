@@ -57,8 +57,6 @@
   <p>You ignore the clumsy tag on armor you wear.</p>
 </Move>
 
-<hr>
-
 <Move name="Divine Favor" requiresLevel="2">
   <p>
     Dedicate yourself to a deity (name a new one or choose one that’s already been established). You gain the commune
@@ -109,8 +107,6 @@
 <Move name="Setup Strike" requiresLevel="2">
   <p>When you <strong>Hack & Slash</strong>, choose an ally. Their next attack against your target does +1d4 damage.</p>
 </Move>
-
-<hr>
 
 <Move name="Evidence Of Faith" requiresLevel="6" requiresMove="Divine Favor">
   <p>When you <strong>see divine magic as it happens</strong>, you can ask the GM which deity granted the spell and its effects. Take +1 when acting on the answers.</p>

@@ -63,8 +63,6 @@
   <p>You ignore the <em>clumsy</em> tag on any armor you wear.</p>
 </Move>
 
-<hr>
-
 <Move name="Merciless" requiresLevel="2">
   <p>When you <strong>deal damage</strong>, deal +1d4 damage.</p>
 </Move>
@@ -118,8 +116,6 @@
 <Move name="Multiclass Dabbler" requiresLevel="2">
   <p>Get one move from another class. Treat your level as one lower for choosing the move.</p>
 </Move>
-
-<hr>
 
 <Move name="Bloodthirsty" requiresLevel="6" replacesMove="Merciless">
   <p>When you <strong>deal damage</strong>, deal +1d8 damage.</p>

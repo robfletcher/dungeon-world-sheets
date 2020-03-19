@@ -24,11 +24,11 @@
 
 <style global>
   * {
-    font-family: 'IM Fell English', sans-serif;
+    font-family: 'IM Fell DW Pica', sans-serif;
   }
 
   h1 {
-    font-family: 'IM Fell English SC', sans-serif;
+    font-family: 'IM Fell DW Pica SC', sans-serif;
   }
 
   header {
@@ -52,7 +52,7 @@
   }
 
   main > section {
-    @apply relative m-2 bg-white border-solid border-2 border-gray-800 ;
+    @apply m-2 bg-white border-solid border-2 border-gray-800 ;
   }
 
   section > ul,

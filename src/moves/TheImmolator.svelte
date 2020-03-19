@@ -49,8 +49,6 @@
   </p>
 </Move>
 
-<hr>
-
 <Move name="Lore Of Flame" requiresLevel="2">
   <p>
     When you <strong>stare into a source of fire</strong>, looking for answers, roll+WIS. On a hit, the GM will tell
@@ -126,8 +124,6 @@
     miss you've gone too far, they blow up here and now.
   </p>
 </Move>
-
-<hr>
 
 <Move name="From Hell’s Heart" requiresLevel="6">
   <p>

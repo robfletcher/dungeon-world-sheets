@@ -54,7 +54,14 @@
   <Look/>
   <Drives/>
   <Gear/>
-  <Moves/>
+
+  <section id="moves">
+    <header>
+      <h1>Moves</h1>
+    </header>
+
+    <Moves/>
+  </section>
 </main>
 
 <LevelUp bind:show={showLevelUpModal}/>
@@ -75,4 +82,14 @@
   #stats {
     @apply col-span-3 grid grid-cols-3 col-gap-2 row-gap-4 bg-transparent border-none;
   }
+
+  #moves {
+    @apply col-span-5;
+    columns: 3;
+  }
+
+  #moves header {
+    column-span: all;
+  }
+
 </style>

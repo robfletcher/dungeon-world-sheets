@@ -112,8 +112,6 @@
   </fieldset>
 </Move>
 
-<hr>
-
 <Move name="Half-Elven" requiresLevel="2">
   <p><strong>You may take this move only if it is your first advancement.</strong></p>
   <p>
@@ -121,8 +119,6 @@
     you took the human one at character creation or vice versa.
   </p>
 </Move>
-
-<hr>
 
 <Move name="A Safe Place" requiresLevel="2">
   <p>
@@ -194,8 +190,6 @@
 <Move name="Wild Empathy" requiresLevel="2">
   <p>You can speak with and understand animals.</p>
 </Move>
-
-<hr>
 
 <Move name="A Safer Place" requiresLevel="6" replacesMove="A Safe Place">
   <p>When you <strong>choose and prepare the party's camp site</strong>, whomever the GM chooses to roll during the night adds your WIS to their roll.</p>

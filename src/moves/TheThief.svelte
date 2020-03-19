@@ -68,8 +68,6 @@
   </fieldset>
 </Move>
 
-<hr>
-
 <Move name="Cheap Shot" requiresLevel="2">
   <p>When <strong>using a precise or hand weapon</strong>, your <em>Backstab</em> deals an extra +1d6 damage.</p>
 </Move>
@@ -112,8 +110,6 @@
     <li>On a 7–9, you'll have to settle for something close or it comes with strings attached, your call.</li>
   </ul>
 </Move>
-
-<hr>
 
 <Move name="Dirty Fighter" requiresLevel="6" replacesMove="Cheap Shot">
   <p>When <strong>using a precise or hand weapon</strong>, your <em>Backstab</em> deals an extra +1d8 damage and all

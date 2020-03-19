@@ -55,8 +55,6 @@
   </ul>
 </Move>
 
-<hr>
-
 <Move name="Prodigy" requiresLevel="2">
   <p>Choose a spell. You prepare that spell as if it were one level lower.</p>
 </Move>
@@ -111,8 +109,6 @@
   <p>When you <strong>see the effects of an arcane spell</strong>, ask the GM the name of the spell and its effects. You
     take +1 when acting on the answers.</p>
 </Move>
-
-<hr>
 
 <Move name="Master" requiresLevel="6" requiresMove="Prodigy">
   <p>Choose one spell in addition to the one you picked for Prodigy. You prepare that spell as if it were one level

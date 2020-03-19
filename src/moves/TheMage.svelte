@@ -90,8 +90,6 @@
   </ul>
 </Move>
 
-<hr>
-
 <Move name="Arcane Ward" requiresLevel="2">
   <p>You have +2 Armor against magical attacks, and nearby allies have +1 Armor against magical attacks.</p>
 </Move>
@@ -177,8 +175,6 @@
     you intended. Choose nothing from the list.
   </p>
 </Move>
-
-<hr>
 
 <Move name="Arcane Armor" requiresLevel="6" replacesMove="Arcane Ward">
   <p>You have +4 Armor against magical attacks, and nearby allies have +2 Armor against magical attacks.</p>

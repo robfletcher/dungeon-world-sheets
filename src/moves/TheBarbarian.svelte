@@ -50,8 +50,6 @@
   <p>While you wield a weapon it gains the <em>forceful</em> and <em>messy</em> tags.</p>
 </Move>
 
-<hr>
-
 <Move name="Still Hungry" requiresLevel="2">
   <p>Choose an additional appetite.</p>
 </Move>
@@ -127,8 +125,6 @@
     armed guard) take +1.
   </p>
 </Move>
-
-<hr>
 
 <Move name="A Good Day To Die" requiresLevel="6">
   <p>

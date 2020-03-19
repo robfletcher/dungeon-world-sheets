@@ -1,4 +1,5 @@
 <script>
+  import {setContext} from "svelte";
   import {character} from "./store";
   import BarbarianMoves from "./moves/TheBarbarian.svelte";
   import BardMoves from "./moves/TheBard.svelte";
@@ -13,6 +14,10 @@
   import TemplarMoves from "./moves/TheTemplar.svelte";
   import ThiefMoves from "./moves/TheThief.svelte";
   import WizardMoves from "./moves/TheWizard.svelte";
+
+  export let mode = "display";
+
+  setContext("mode", mode);
 
   // TODO: well, this is garbage
   function classToMoveSet() {
@@ -51,87 +56,4 @@
   $: moveSet = classToMoveSet();
 </script>
 
-<section id="moves">
-  <header>
-    <h1>Moves</h1>
-  </header>
-
-  <svelte:component this={moveSet}/>
-</section>
-
-<style global>
-  #moves {
-    @apply col-span-5 grid grid-cols-3 gap-0;
-  }
-
-  #moves header {
-    @apply col-span-3;
-  }
-
-  #moves hr {
-    @apply col-span-3 border-gray-400 mx-4 mb-4;
-  }
-
-  .move {
-    @apply grid col-gap-2 row-gap-0 pb-2 m-2;
-    grid-template-columns: 1.5rem auto;
-  }
-
-  .move p, .move fieldset, .move ul {
-    @apply mb-2;
-  }
-
-  .move h2 {
-    @apply font-bold text-lg;
-  }
-
-  .move h3 {
-    @apply font-bold ml-4;
-  }
-
-  .move li {
-    @apply list-disc list-inside m-0;
-  }
-
-  .move li ul {
-    @apply ml-6;
-  }
-
-  .move .move-selector {
-    @apply mt-2;
-    justify-self: end;
-    align-self: start;
-  }
-
-  .move fieldset {
-    @apply grid grid-cols-1;
-  }
-
-  .move fieldset.inline-options {
-    @apply block ml-4;
-  }
-
-  .move fieldset label {
-    @apply inline-block;
-  }
-
-  .move fieldset.inline-options label {
-    @apply whitespace-no-wrap;
-  }
-
-  .move fieldset label > * {
-    @apply align-middle;
-  }
-
-  .move fieldset input[type=checkbox] {
-    @apply mr-2;
-  }
-
-  .move fieldset.inline-options input[type=checkbox] {
-    @apply ml-2 mr-0;
-  }
-
-  .move dt {
-    @apply float-left font-bold mr-1;
-  }
-</style>
+<svelte:component this={moveSet}/>

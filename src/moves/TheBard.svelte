@@ -59,8 +59,6 @@
   </p>
 </Move>
 
-<hr>
-
 <Move name="Healing Song" requiresLevel="2">
   <p>When you <strong>heal with Arcane Art</strong>, you heal +1d8 damage.</p>
 </Move>
@@ -110,8 +108,6 @@
 <Move name="Multiclass Initiate" requiresLevel="2">
   <p>Get one move from another class. Treat your level as one lower for choosing the move.</p>
 </Move>
-
-<hr>
 
 <Move name="Healing Chorus" requiresLevel="6" replacesMove="Healing Song">
   <p>When you <strong>heal with Arcane Art</strong>, you heal +2d8 damage.</p>

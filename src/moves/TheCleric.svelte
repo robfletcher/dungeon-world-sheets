@@ -87,8 +87,6 @@
   <p>Aggression breaks the effects and they are able to act as normal.</p>
 </Move>
 
-<hr>
-
 <Move name="Chosen One" requiresLevel="2">
   <p>Choose one spell. You are granted that spell as if it was one level lower.</p>
 </Move>
@@ -147,8 +145,6 @@
 <Move name="Devoted Healer" requiresLevel="2">
   <p>When you <strong>heal someone else</strong> of damage, add your level to the amount of damage healed.</p>
 </Move>
-
-<hr>
 
 <Move name="Anointed" requiresLevel="6" requiresMove="Chosen One">
   <p>Choose one spell in addition to the one you picked for <em>Chosen One</em>. You are granted that spell as if it was

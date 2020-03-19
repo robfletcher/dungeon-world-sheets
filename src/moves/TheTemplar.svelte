@@ -69,8 +69,6 @@
   <p>When you <strong>die while you are Unrelenting</strong>, take +1 to your <em>Last Breath</em>.</p>
 </Move>
 
-<hr>
-
 <Move name="Armored" requiresLevel="2">
   <p>You ignore the clumsy tag on armor you wear.</p>
 </Move>
@@ -142,8 +140,6 @@
     <li>They ignore a debility, effect, or condition for a short while.</li>
   </ul>
 </Move>
-
-<hr>
 
 <Move name="Ever Onward" requiresLevel="6" replacesMove="Charge!">
   <p>When you <strong>lead the charge into combat</strong>, those you lead take +1 forward and +2 armor forward.</p>

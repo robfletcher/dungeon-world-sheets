@@ -59,8 +59,6 @@
   </p>
 </Move>
 
-<hr>
-
 <Move name="Hunter’s Brother" requiresLevel="2">
   <p>Choose one move from the ranger class list.</p>
 </Move>
@@ -134,8 +132,6 @@
     may spend balance. For each balance spent, heal 1d4 HP.
   </p>
 </Move>
-
-<hr>
 
 <Move name="Embracing No Form" requiresLevel="6">
   <p>When you <strong>shapeshift</strong>, roll 1d4 and add that total to your hold.</p>

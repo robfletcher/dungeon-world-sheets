@@ -224,4 +224,8 @@
   label > :first-child {
     @apply text-right;
   }
+
+  label input[type=checkbox] {
+    justify-self: start;
+  }
 </style>

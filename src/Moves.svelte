@@ -1,6 +1,6 @@
 <script>
-  import {setContext} from "svelte";
-  import {character} from "./store";
+  import {createEventDispatcher, setContext} from "svelte";
+  import {character, selectedMove} from "./store";
   import BarbarianMoves from "./moves/TheBarbarian.svelte";
   import BardMoves from "./moves/TheBard.svelte";
   import ClericMoves from "./moves/TheCleric.svelte";
@@ -16,6 +16,7 @@
   import WizardMoves from "./moves/TheWizard.svelte";
 
   export let mode = "display";
+  export let selected = null;
 
   setContext("mode", mode);
 
@@ -54,6 +55,11 @@
   }
 
   $: moveSet = classToMoveSet();
+
+  const dispatch = createEventDispatcher();
+  selectedMove.subscribe(move => {
+    dispatch("select-move", move);
+  });
 </script>
 
 <svelte:component this={moveSet}/>

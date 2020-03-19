@@ -30,7 +30,7 @@
   }
 
   .labelled-score h1 {
-    @apply mr-2 bg-gray-800 text-white;
+    @apply mr-2 bg-gray-800 text-white text-lg leading-none text-right;
   }
 
   .labelled-score .value {

@@ -1,6 +1,6 @@
 <script>
   import {getContext, setContext} from "svelte";
-  import {character} from "./store";
+  import {character, selectedMove} from "./store";
 
   export let name;
   export let requiresLevel = 0;
@@ -18,13 +18,25 @@
   let hasReplacedMove = replacesMove === null || $character.moves.some(it => it.name === replacesMove);
   let qualifies = !hasMove && hasRequiredLevel && hasRequiredMove && hasReplacedMove;
 
-  let display = (mode === "display" && hasMove) || (mode === "select" && qualifies)
+  let display = (mode === "display" && hasMove) || (mode === "select" && qualifies);
+
+  let checked = false;
+
+  selectedMove.subscribe(move => {
+    checked = move === name;
+  });
+
+  const select = (event) => {
+    if (event.target.checked) {
+      selectedMove.set(event.target.value);
+    }
+  };
 </script>
 
 {#if display}
   <div class="move move-{mode}">
     {#if mode === "select"}
-      <input type="radio" value={name} class="move-selector">
+      <input type="radio" value={name} on:change={select} checked={checked} class="move-selector">
     {/if}
     <article>
       <h2>{name}</h2>
@@ -41,7 +53,10 @@
 
 <style global>
   .move {
-    @apply pb-2 m-2;
+    @apply pb-2 mx-4 my-2;
+  }
+
+  .move, .move fieldset, .move p {
     break-inside: avoid;
   }
 
@@ -55,7 +70,7 @@
   }
 
   .move h2 {
-    @apply font-bold text-lg;
+    @apply font-bold text-2xl;
   }
 
   .move h3 {
@@ -73,7 +88,7 @@
   .move .move-selector {
     justify-self: center;
     align-self: start;
-    height: 1.75rem;
+    height: 2.25rem;
   }
 
   .move fieldset {
@@ -90,10 +105,6 @@
 
   .move fieldset.inline-options label {
     @apply whitespace-no-wrap;
-  }
-
-  .move fieldset label > * {
-    @apply align-middle;
   }
 
   .move fieldset input[type=checkbox] {

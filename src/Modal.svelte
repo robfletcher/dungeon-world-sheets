@@ -89,7 +89,11 @@
   }
 
   .modal footer {
-    @apply text-right;
+    @apply text-right p-4 bg-white;
+    position: sticky;
+    bottom: -0.5rem;
+    right: -0.5rem;
+    width: 100%;
   }
 
   button {

@@ -15,3 +15,6 @@ character.subscribe(c => {
 
   localStorage.setItem("character", JSON.stringify(c));
 });
+
+// TODO: this is a probably inappropriate use of a store but saves me using near infinite amounts of event forwarding
+export const selectedMove = writable(null);

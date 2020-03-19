@@ -36,7 +36,7 @@
   }
 
   header > h1 {
-    @apply flex-grow leading-none text-xl;
+    @apply flex-grow leading-none text-2xl;
   }
 
   header > button {

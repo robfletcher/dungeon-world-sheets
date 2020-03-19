@@ -11,6 +11,7 @@
 
   $: valid = stat != null && move != null;
 
+  const statNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   let stats = {
     strength: new Stat($character.strength.value),
     dexterity: new Stat($character.dexterity.value),
@@ -21,7 +22,7 @@
   };
 
   const computeStatChange = () => {
-    ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].forEach(n => {
+    statNames.forEach(n => {
       stats[n] = new Stat($character[n].value + (stat === n ? 1 : 0));
     });
   };
@@ -48,6 +49,8 @@
   const selectMove = (event) => {
     move = event.detail;
   };
+
+  const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 </script>
 
 {#if show}
@@ -58,48 +61,15 @@
       <section class="stats">
         <h2>Select one stat to increase:</h2>
         <fieldset>
-          <label>
-            <input type="radio" bind:group={stat} value="strength" on:change={computeStatChange}
-                   disabled={stats.strength.value > 17}>
-            <span class="name">Strength</span>
-            <span class="score">{stats.strength.value}</span>
-            <span class="bonus" class:positive={stats.strength.bonus >= 0}>{stats.strength.bonus}</span>
-          </label>
-          <label>
-            <input type="radio" bind:group={stat} value="dexterity" on:change={computeStatChange}
-                   disabled={stats.dexterity.value > 17}>
-            <span class="name">Dexterity</span>
-            <span class="score">{stats.dexterity.value}</span>
-            <span class="bonus" class:positive={stats.dexterity.bonus >= 0}>{stats.dexterity.bonus}</span>
-          </label>
-          <label>
-            <input type="radio" bind:group={stat} value="constitution" on:change={computeStatChange}
-                   disabled={stats.constitution.value > 17}>
-            <span class="name">Constitution</span>
-            <span class="score">{stats.constitution.value}</span>
-            <span class="bonus" class:positive={stats.constitution.bonus >= 0}>{stats.constitution.bonus}</span>
-          </label>
-          <label>
-            <input type="radio" bind:group={stat} value="intelligence" on:change={computeStatChange}
-                   disabled={stats.intelligence.value > 17}>
-            <span class="name">Intelligence</span>
-            <span class="score">{stats.intelligence.value}</span>
-            <span class="bonus" class:positive={stats.intelligence.bonus >= 0}>{stats.intelligence.bonus}</span>
-          </label>
-          <label>
-            <input type="radio" bind:group={stat} value="wisdom" on:change={computeStatChange}
-                   disabled={stats.wisdom.value > 17}>
-            <span class="name">Wisdom</span>
-            <span class="score">{stats.wisdom.value}</span>
-            <span class="bonus" class:positive={stats.wisdom.bonus >= 0}>{stats.wisdom.bonus}</span>
-          </label>
-          <label>
-            <input type="radio" bind:group={stat} value="charisma" on:change={computeStatChange}
-                   disabled={stats.charisma.value > 17}>
-            <span class="name">Charisma</span>
-            <span class="score">{stats.charisma.value}</span>
-            <span class="bonus" class:positive={stats.charisma.bonus >= 0}>{stats.charisma.bonus}</span>
-          </label>
+          {#each statNames as statName}
+            <label>
+              <input type="radio" bind:group={stat} value={statName} on:change={computeStatChange}
+                     disabled={stats[statName].value > 17}>
+              <span class="name">{capitalize(statName)}</span>
+              <span class="score">{stats[statName].value}</span>
+              <span class="bonus" class:positive={stats[statName].bonus >= 0}>{stats[statName].bonus}</span>
+            </label>
+          {/each}
         </fieldset>
       </section>
 

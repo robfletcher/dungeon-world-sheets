@@ -58,32 +58,30 @@
     <h1 slot="header">Level Up</h1>
 
     <form>
-      <section class="stats">
-        <h2>Select one stat to increase:</h2>
-        <fieldset>
+      <fieldset class="stats">
+        <legend>Select one stat to increase:</legend>
           {#each statNames as statName}
             <label>
               <input type="radio" bind:group={stat} value={statName} on:change={computeStatChange}
                      disabled={stats[statName].value > 17}>
               <span class="name">{capitalize(statName)}</span>
               <span class="score">{stats[statName].value}</span>
-              <span class="bonus" class:positive={stats[statName].bonus >= 0}>{stats[statName].bonus}</span>
+              <span class="bonus" class:bonus-positive={stats[statName].bonus >= 0}>{stats[statName].bonus}</span>
             </label>
           {/each}
-        </fieldset>
-      </section>
+      </fieldset>
 
-      <section>
-        <h2>Select a new move:</h2>
+      <fieldset>
+        <legend>Select a new move:</legend>
 
         <Moves mode="select" bind:selected={move} on:select-move={selectMove}/>
-      </section>
+      </fieldset>
     </form>
   </Modal>
 {/if}
 
 <style>
-  h2 {
+  legend {
     @apply text-xl;
   }
 
@@ -103,9 +101,5 @@
   .stats label input[type=radio] {
     justify-self: center;
     align-self: center;
-  }
-
-  .stats .positive:before {
-    content: '+';
   }
 </style>

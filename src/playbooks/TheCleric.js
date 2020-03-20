@@ -1,5 +1,8 @@
 export const theCleric = {
   name: "The Cleric",
+  description: "<p>The lands of Dungeon World are a gods-forsaken mess. They’re lousy with the walking dead, beasts of all sorts, and the vast unnatural spaces between safe and temple-blessed civilizations. It is a godless world out there. That’s why it needs you.</p>" +
+    "<p>Bringing the glory of your god to the heathens isn’t just in your nature—it’s your calling. It falls to you to proselytize with sword and mace and spell. To cleave deep into the witless heart of the wilds and plant the seed of divinity there. Some say that it is best to keep god close to your heart. You know that’s rubbish. God lives at the edge of a blade.</p>" +
+    "<p>Show the world who is lord.</p>",
   baseHitPoints: 8,
   damageDieFaces: 6,
   looks: [

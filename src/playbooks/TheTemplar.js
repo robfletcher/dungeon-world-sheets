@@ -1,5 +1,8 @@
 export const theTemplar = {
   name: "The Templar",
+  description: "<p>Heretics. Heretics all. Everywhere you look in Dungeon World, you find blasphemy. Everyone pretends to be goodly, but you don't buy it. It's just different degrees of heresy. In the face of evil, you do not back down. You do not surrender, and you make sure none of those weaker types do either. You are here to do a job, and no man, no beast will stop you.</p>" +
+    "<p>These men and women you travel with, they're better than most, but they're still mortal. They're still fallible. You're not. You're pure. Your cause is absolute. If there is an ends you must reach, you will take any means necessary to achieve them.</p>" +
+    "<p>For you are Templar, and failure is not an option.</p>",
   baseHitPoints: 10,
   damageDieFaces: 8,
   looks: [

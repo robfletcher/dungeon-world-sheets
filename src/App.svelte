@@ -4,23 +4,19 @@
   import {playbooks} from "./Playbooks";
   import {character} from "./store";
 
+  import CharacterCreation from "./CharacterCreation.svelte";
   import CharacterSheet from "./CharacterSheet.svelte";
 </script>
 
 <Tailwindcss/>
 
-<section>
-  <label>Name <input bind:value={$character.name}></label>
-  <label>Class
-    <select bind:value={$character.characterClass}>
-      {#each playbooks as playbook}
-        <option value={playbook.name}>{playbook.name}</option>
-      {/each}
-    </select>
-  </label>
-</section>
-
-<CharacterSheet/>
+<main class="container">
+{#if $character == null}
+  <CharacterCreation/>
+{:else}
+  <CharacterSheet/>
+{/if}
+</main>
 
 <style global>
   * {
@@ -51,6 +47,18 @@
     @apply mx-2;
   }
 
+  main.container {
+    @apply grid grid-cols-5 bg-gray-200 my-4 pb-1;
+  }
+
+  main > header {
+    @apply col-span-5 mb-6;
+  }
+
+  main > header > h1 {
+    @apply text-4xl mx-4;
+  }
+
   main > section {
     @apply m-2 bg-white border-solid border-2 border-gray-800 ;
   }
@@ -67,12 +75,20 @@
     @apply my-2;
   }
 
-  main  input {
+  main input {
     @apply px-1;
   }
 
   input[type=text],
   input[type=number] {
     @apply border-b-2 border-solid border-gray-400 bg-gray-100;
+  }
+
+  .bonus-positive:before {
+    content: '+';
+  }
+
+  .playbook-description p {
+    @apply mb-3;
   }
 </style>

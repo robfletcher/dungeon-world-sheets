@@ -37,10 +37,6 @@
     top: -2px;
   }
 
-  .bonus-positive:before {
-    content: '+';
-  }
-
   .debility input[type=checkbox] {
     @apply mr-2 leading-tight align-middle;
   }

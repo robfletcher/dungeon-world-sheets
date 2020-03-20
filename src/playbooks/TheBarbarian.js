@@ -1,5 +1,9 @@
 export const theBarbarian = {
   name: "The Barbarian",
+  description: "<p>Hither you came from parts unknown. Sword in hand—a reaver. A slayer.</p>" +
+    "<p>Let the wizard cast his spells. What good is magick when steel cuts through flesh and bone just the same? The Paladin swears fealty to the divine. She can keep her fairy tale god—you are your own master.</p>" +
+    "<p>You hail from the far reaches of Dungeon World in search of—what? Glory? Treasure? Spilt blood? In the end it matters not. They call you barbarian. Uncivilized. Let them. You know better. Their world of nobles and laws is fleeting.</p>" +
+    "<p>You know what is best in life.</p>",
   baseHitPoints: 8,
   damageDieFaces: 10,
   looks: [

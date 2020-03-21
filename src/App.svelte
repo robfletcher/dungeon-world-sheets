@@ -91,4 +91,35 @@
   .playbook-description p {
     @apply mb-3;
   }
+
+  /* move rendering */
+  .move .move-options li {
+    @apply list-none;
+  }
+
+  .move .move-options li:before {
+    @apply text-lg leading-none;
+    content: '\2610\0a';
+  }
+
+  .move .move-options-inline {
+    @apply inline;
+  }
+
+  .move .move-options-inline li {
+    @apply inline mr-2;
+  }
+
+  .move .move-options li.move-option-custom-value:before {
+    content: none;
+  }
+
+  .move .move-options li.move-option-custom-value:after {
+    content: '\0a____';
+  }
+
+  .move h3 {
+    @apply mt-2;
+    margin-left: 0 !important; /* TODO: only needed because of conflicting rule in Move.svelte */
+  }
 </style>

@@ -103,31 +103,33 @@
     </fieldset>
 
     {#if playbook !== null}
-      {#if playbook.startingMoves.oneOf !== undefined}
-        <fieldset class="starting-moves">
-          <legend>Select one of&hellip;</legend>
-          {#each playbook.startingMoves.oneOf as move}
-            <div class="move move-select">
-              <input type="radio" value={move} bind:group={form.optionalStartingMove} class="move-selector">
-              <article>
+      <div class="starting-moves">
+        {#if playbook.startingMoves.oneOf !== undefined}
+          <fieldset>
+            <legend>Start with one of&hellip;</legend>
+            {#each playbook.startingMoves.oneOf as move}
+              <div class="move move-select">
+                <input type="radio" value={move} bind:group={form.optionalStartingMove} class="move-selector">
+                <article>
+                  <h2>{move}</h2>
+                  {@html playbook.moves.find(it=>it.name === move).description}
+                </article>
+              </div>
+            {/each}
+          </fieldset>
+        {/if}
+        {#if playbook.startingMoves.allOf !== undefined}
+          <fieldset>
+            <legend>Start with all of&hellip;</legend>
+            {#each playbook.startingMoves.allOf as move}
+              <div class="move">
                 <h2>{move}</h2>
-                <p>Description here</p>
-              </article>
-            </div>
-          {/each}
-        </fieldset>
-      {/if}
-      {#if playbook.startingMoves.allOf !== undefined}
-        <fieldset class="starting-moves">
-          <legend>Start with all of&hellip;</legend>
-          {#each playbook.startingMoves.allOf as move}
-            <div class="move">
-              <h2>{move}</h2>
-              <p>Description here</p>
-            </div>
-          {/each}
-        </fieldset>
-      {/if}
+                {@html playbook.moves.find(it=>it.name === move).description}
+              </div>
+            {/each}
+          </fieldset>
+        {/if}
+      </div>
     {/if}
 
     <footer>
@@ -172,7 +174,8 @@
   }
 
   .playbook-list label.selected {
-    @apply border-2 border-gray-800;
+    @apply border-2 bg-gray-500;
+    filter: invert(100%) grayscale(100%);
   }
 
   .playbook-list input[type=radio] {
@@ -239,7 +242,7 @@
   }
 
   .playbook-description {
-    @apply m-2;
+    @apply m-2 text-lg;
     columns: 2;
     min-height: 10rem;
   }

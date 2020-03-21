@@ -74,6 +74,7 @@
   #moves {
     @apply col-span-5;
     columns: 3;
+    column-gap: 0;
   }
 
   #moves header {

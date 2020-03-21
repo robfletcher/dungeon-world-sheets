@@ -3,25 +3,23 @@ import {Stat} from "./stat";
 import {Gear} from "./gear";
 
 export class Character {
-  constructor(characterClass) {
-    this.name = "";
+  constructor(characterClass, name, strength, dexterity, constitution, intelligence, wisdom, charisma) {
+    this.name = name;
     this.characterClass = characterClass;
     this.level = 1;
     this.xp = 0;
-    this.strength = new Stat(16);
-    this.dexterity = new Stat(15);
-    this.constitution = new Stat(13);
-    this.intelligence = new Stat(12);
-    this.wisdom = new Stat(9);
-    this.charisma = new Stat(8);
+    this.strength = new Stat(strength);
+    this.dexterity = new Stat(dexterity);
+    this.constitution = new Stat(constitution);
+    this.intelligence = new Stat(intelligence);
+    this.wisdom = new Stat(wisdom);
+    this.charisma = new Stat(charisma);
     this.damage = 0;
     this.armor = 0;
     this.look = {};
     this.drive = {};
     this.coin = 0;
-    this.gear = [
-      new Gear("Adventuring Gear", 5, 1)
-    ];
+    this.gear = [];
     this.moves = [];
   }
 

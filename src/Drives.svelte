@@ -36,8 +36,8 @@
     <h1>Drives</h1>
     <button on:click={editDrive}>Edit</button>
   </header>
-  <h2>{$character.drive.name}</h2>
-  <p>{$character.drive.description}</p>
+  <h2>{$character.drive.name || ""}</h2>
+  <p>{$character.drive.description || ""}</p>
 </section>
 
 {#if showModal}

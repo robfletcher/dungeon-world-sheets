@@ -1,5 +1,6 @@
 <script>
   import {playbooks} from "./Playbooks";
+  import {Character} from "./character";
   import {character} from "./store";
   import {Stat} from "./stat";
 
@@ -9,7 +10,8 @@
   let form = {};
   statNames.forEach((it, i) => form[it] = null);
 
-  $: playbookDescription = form.characterClass == null ? null : playbooks.find(it => it.name === form.characterClass).description || "<p>No description</p>";
+  $: playbook = form.characterClass == null ? null : playbooks.find(it => it.name === form.characterClass);
+  $: playbookDescription = playbook == null ? null : playbook.description || "<p>No description</p>";
 
   const statChange = (event) => {
     const selectElements = [...event.target.form.getElementsByTagName("select")];
@@ -24,6 +26,23 @@
         option.disabled = option.value !== it.value && usedValues.indexOf(option.value) >= 0;
       });
     });
+  };
+
+  const create = () => {
+    let c = new Character(
+      form.characterClass,
+      form.name,
+      form.strength,
+      form.dexterity,
+      form.constitution,
+      form.intelligence,
+      form.wisdom,
+      form.charisma
+    );
+    playbook.startingMoves.allOf.forEach(name => {
+      c.moves.push({name: name});
+    });
+    character.set(c);
   };
 
   $: valid = form.name != null && form.name.length > 0 && statNames.every(it => form[it] != null) && form.characterClass != null;
@@ -52,7 +71,7 @@
 
     <fieldset class="character-name">
       <legend>Name your character</legend>
-      <label>Name:
+      <label>
         <input type="text" bind:value={form.name}>
       </label>
     </fieldset>
@@ -75,6 +94,10 @@
     </fieldset>
   </form>
 </section>
+
+<footer>
+  <button type="button" disabled={!valid} on:click={create}>Create</button>
+</footer>
 
 <style>
   .character-creation {
@@ -192,7 +215,7 @@
   }
 
   .character-name input[type=text] {
-    @apply flex-grow ml-2;
+    @apply flex-grow text-3xl;
   }
 
   .stats {

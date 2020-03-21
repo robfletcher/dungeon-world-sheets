@@ -153,7 +153,11 @@
 
 <style>
   #gear {
-    @apply col-span-3;
+    @apply relative col-span-3;
+  }
+
+  footer {
+    @apply absolute bottom-0 right-0;
   }
 
   #load .value {

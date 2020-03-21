@@ -48,11 +48,13 @@ export const theWizard = {
     }
   ],
   baseLoad: 7,
-  startingMoves: [
-    "Cast A Spell (INT)",
-    "Prepare Spells",
-    "Spellbook",
-    "Spell Defense",
-    "Ritual"
-  ]
+  startingMoves: {
+    allOf: [
+      "Cast A Spell (INT)",
+      "Prepare Spells",
+      "Spellbook",
+      "Spell Defense",
+      "Ritual"
+    ]
+  }
 };

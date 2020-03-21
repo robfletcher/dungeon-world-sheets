@@ -47,10 +47,16 @@ export const theBarbarian = {
     }
   ],
   baseLoad: 8,
-  startingMoves: [
-    "The Upper Hand",
-    "What Are You Waiting For?",
-    "Herculean Appetites",
-    "Musclebound"
-  ]
+  startingMoves: {
+    allOf: [
+      "The Upper Hand",
+      "What Are You Waiting For?",
+      "Herculean Appetites",
+      "Musclebound"
+    ],
+    oneOf: [
+      "Full Plate And Packing Steel",
+      "Unencumbered, Unharmed"
+    ]
+  }
 };

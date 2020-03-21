@@ -47,11 +47,13 @@ export const theImmolator = {
     }
   ],
   baseLoad: 9,
-  startingMoves: [
-    "Burning Brand",
-    "Fighting Fire with Fire",
-    "Give Me Fuel, Give Me Fire",
-    "Zuko Style",
-    "Hand Crafted"
-  ]
+  startingMoves: {
+    allOf: [
+      "Burning Brand",
+      "Fighting Fire with Fire",
+      "Give Me Fuel, Give Me Fire",
+      "Zuko Style",
+      "Hand Crafted"
+    ]
+  }
 };

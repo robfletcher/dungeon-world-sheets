@@ -7,7 +7,9 @@
   const statNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   const statValues = [16, 15, 13, 12, 9, 8];
 
-  let form = {};
+  let form = {
+    optionalStartingMove: null
+  };
   statNames.forEach((it, i) => form[it] = null);
 
   $: playbook = form.characterClass == null ? null : playbooks.find(it => it.name === form.characterClass);
@@ -39,13 +41,19 @@
       form.wisdom,
       form.charisma
     );
+    if (form.optionalStartingMove !== null) {
+      c.moves.push({name: form.optionalStartingMove});
+    }
     playbook.startingMoves.allOf.forEach(name => {
       c.moves.push({name: name});
     });
     character.set(c);
   };
 
-  $: valid = form.name != null && form.name.length > 0 && statNames.every(it => form[it] != null) && form.characterClass != null;
+  $: valid = form.name != null && form.name.length > 0 &&
+    statNames.every(it => form[it] != null) &&
+    form.characterClass != null &&
+    (playbook.startingMoves.oneOf === undefined || form.optionalStartingMove != null);
 
   const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 </script>
@@ -60,7 +68,8 @@
       <legend>Select a playbook</legend>
       <div class="playbook-list">
         {#each playbooks as playbook}
-          <label class="playbook-{playbook.name.toLowerCase().replace(' ', '-')}" class:selected={form.characterClass === playbook.name}>
+          <label class="playbook-{playbook.name.toLowerCase().replace(' ', '-')}"
+                 class:selected={form.characterClass === playbook.name}>
             <input type="radio" bind:group={form.characterClass} value={playbook.name}>
             <span class="playbook-name">{playbook.name}</span>
           </label>
@@ -92,12 +101,41 @@
         </label>
       {/each}
     </fieldset>
+
+    {#if playbook !== null}
+      {#if playbook.startingMoves.oneOf !== undefined}
+        <fieldset class="starting-moves">
+          <legend>Select one of&hellip;</legend>
+          {#each playbook.startingMoves.oneOf as move}
+            <div class="move move-select">
+              <input type="radio" value={move} bind:group={form.optionalStartingMove} class="move-selector">
+              <article>
+                <h2>{move}</h2>
+                <p>Description here</p>
+              </article>
+            </div>
+          {/each}
+        </fieldset>
+      {/if}
+      {#if playbook.startingMoves.allOf !== undefined}
+        <fieldset class="starting-moves">
+          <legend>Start with all of&hellip;</legend>
+          {#each playbook.startingMoves.allOf as move}
+            <div class="move">
+              <h2>{move}</h2>
+              <p>Description here</p>
+            </div>
+          {/each}
+        </fieldset>
+      {/if}
+    {/if}
+
+    <footer>
+      <button type="button" disabled={!valid} on:click={create}>Create</button>
+    </footer>
+
   </form>
 </section>
-
-<footer>
-  <button type="button" disabled={!valid} on:click={create}>Create</button>
-</footer>
 
 <style>
   .character-creation {
@@ -105,11 +143,11 @@
   }
 
   .character-creation form {
-    @apply grid grid-cols-5 col-gap-2 pb-1;
+    @apply grid grid-cols-5 col-gap-0 pt-4;
   }
 
   fieldset {
-    @apply border-2 border-gray-500 border-solid m-4 p-4 pt-2;
+    @apply border-2 border-gray-500 border-solid mt-0 mb-6 mx-6 p-4 pt-2;
   }
 
   legend {
@@ -121,7 +159,7 @@
   }
 
   .playbook {
-    @apply row-span-3 col-span-3;
+    @apply row-span-3 col-span-3 mr-0;
   }
 
   .playbook-list {
@@ -225,7 +263,7 @@
 
   .stats label {
     @apply grid grid-cols-3 col-gap-2 row-gap-0 items-center text-xl;
-    grid-template-columns: 7rem 4rem 1.5rem;
+    grid-template-columns: 7rem 3rem 1.5rem;
   }
 
   .stats .name {
@@ -234,5 +272,21 @@
 
   .stats select {
     @apply text-center;
+  }
+
+  .starting-moves {
+    @apply col-span-2;
+  }
+
+  footer {
+    @apply flex items-center justify-end col-span-5 h-16 px-6;
+  }
+
+  footer button {
+    @apply text-2xl;
+  }
+
+  footer button[disabled] {
+    @apply text-gray-500;
   }
 </style>

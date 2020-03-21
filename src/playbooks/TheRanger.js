@@ -46,9 +46,11 @@ export const theRanger = {
     }
   ],
   baseLoad: 11,
-  startingMoves: [
-    "Hunt and Track",
-    "Called Shot",
-    "Animal Companion"
-  ]
+  startingMoves: {
+    allOf: [
+      "Hunt and Track",
+      "Called Shot",
+      "Animal Companion"
+    ]
+  }
 };

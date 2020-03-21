@@ -46,11 +46,13 @@ export const theThief = {
     }
   ],
   baseLoad: 9,
-  startingMoves: [
-    "Trap Expert",
-    "Tricks Of The Trade",
-    "Backstab",
-    "Flexible Morals",
-    "Poisoner"
-  ]
+  startingMoves: {
+    allOf: [
+      "Trap Expert",
+      "Tricks Of The Trade",
+      "Backstab",
+      "Flexible Morals",
+      "Poisoner"
+    ]
+  }
 };

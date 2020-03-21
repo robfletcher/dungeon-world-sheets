@@ -12,7 +12,6 @@
   setContext("moveName", name);
 
   let hasMove = $character.moves.some(it => it.name === name);
-  let isStarting = $character.playbook.startingMoves.includes(name);
   let hasRequiredLevel = ($character.level + 1) >= requiresLevel;
   let hasRequiredMove = requiresMove === null || $character.moves.some(it => it.name === requiresMove);
   let hasReplacedMove = replacesMove === null || $character.moves.some(it => it.name === replacesMove);

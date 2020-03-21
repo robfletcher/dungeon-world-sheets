@@ -46,10 +46,12 @@ export const theBard = {
     }
   ],
   baseLoad: 9,
-  startingMoves: [
-    "Arcane Art",
-    "Charming & Open",
-    "Bardic Lore",
-    "A Port In The Storm"
-  ]
+  startingMoves: {
+    allOf: [
+      "Arcane Art",
+      "Charming & Open",
+      "Bardic Lore",
+      "A Port In The Storm"
+    ]
+  }
 };

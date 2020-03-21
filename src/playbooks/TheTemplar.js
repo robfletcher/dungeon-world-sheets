@@ -46,10 +46,12 @@ export const theTemplar = {
     }
   ],
   baseLoad: 12,
-  startingMoves: [
-    "It's Not Them You Should Be Afraid Of",
-    "I Am the Law",
-    "Inquisition",
-    "Unrelenting"
-  ]
+  startingMoves: {
+    allOf: [
+      "It's Not Them You Should Be Afraid Of",
+      "I Am the Law",
+      "Inquisition",
+      "Unrelenting"
+    ]
+  }
 };

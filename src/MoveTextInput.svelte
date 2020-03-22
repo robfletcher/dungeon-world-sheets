@@ -1,13 +1,10 @@
 <script>
-  import {getContext} from "svelte";
   import {character} from "./store";
 
-  export let type = "checkbox";
+  export let move;
   export let id;
+  export let label;
 
-  const name = getContext("moveName");
-
-  $: move = $character.moves.find(it => it.name === name);
   $: value = move == null ? false : (move[id] || "");
 
   function updateOptions(event) {
@@ -21,6 +18,6 @@
 </script>
 
 <label>
-  <slot></slot>
-  <input type="text" on:change={updateOptions} value={value} disabled={move == null}>
+  {@html label}
+  <input type="text" on:change={updateOptions} value={value}>
 </label>

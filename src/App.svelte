@@ -110,12 +110,17 @@
     @apply inline mr-2;
   }
 
-  .move .move-options li.move-option-custom-value:before {
+  .move .move-options li.move-option-custom-value:before,
+  .move .move-options li.move-option-interactive:before {
     content: none;
   }
 
   .move .move-options li.move-option-custom-value:after {
     content: '\0a____';
+  }
+
+  .move .move-options li.move-option-custom-value.move-option-interactive:after {
+    content: none;
   }
 
   .move h3 {

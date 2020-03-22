@@ -49,7 +49,7 @@ export const theTemplar = {
   startingMoves: {
     allOf: [
       "It's Not Them You Should Be Afraid Of",
-      "I Am the Law",
+      "I Am The Law",
       "Inquisition",
       "Unrelenting"
     ]

@@ -15,6 +15,10 @@
   $: playbook = form.characterClass == null ? null : playbooks.find(it => it.name === form.characterClass);
   $: playbookDescription = playbook == null ? null : playbook.description || "<p>No description</p>";
 
+  const moveDescription = (name) => {
+    return playbook == null ? "" : playbook.moves.find(it => it.name === name).description;
+  };
+
   const statChange = (event) => {
     const selectElements = [...event.target.form.getElementsByTagName("select")];
     let usedValues = [];
@@ -112,7 +116,7 @@
                 <input type="radio" value={move} bind:group={form.optionalStartingMove} class="move-selector">
                 <article>
                   <h2>{move}</h2>
-                  {@html playbook.moves.find(it=>it.name === move).description}
+                  {@html moveDescription(move)}
                 </article>
               </div>
             {/each}
@@ -124,7 +128,7 @@
             {#each playbook.startingMoves.allOf as move}
               <div class="move">
                 <h2>{move}</h2>
-                {@html playbook.moves.find(it=>it.name === move).description}
+                {@html moveDescription(move)}
               </div>
             {/each}
           </fieldset>

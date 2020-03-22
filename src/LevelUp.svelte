@@ -1,15 +1,14 @@
 <script>
-  import {character, selectedMove} from "./store";
+  import {character} from "./store";
   import {Stat} from "./stat";
   import Modal from "./Modal.svelte";
-  import Moves from "./Moves.svelte";
 
   export let show = false;
 
-  let stat = null;
-  let move = null;
+  let selectedStat = null;
+  let selectedMove = null;
 
-  $: valid = stat != null && move != null;
+  $: valid = selectedStat != null && move != null;
 
   const statNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   let stats = {
@@ -21,9 +20,15 @@
     charisma: new Stat($character.charisma.value)
   };
 
+  const availableMoves = $character.playbook.moves
+    .filter(move => !$character.moves.map(it => it.name).includes(move.name))
+    .filter(move => move.requiresLevel === undefined || ($character.level + 1) >= move.requiresLevel)
+    .filter(move => move.requiresMove === undefined || $character.moves.some(it => it.name === move.requiresMove))
+    .filter(move => move.replacesMove === undefined || $character.moves.some(it => it.name === move.replacesMove));
+
   const computeStatChange = () => {
     statNames.forEach(n => {
-      stats[n] = new Stat($character[n].value + (stat === n ? 1 : 0));
+      stats[n] = new Stat($character[n].value + (selectedStat === n ? 1 : 0));
     });
   };
 
@@ -31,23 +36,19 @@
     character.update(c => {
       c.xp -= c.nextLevel;
       c.level++;
-      c[stat].value++;
-      c.moves.push({name: move});
+      c[selectedStat].value++;
+      c.moves.push({name: selectedMove});
       return c;
     });
-    stat = null;
-    selectedMove.set(null);
+    selectedStat = null;
+    selectedMove = null;
     show = false;
   };
 
   const cancel = () => {
-    stat = null;
-    selectedMove.set(null);
+    selectedStat = null;
+    selectedMove = null;
     show = false;
-  };
-
-  const selectMove = (event) => {
-    move = event.detail;
   };
 
   const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
@@ -60,21 +61,34 @@
     <form>
       <fieldset class="stats">
         <legend>Select one stat to increase:</legend>
-          {#each statNames as statName}
-            <label>
-              <input type="radio" bind:group={stat} value={statName} on:change={computeStatChange}
-                     disabled={stats[statName].value > 17}>
-              <span class="name">{capitalize(statName)}</span>
-              <span class="score">{stats[statName].value}</span>
-              <span class="bonus" class:bonus-positive={stats[statName].bonus >= 0}>{stats[statName].bonus}</span>
-            </label>
-          {/each}
+        {#each statNames as statName}
+          <label>
+            <input type="radio" bind:group={selectedStat} value={statName} on:change={computeStatChange}
+                   disabled={stats[statName].value > 17}>
+            <span class="name">{capitalize(statName)}</span>
+            <span class="score">{stats[statName].value}</span>
+            <span class="bonus" class:bonus-positive={stats[statName].bonus >= 0}>{stats[statName].bonus}</span>
+          </label>
+        {/each}
       </fieldset>
 
       <fieldset>
         <legend>Select a new move:</legend>
-
-        <Moves mode="select" bind:selected={move} on:select-move={selectMove}/>
+        {#each availableMoves as move}
+          <div class="move move-select">
+            <input type="radio" bind:group={selectedMove} value={move.name} class="move-selector">
+            <article>
+              <h2>{move.name}</h2>
+              {#if move.requiresMove !== undefined}
+                <p><em>Requires: {move.requiresMove}</em></p>
+              {/if}
+              {#if move.replacesMove !== undefined}
+                <p><em>Replaces: {move.replacesMove}</em></p>
+              {/if}
+              {@html move.description}
+            </article>
+          </div>
+        {/each}
       </fieldset>
     </form>
   </Modal>

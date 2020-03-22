@@ -1,54 +1,23 @@
 <script>
-  import {getContext, setContext} from "svelte";
-  import {character, selectedMove} from "./store";
+  import {character} from "./store";
 
   export let name;
-  export let requiresLevel = 0;
-  export let requiresMove = null;
-  export let replacesMove = null;
 
-  let mode = getContext("mode");
-
-  setContext("moveName", name);
-
-  let hasMove = $character.moves.some(it => it.name === name);
-  let hasRequiredLevel = ($character.level + 1) >= requiresLevel;
-  let hasRequiredMove = requiresMove === null || $character.moves.some(it => it.name === requiresMove);
-  let hasReplacedMove = replacesMove === null || $character.moves.some(it => it.name === replacesMove);
-  let qualifies = !hasMove && hasRequiredLevel && hasRequiredMove && hasReplacedMove;
-
-  let display = (mode === "display" && hasMove) || (mode === "select" && qualifies);
-
-  let checked = false;
-
-  selectedMove.subscribe(move => {
-    checked = move === name;
-  });
-
-  const select = (event) => {
-    if (event.target.checked) {
-      selectedMove.set(event.target.value);
-    }
-  };
+  const move = $character.playbook.moves.find(it => it.name === name);
 </script>
 
-{#if display}
-  <div class="move move-{mode}">
-    {#if mode === "select"}
-      <input type="radio" value={name} on:change={select} checked={checked} class="move-selector">
+<div class="move">
+  <article>
+    <h2>{move.name}</h2>
+    {#if move.requiresMove !== undefined}
+      <p><em>Requires: {move.requiresMove}</em></p>
     {/if}
-    <article>
-      <h2>{name}</h2>
-      {#if requiresMove != null}
-        <p><em>Requires: {requiresMove}</em></p>
-      {/if}
-      {#if replacesMove != null}
-        <p><em>Replaces: {replacesMove}</em></p>
-      {/if}
-      <slot></slot>
-    </article>
-  </div>
-{/if}
+    {#if move.replacesMove !== undefined}
+      <p><em>Replaces: {move.replacesMove}</em></p>
+    {/if}
+    {@html move.description}
+  </article>
+</div>
 
 <style global>
   .move {

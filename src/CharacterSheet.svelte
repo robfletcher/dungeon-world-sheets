@@ -5,10 +5,10 @@
   import Look from "./Look.svelte";
   import Drives from "./Drives.svelte";
   import Gear from "./Gear.svelte";
-  import Moves from "./Moves.svelte";
   import Combat from "./Combat.svelte";
   import IncrementableValue from "./IncrementableValue.svelte";
   import LevelUp from "./LevelUp.svelte";
+  import Move from "./Move.svelte";
 
   let showLevelUpModal = false;
 
@@ -61,7 +61,9 @@
     <h1>Moves</h1>
   </header>
 
-  <Moves/>
+  {#each $character.moves as move}
+    <Move name={move.name}/>
+  {/each}
 </section>
 
 <LevelUp bind:show={showLevelUpModal}/>

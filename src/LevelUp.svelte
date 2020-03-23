@@ -20,7 +20,7 @@
     charisma: new Stat($character.charisma.value)
   };
 
-  const availableMoves = $character.playbook.moves
+  $: availableMoves = $character.playbook.moves
     .filter(move => !$character.moves.map(it => it.name).includes(move.name))
     .filter(move => move.requiresLevel === undefined || ($character.level + 1) >= move.requiresLevel)
     .filter(move => move.requiresMove === undefined || $character.moves.some(it => it.name === move.requiresMove))

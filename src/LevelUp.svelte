@@ -8,7 +8,7 @@
   let selectedStat = null;
   let selectedMove = null;
 
-  $: valid = selectedStat != null && move != null;
+  $: valid = selectedStat != null && selectedMove != null;
 
   const statNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   let stats = {

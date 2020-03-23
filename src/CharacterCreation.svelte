@@ -285,17 +285,6 @@
     @apply col-span-2;
   }
 
-  .move-select {
-    @apply grid col-gap-2 row-gap-0 pb-2 m-2;
-    grid-template-columns: 1.5rem auto;
-  }
-
-  .move-selector {
-    justify-self: center;
-    align-self: start;
-    height: 2.25rem;
-  }
-
   footer {
     @apply flex items-center justify-end col-span-5 h-16 px-6;
   }

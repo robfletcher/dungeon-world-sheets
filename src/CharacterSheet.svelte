@@ -74,7 +74,7 @@
   }
 
   #moves {
-    @apply col-span-5;
+    @apply col-span-5 pb-4;
     columns: 3;
     column-gap: 0;
   }

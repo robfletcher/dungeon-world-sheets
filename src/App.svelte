@@ -85,7 +85,7 @@
   }
 
   .bonus-positive:before {
-    content: '+';
+    content: '+' !important;
   }
 
   .playbook-description p {

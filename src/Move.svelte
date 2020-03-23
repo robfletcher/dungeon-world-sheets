@@ -63,7 +63,7 @@
 
 <style global>
   .move {
-    @apply pb-2 mx-4 my-2;
+    @apply mx-4 mb-4;
   }
 
   .move, .move fieldset, .move p {

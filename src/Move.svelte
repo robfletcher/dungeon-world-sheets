@@ -61,71 +61,28 @@
   </article>
 </div>
 
-<style global>
+<style>
   .move {
     @apply pb-2 mx-4 my-2;
   }
 
-  .move, .move fieldset, .move p {
+  .move, .move :global(ul), .move :global(p) {
     break-inside: avoid;
   }
 
-  .move-select {
-    @apply grid col-gap-2 row-gap-0 pb-2 m-2;
-    grid-template-columns: 1.5rem auto;
-  }
-
-  .move p, .move fieldset, .move ul {
-    @apply mb-2;
-  }
-
-  .move h2 {
-    @apply font-bold text-2xl;
-  }
-
-  .move h3 {
-    @apply font-bold ml-4;
-  }
-
-  .move li {
-    @apply list-disc list-inside m-0;
-  }
-
-  .move li ul {
-    @apply ml-6;
-  }
-
-  .move .move-selector {
-    justify-self: center;
-    align-self: start;
-    height: 2.25rem;
-  }
-
-  .move fieldset {
-    @apply grid grid-cols-1;
-  }
-
-  .move fieldset.inline-options {
-    @apply block ml-4;
-  }
-
-  .move fieldset label {
+  .move :global(.move-options label) {
     @apply inline-block;
   }
 
-  .move fieldset.inline-options label {
+  .move :global(.move-options-inline label) {
     @apply whitespace-no-wrap;
   }
 
-  .move fieldset input[type=checkbox] {
+  .move :global(.move-options input[type=checkbox]) {
     @apply mr-2;
   }
 
-  .move fieldset.inline-options input[type=checkbox] {
+  .move :global(.move-options-inline input[type=checkbox]) {
     @apply ml-2 mr-0;
-  }
-
-  .move dt {
-    @apply float-left font-bold mr-1;
   }
 </style>

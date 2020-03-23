@@ -93,6 +93,30 @@
   }
 
   /* move rendering */
+  .move p, .move ul {
+    @apply mb-2;
+  }
+
+  .move h2 {
+    @apply font-bold text-2xl;
+  }
+
+  .move h3 {
+    @apply font-bold mt-2;
+  }
+
+  .move li {
+    @apply list-disc list-inside m-0;
+  }
+
+  .move li ul {
+    @apply ml-6;
+  }
+
+  .move dt {
+    @apply float-left font-bold mr-1;
+  }
+
   .move .move-options li {
     @apply list-none;
   }
@@ -103,7 +127,7 @@
   }
 
   .move .move-options-inline {
-    @apply inline;
+    @apply inline ml-4;
   }
 
   .move .move-options-inline li {
@@ -121,10 +145,5 @@
 
   .move .move-options li.move-option-custom-value.move-option-interactive:after {
     content: none;
-  }
-
-  .move h3 {
-    @apply mt-2;
-    margin-left: 0 !important; /* TODO: only needed because of conflicting rule in Move.svelte */
   }
 </style>

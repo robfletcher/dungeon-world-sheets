@@ -24,16 +24,16 @@
   {/if}
 </section>
 
-<style global>
-  .labelled-score {
+<style>
+  :global(.labelled-score) {
     @apply flex items-center mx-2;
   }
 
-  .labelled-score h1 {
+  :global(.labelled-score h1) {
     @apply mr-2 bg-gray-800 text-white text-lg leading-none text-right;
   }
 
-  .labelled-score .value {
+  :global(.labelled-score .value) {
     @apply flex items-center justify-center h-16 w-16 text-3xl bg-white text-black border-solid border-2 border-gray-800 rounded-full;
   }
 

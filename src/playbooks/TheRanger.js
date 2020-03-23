@@ -137,7 +137,7 @@ export const theRanger = {
         '<li data-value="trample, break, and wreck stuff">trample, break, and wreck stuff</li>' +
         //  TODO: custom option
         '</ul>' +
-        '<p>Choose an Instinct and a Cost (1 of each):</p>' +
+        '<p>Choose an <strong>Instinct</strong> and a <strong>Cost</strong> (1 of each):</p>' +
         '<h3>Instinct:</h3>' +
         '<ul class="move-options move-options-inline">to&hellip;' +
         '<li data-value="challenge rivals">challenge rivals</li>' +

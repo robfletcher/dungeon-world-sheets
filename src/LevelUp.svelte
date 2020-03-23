@@ -64,7 +64,7 @@
         {#each statNames as statName}
           <label>
             <input type="radio" bind:group={selectedStat} value={statName} on:change={computeStatChange}
-                   disabled={stats[statName].value > 17}>
+                   disabled={$character[statName].value > 17}>
             <span class="name">{capitalize(statName)}</span>
             <span class="score">{stats[statName].value}</span>
             <span class="bonus" class:bonus-positive={stats[statName].bonus >= 0}>{stats[statName].bonus}</span>

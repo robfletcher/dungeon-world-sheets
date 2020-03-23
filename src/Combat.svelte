@@ -78,7 +78,7 @@
     background-position-y: 0px;
   }
 
-  #damage-die .value:before {
+  #damage-die .value::before {
     content: 'D';
   }
 

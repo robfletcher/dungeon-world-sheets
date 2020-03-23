@@ -84,8 +84,13 @@
     @apply border-b-2 border-solid border-gray-400 bg-gray-100;
   }
 
-  .bonus-positive:before {
-    content: '+' !important;
+  .bonus-positive {
+    /* this is stupid but rollup (or something) discards the ::before rule if there's no rule for the base selector */
+    cursor: inherit;
+  }
+
+  .bonus-positive::before {
+    content: '+';
   }
 
   .playbook-description p {
@@ -97,7 +102,7 @@
     @apply list-none;
   }
 
-  .move .move-options li:before {
+  .move .move-options li::before {
     @apply text-lg leading-none;
     content: '\2610\0a';
   }
@@ -110,16 +115,16 @@
     @apply inline mr-2;
   }
 
-  .move .move-options li.move-option-custom-value:before,
-  .move .move-options li.move-option-interactive:before {
+  .move .move-options li.move-option-custom-value::before,
+  .move .move-options li.move-option-interactive::before {
     content: none;
   }
 
-  .move .move-options li.move-option-custom-value:after {
+  .move .move-options li.move-option-custom-value::after {
     content: '\0a____';
   }
 
-  .move .move-options li.move-option-custom-value.move-option-interactive:after {
+  .move .move-options li.move-option-custom-value.move-option-interactive::after {
     content: none;
   }
 

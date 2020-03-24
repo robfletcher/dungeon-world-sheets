@@ -1,27 +1,33 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Dungeon World Sheets
+
+Interactive character sheets for [_Dungeon World_](https://dungeon-world.com/).
+
+## Playbooks
+
+The app supports all official playbooks (including _The Barbarian_ and _The Immolator_), as well as _The Mage_, _The Priest_, and _The Templar_.
+_The Ranger_ playbook is the [_Perilous Wilds_](https://lampblack-and-brimstone.com/shop/the-perilous-wilds-print-on-demand-edition/) version.
+
+## Limitations
+
+This is still under development and not yet fully-featured.
+Don't rely on it!
+
+* Not all Dungeon World character features are implemented. Racial/background moves, spells, bonds/flags, and multi-class moves are not there yet.
+* There is basically no mobile optimization yet. You'll need to use a desktop or tablet browser.
+* Currently I'm using local storage to keep track of the character. If you use a different browser your character will not be there.
 
 ---
 
-# svelte app
+# Customizing & contributing
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+If you want to run the app yourself, or customize a copy for your own use, just clone the GitHub repository then...
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
+## Running the app
 
 Install the dependencies...
 
 ```bash
-cd svelte-app
+cd dungeon-world-sheets
 npm install
 ```
 
@@ -45,18 +51,6 @@ npm run build
 ```
 
 You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
-```
-
 
 ## Deploying to the web
 

@@ -1,9 +1,10 @@
 <script>
   import {playbooks} from "./Playbooks";
   import {Character} from "./character";
-  import {character} from "./store";
   import {Stat} from "./stat";
   import * as shortid from 'shortid/lib/index';
+  import {storeCharacter} from "./database";
+  import router from "page";
 
   const statNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   const statValues = [16, 15, 13, 12, 9, 8];
@@ -53,7 +54,10 @@
       c.moves.push({name: name});
     });
     c.id = shortid.generate();
-    character.set(c);
+
+    storeCharacter(c);
+
+    router.redirect(`/character/${c.id}`);
   };
 
   $: valid = form.name != null && form.name.length > 0 &&

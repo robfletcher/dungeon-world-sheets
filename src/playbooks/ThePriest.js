@@ -73,7 +73,7 @@ export const thePriest = {
         '<li>Your invocation is obvious and immediate, drawing attention to you.</li>' +
         '<li>The intervention is subtle or takes a while to manifest.</li>' +
         '<li>Your deity demands something in return. The GM will tell you what.</li>' +
-        '<li>The divine experience leaves you dizzy with euphoria (or terror). You take -1 ongoing to Invoke until you have time to pray quietly for a while./li>' +
+        '<li>The divine experience leaves you dizzy with euphoria (or terror). You take -1 ongoing to Invoke until you have time to pray quietly for a while.</li>' +
         '</ul>'
     },
 

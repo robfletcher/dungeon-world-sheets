@@ -55,11 +55,14 @@ export class Character {
     return this.playbook.baseLoad + this.strength.bonus;
   }
 
-  static fromJSON(json) {
-    let c = JSON.parse(json);
+  static fromObject(obj) {
     ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].forEach(name =>
-      c[name] = Object.assign(new Stat, c[name])
+      obj[name] = Object.assign(new Stat, obj[name])
     );
-    return Object.assign(new Character, c);
+    return Object.assign(new Character, obj);
+  }
+
+  static fromJSON(json) {
+    return Character.fromObject(JSON.parse(json));
   }
 }

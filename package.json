@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "start": "sirv public -s"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
@@ -21,6 +21,8 @@
     "tailwindcss": "^1.2.0"
   },
   "dependencies": {
+    "page": "^1.11.5",
+    "shortid": "^2.2.15",
     "sirv-cli": "^0.4.4"
   }
 }

@@ -15,56 +15,58 @@
   $: canLevelUp = $character.xp >= $character.nextLevel && $character.level < 10;
 </script>
 
-<header>
-  <h1>{$character.name} {$character.characterClass}</h1>
-
-  <IncrementableValue id="level" bind:value={$character.level} readonly={true}>Level</IncrementableValue>
-  <IncrementableValue id="xp" bind:value={$character.xp}>Experience</IncrementableValue>
-
-  <button on:click={() => showLevelUpModal = true} disabled={!canLevelUp}>Level Up</button>
-</header>
-
-<section id="stats">
-  <Stat
-    name="Strength"
-    debility="Weak"
-    bind:stat={$character.strength}/>
-  <Stat
-    name="Dexterity"
-    debility="Shaky"
-    bind:stat={$character.dexterity}/>
-  <Stat
-    name="Constitution"
-    debility="Sick"
-    bind:stat={$character.constitution}/>
-  <Stat
-    name="Intelligence"
-    debility="Stunned"
-    bind:stat={$character.intelligence}/>
-  <Stat
-    name="Wisdom"
-    debility="Confused"
-    bind:stat={$character.wisdom}/>
-  <Stat
-    name="Charisma"
-    debility="Scarred"
-    bind:stat={$character.charisma}/>
-</section>
-
-<Combat/>
-<Look/>
-<Drives/>
-<Gear/>
-
-<section id="moves">
+<main class="container">
   <header>
-    <h1>Moves</h1>
+    <h1>{$character.name} {$character.characterClass}</h1>
+
+    <IncrementableValue id="level" bind:value={$character.level} readonly={true}>Level</IncrementableValue>
+    <IncrementableValue id="xp" bind:value={$character.xp}>Experience</IncrementableValue>
+
+    <button on:click={() => showLevelUpModal = true} disabled={!canLevelUp}>Level Up</button>
   </header>
 
-  {#each $character.moves as move}
-    <Move name={move.name}/>
-  {/each}
-</section>
+  <section id="stats">
+    <Stat
+      name="Strength"
+      debility="Weak"
+      bind:stat={$character.strength}/>
+    <Stat
+      name="Dexterity"
+      debility="Shaky"
+      bind:stat={$character.dexterity}/>
+    <Stat
+      name="Constitution"
+      debility="Sick"
+      bind:stat={$character.constitution}/>
+    <Stat
+      name="Intelligence"
+      debility="Stunned"
+      bind:stat={$character.intelligence}/>
+    <Stat
+      name="Wisdom"
+      debility="Confused"
+      bind:stat={$character.wisdom}/>
+    <Stat
+      name="Charisma"
+      debility="Scarred"
+      bind:stat={$character.charisma}/>
+  </section>
+
+  <Combat/>
+  <Look/>
+  <Drives/>
+  <Gear/>
+
+  <section id="moves">
+    <header>
+      <h1>Moves</h1>
+    </header>
+
+    {#each $character.moves as move}
+      <Move name={move.name}/>
+    {/each}
+  </section>
+</main>
 
 <LevelUp bind:show={showLevelUpModal}/>
 

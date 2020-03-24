@@ -3,6 +3,7 @@
   import {Character} from "./character";
   import {character} from "./store";
   import {Stat} from "./stat";
+  import * as shortid from 'shortid/lib/index';
 
   const statNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   const statValues = [16, 15, 13, 12, 9, 8];
@@ -51,6 +52,7 @@
     playbook.startingMoves.allOf.forEach(name => {
       c.moves.push({name: name});
     });
+    c.id = shortid.generate();
     character.set(c);
   };
 
@@ -62,86 +64,88 @@
   const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 </script>
 
-<header>
-  <h1>Create a Character</h1>
-</header>
+<main class="container">
+  <header>
+    <h1>Create a Character</h1>
+  </header>
 
-<section class="character-creation">
-  <form>
-    <fieldset class="playbook">
-      <legend>Select a playbook</legend>
-      <div class="playbook-list">
-        {#each playbooks as playbook}
-          <label class="playbook-{playbook.name.toLowerCase().replace(' ', '-')}"
-                 class:selected={form.characterClass === playbook.name}>
-            <input type="radio" bind:group={form.characterClass} value={playbook.name}>
-            <span class="playbook-name">{playbook.name}</span>
+  <section class="character-creation">
+    <form>
+      <fieldset class="playbook">
+        <legend>Select a playbook</legend>
+        <div class="playbook-list">
+          {#each playbooks as playbook}
+            <label class="playbook-{playbook.name.toLowerCase().replace(' ', '-')}"
+                   class:selected={form.characterClass === playbook.name}>
+              <input type="radio" bind:group={form.characterClass} value={playbook.name}>
+              <span class="playbook-name">{playbook.name}</span>
+            </label>
+          {/each}
+        </div>
+        <div class="playbook-description">{@html playbookDescription}</div>
+      </fieldset>
+
+      <fieldset class="character-name">
+        <legend>Name your character</legend>
+        <label>
+          <input type="text" bind:value={form.name}>
+        </label>
+      </fieldset>
+
+      <fieldset class="stats">
+        <legend>Assign their stats</legend>
+        {#each statNames as statName}
+          <label>
+            <span class="name">{capitalize(statName)}</span>
+            <select bind:value={form[statName]} on:change={statChange}>
+              <option value={null}></option>
+              {#each statValues as statValue}
+                <option value={statValue}>{statValue}</option>
+              {/each}
+            </select>
+            <span class="stat-bonus"
+                  class:bonus-positive={form[statName] != null && form[statName] >= 9}>{form[statName] == null ? "" : new Stat(form[statName]).bonus}</span>
           </label>
         {/each}
-      </div>
-      <div class="playbook-description">{@html playbookDescription}</div>
-    </fieldset>
+      </fieldset>
 
-    <fieldset class="character-name">
-      <legend>Name your character</legend>
-      <label>
-        <input type="text" bind:value={form.name}>
-      </label>
-    </fieldset>
-
-    <fieldset class="stats">
-      <legend>Assign their stats</legend>
-      {#each statNames as statName}
-        <label>
-          <span class="name">{capitalize(statName)}</span>
-          <select bind:value={form[statName]} on:change={statChange}>
-            <option value={null}></option>
-            {#each statValues as statValue}
-              <option value={statValue}>{statValue}</option>
-            {/each}
-          </select>
-          <span class="stat-bonus"
-                class:bonus-positive={form[statName] != null && form[statName] >= 9}>{form[statName] == null ? "" : new Stat(form[statName]).bonus}</span>
-        </label>
-      {/each}
-    </fieldset>
-
-    {#if playbook !== null}
-      <div class="starting-moves">
-        {#if playbook.startingMoves.oneOf !== undefined}
-          <fieldset>
-            <legend>Start with one of&hellip;</legend>
-            {#each playbook.startingMoves.oneOf as move}
-              <div class="move move-select">
-                <input type="radio" value={move} bind:group={form.optionalStartingMove} class="move-selector">
-                <article>
+      {#if playbook !== null}
+        <div class="starting-moves">
+          {#if playbook.startingMoves.oneOf !== undefined}
+            <fieldset>
+              <legend>Start with one of&hellip;</legend>
+              {#each playbook.startingMoves.oneOf as move}
+                <div class="move move-select">
+                  <input type="radio" value={move} bind:group={form.optionalStartingMove} class="move-selector">
+                  <article>
+                    <h2>{move}</h2>
+                    {@html moveDescription(move)}
+                  </article>
+                </div>
+              {/each}
+            </fieldset>
+          {/if}
+          {#if playbook.startingMoves.allOf !== undefined}
+            <fieldset>
+              <legend>Start with all of&hellip;</legend>
+              {#each playbook.startingMoves.allOf as move}
+                <div class="move">
                   <h2>{move}</h2>
                   {@html moveDescription(move)}
-                </article>
-              </div>
-            {/each}
-          </fieldset>
-        {/if}
-        {#if playbook.startingMoves.allOf !== undefined}
-          <fieldset>
-            <legend>Start with all of&hellip;</legend>
-            {#each playbook.startingMoves.allOf as move}
-              <div class="move">
-                <h2>{move}</h2>
-                {@html moveDescription(move)}
-              </div>
-            {/each}
-          </fieldset>
-        {/if}
-      </div>
-    {/if}
+                </div>
+              {/each}
+            </fieldset>
+          {/if}
+        </div>
+      {/if}
 
-    <footer>
-      <button type="button" disabled={!valid} on:click={create}>Create</button>
-    </footer>
+      <footer>
+        <button type="button" disabled={!valid} on:click={create}>Create</button>
+      </footer>
 
-  </form>
-</section>
+    </form>
+  </section>
+</main>
 
 <style>
   .character-creation {

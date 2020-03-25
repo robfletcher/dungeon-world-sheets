@@ -21,6 +21,19 @@
     return playbook == null ? "" : playbook.moves.find(it => it.name === name).description;
   };
 
+  const randomizeStats = () => {
+    let values = statValues.slice();
+
+    for (let i = values.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [values[i], values[j]] = [values[j], values[i]];
+    }
+
+    statNames.forEach((it, i) => {
+      form[it] = values[i];
+    })
+  };
+
   const statChange = (event) => {
     const selectElements = [...event.target.form.getElementsByTagName("select")];
     let usedValues = [];
@@ -111,6 +124,9 @@
                   class:bonus-positive={form[statName] != null && form[statName] >= 9}>{form[statName] == null ? "" : new Stat(form[statName]).bonus}</span>
           </label>
         {/each}
+        <footer>
+          <button type="button" on:click={randomizeStats}>Randomize!</button>
+        </footer>
       </fieldset>
 
       {#if playbook !== null}
@@ -289,19 +305,23 @@
     @apply text-center;
   }
 
+  .stats footer {
+    @apply flex items-center justify-end col-span-2 w-full mt-2;
+  }
+
   .starting-moves {
     @apply col-span-2;
   }
 
-  footer {
+  form > footer {
     @apply flex items-center justify-end col-span-5 h-16 px-6;
   }
 
-  footer button {
+  form > footer button {
     @apply text-2xl;
   }
 
-  footer button[disabled] {
+  form > footer button[disabled] {
     @apply text-gray-500;
   }
 </style>

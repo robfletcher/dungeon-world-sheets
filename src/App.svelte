@@ -4,30 +4,32 @@
   import {character} from "./store";
   import CharacterCreation from "./CharacterCreation.svelte";
   import CharacterSheet from "./CharacterSheet.svelte";
-  import Home from "./Home.svelte";
+  import CharacterList from "./CharacterList.svelte";
   import {loadCharacter, setupDatabase, storeCharacter} from "./database";
   import router from "page";
 
   // routing setup
   let page;
-  router('/create', (context, next) => {
+  router('/create', () => {
     page = CharacterCreation;
     character.set(null);
   });
-  router('/character/:id', (context, next) => {
-    loadCharacter(context.params.id)
+  router('/character/:id', (context) => {
+    const id = context.params.id;
+    loadCharacter(id)
       .then((c) => {
         character.set(c);
         page = CharacterSheet;
       })
       .catch((error) => {
-        console.warn(`character ${context.params.id} not found`);
+        // TODO: implement 404 page
+        console.warn(`character ${id} not found`);
         router.redirect('/');
         character.set(null);
       });
   });
-  router('/', (context, next) => {
-    page = Home;
+  router('/', () => {
+    page = CharacterList;
     character.set(null);
   });
   router.start();

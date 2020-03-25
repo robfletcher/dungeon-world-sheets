@@ -83,3 +83,20 @@ export const allCharacters = () => {
     });
   });
 };
+
+export const deleteCharacter = (id) => {
+  return new Promise((resolve, reject) => {
+    setupDatabase().then((db) => {
+      let request = db
+        .transaction(['characters'], 'readwrite')
+        .objectStore('characters')
+        .delete(id);
+      request.onsuccess = () => {
+        resolve();
+      };
+      request.onerror = () => {
+        reject(request.error);
+      }
+    });
+  });
+};

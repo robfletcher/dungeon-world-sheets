@@ -2,7 +2,7 @@
   import Modal from './Modal.svelte';
 
   import {character} from "./store";
-  import {Gear} from "./gear";
+  import {Gear, standardGear} from "./gear";
   import IncrementableValue from "./IncrementableValue.svelte";
 
   let showModal = false;
@@ -70,6 +70,11 @@
       return c;
     });
   }
+
+  function chooseGear() {
+    gearForm.hasUses = gearForm.item.uses != null;
+    gearForm.tags = gearForm.item.tags.join(', ');
+  }
 </script>
 
 <section id="gear">
@@ -123,6 +128,21 @@
     <h1 slot="header">Manage Gear</h1>
 
     <fieldset>
+      <legend>Select standard gear</legend>
+      <select bind:value={gearForm.item} on:change={chooseGear}>
+        <option value={null}></option>
+        {#each standardGear as group}
+          <optgroup label="{group.group}">
+            {#each group.items as item}
+              <option value={item}>{item.name}</option>
+            {/each}
+          </optgroup>
+        {/each}
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Or&hellip;</legend>
       <label>
         <span>Item:</span>
         <input type="text" bind:value={gearForm.item.name} class="focus:outline-none focus:shadow-outline">
@@ -154,10 +174,6 @@
 <style>
   #gear {
     @apply relative col-span-3;
-  }
-
-  footer {
-    @apply absolute bottom-0 right-0;
   }
 
   #load .value {
@@ -217,7 +233,11 @@
   }
 
   fieldset {
-    @apply grid grid-cols-1 row-gap-2 m-2;
+    @apply grid grid-cols-1 row-gap-2 m-2 border-t border-gray-400;
+  }
+
+  legend {
+    @apply px-2 mx-auto;
   }
 
   fieldset > label {

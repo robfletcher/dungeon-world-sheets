@@ -109,12 +109,14 @@ export const theImmolator = {
     {
       name: "Burns Twice As Bright",
       requiresLevel: 2,
+      grants: ['Burns Half As Long'],
       description: '<p>When you <strong>channel the flames of fate</strong>, you may treat a missed roll as a 7-9 or a 7-9 result as a 10+. This may be a roll you or another character has made. Tell the GM something you’ve lost; an emotion, a memory or some innate piece of your being. You may not use this move again until you’ve used <em>Burns Half As Long</em>.</p>'
     },
 
     {
       name: "Burns Half As Long",
       requiresLevel: 2,
+      grants: ['Burns Twice As Bright'],
       description: '<p>You gain this move when you gain <em>Burns Twice As Bright</em>.</p>' +
         '<p>When you <strong>sacrifice a victory to the flames of fate</strong>, treat any roll of 10+ as a miss.</p>'
     },

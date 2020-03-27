@@ -173,6 +173,7 @@ export const theRanger = {
     {
       name: "Half-Elven",
       requiresLevel: 2,
+      grants: ['Elf', 'Human'],
       description: '<p><strong>You may take this move only if it is your first advancement.</strong></p>' +
         '<p>Somewhere in your lineage lies mixed blood and it begins to show its presence. You gain the elf starting move if you took the human one at character creation or vice versa.</p>'
     },

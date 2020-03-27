@@ -39,6 +39,14 @@
       c.level++;
       c[selectedStat].value++;
       c.moves.push({name: selectedMove});
+      const move = $character.playbook.moves.find(it => it.name === selectedMove);
+      if (move.grants !== undefined) {
+        move.grants.forEach(it => {
+          if (!c.moves.some(m => m.name === it)) {
+            c.moves.push({name: it});
+          }
+        });
+      }
       return c;
     });
     selectedStat = null;

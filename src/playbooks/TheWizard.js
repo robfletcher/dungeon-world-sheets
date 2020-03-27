@@ -49,6 +49,10 @@ export const theWizard = {
   ],
   baseLoad: 7,
   startingMoves: {
+    raceOptions: [
+      'Elf',
+      'Human'
+    ],
     allOf: [
       "Cast A Spell (INT)",
       "Prepare Spells",
@@ -58,6 +62,14 @@ export const theWizard = {
     ]
   },
   moves: [
+    {
+      name: 'Elf',
+      description: '<p>Magic is as natural as breath to you. <em>Detect Magic</em> is a cantrip for you.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>Choose one cleric spell. You can cast it as if it was a wizard spell</p>'
+    },
     {
       name: "Cast A Spell (INT)",
       description: '<p>When you <strong>release a spell you’ve prepared</strong>, roll+INT.</p>' +

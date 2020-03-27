@@ -48,6 +48,9 @@ export const theBarbarian = {
   ],
   baseLoad: 8,
   startingMoves: {
+    raceOptions: [
+      'Outsider'
+    ],
     allOf: [
       "The Upper Hand",
       "What Are You Waiting For?",
@@ -60,6 +63,10 @@ export const theBarbarian = {
     ]
   },
   moves: [
+    {
+      name: 'Outsider',
+      description: '<p>You may be elf, dwarf, halfling, or human, but you and your people are not from around here. At the beginning of each session, the GM will <strong>ask you something about your homeland</strong>, why you left, or what you left behind. If you answer them, mark XP.</p>'
+    },
     {
       name: "Full Plate And Packing Steel",
       description: '<p>You ignore the clumsy tag on armor you wear.</p>'

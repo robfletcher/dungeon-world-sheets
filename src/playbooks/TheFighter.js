@@ -48,6 +48,12 @@ export const theFighter = {
   ],
   baseLoad: 12,
   startingMoves: {
+    raceOptions: [
+      'Dwarf',
+      'Elf',
+      'Halfling',
+      'Human'
+    ],
     allOf: [
       "Signature Weapon",
       "Bend Bars, Lift Gates",
@@ -55,6 +61,22 @@ export const theFighter = {
     ]
   },
   moves: [
+    {
+      name: 'Dwarf',
+      description: '<p>When you <strong>share a drink with someone</strong>, you may parley with them using CON instead of CHA.</p>'
+    },
+    {
+      name: 'Elf',
+      description: '<p>Choose one weapon—you can always treat weapons of that type as if they had the precise tag.</p>'
+    },
+    {
+      name: 'Halfling',
+      description: '<p>When you <strong>Defy Danger</strong> and use your small size to your advantage, take +1.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>Once per battle you may reroll a single damage roll (yours or someone else’s).</p>'
+    },
     {
       name: "Signature Weapon",
       description: '<p>This is your weapon. There are many like it, but this one is yours. Your weapon is your best friend. It is your life. You master it as you master your life. Your weapon, without you, is useless. Without your weapon, you are useless. You must wield your weapon true.</p>' +

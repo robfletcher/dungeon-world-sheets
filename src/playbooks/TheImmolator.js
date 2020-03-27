@@ -48,6 +48,10 @@ export const theImmolator = {
   ],
   baseLoad: 9,
   startingMoves: {
+    raceOptions: [
+      'Human',
+      'Salamander'
+    ],
     allOf: [
       "Burning Brand",
       "Fighting Fire with Fire",
@@ -57,6 +61,14 @@ export const theImmolator = {
     ]
   },
   moves: [
+    {
+      name: 'Human',
+      description: '<p>When you <strong>Make Camp next to a large, open flame</strong>, regain all of your HP.\n</p>'
+    },
+    {
+      name: 'Salamander',
+      description: '<p>Non-magical heat and fire cannot harm you.</p>'
+    },
     {
       name: "Burning Brand",
       description: '<p>When you <strong>conjure a weapon of pure flame</strong>, roll+CON. On a 10+ choose two of the following tags, on a 7-9 choose one. You may treat your INT as your STR or DEX in regards to making attacks with this weapon. The weapon always begins with the <em>fiery</em>, <em>touch</em>, <em>dangerous</em>, and <em>3 uses</em> tags. Each attack with the weapon consumes one use.</p>' +

@@ -47,6 +47,10 @@ export const thePriest = {
   ],
   baseLoad: 7,
   startingMoves: {
+    raceOptions: [
+      'Dwarf',
+      'Human'
+    ],
     allOf: [
       "Invocation",
       "Divine Ward",
@@ -54,6 +58,14 @@ export const thePriest = {
     ]
   },
   moves: [
+    {
+      name: 'Dwarf',
+      description: '<p>When you <strong>use your Divine Ward on someone else</strong>, you take +1 Armor forward.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>When you <strong>Defy Danger from something related to your deity\'s domain</strong>, take +1.</p>'
+    },
     {
       name: "Invocation",
       description: '<p>When you <strong>call out for your deity\'s aid in a time of need</strong>, choose a Blessing and roll +WIS.</p>' +

@@ -47,6 +47,10 @@ export const theBard = {
   ],
   baseLoad: 9,
   startingMoves: {
+    raceOptions: [
+      'Elf',
+      'Human'
+    ],
     allOf: [
       "Arcane Art",
       "Charming & Open",
@@ -55,6 +59,14 @@ export const theBard = {
     ]
   },
   moves: [
+    {
+      name: 'Elf',
+      description: '<p>When you <strong>enter an important location</strong> (your call) you can ask the GM for one fact from the history of that location.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>When you <strong>first enter a civilized settlement</strong> someone who respects the custom of hospitality to minstrels will take you in as their guest.</p>'
+    },
     {
       name: "Arcane Art",
       description: '<p>When you <strong>weave a performance into a basic spell</strong>, choose an ally and an effect:</p>' +

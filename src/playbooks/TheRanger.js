@@ -47,6 +47,10 @@ export const theRanger = {
   ],
   baseLoad: 11,
   startingMoves: {
+    raceOptions: [
+      'Elf',
+      'Human'
+    ],
     allOf: [
       "Hunt and Track",
       "Called Shot",
@@ -54,6 +58,14 @@ export const theRanger = {
     ]
   },
   moves: [
+    {
+      name: 'Elf',
+      description: '<p>When you <strong>Undertake A Perilous Journey</strong> through the wilderness and you scout ahead, you succeed as if you rolled a 10+.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>You are equally at home in wilds, wastes, and townships. You can forage in barren lands or steadings, not just in the wild.</p>'
+    },
     {
       name: "Hunt and Track",
       description: '<p>When you <strong>follow a trail of clues left behind by passing creatures</strong>, roll+WIS.</p>' +
@@ -69,7 +81,6 @@ export const theRanger = {
         '</li>' +
         '</ul>'
     },
-
     {
       name: "Called Shot",
       description: '<p>When you <strong>attack a defenseless or surprised enemy at range</strong>, you can choose to deal your damage or name your target and roll+DEX.</p>' +

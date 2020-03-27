@@ -22,6 +22,7 @@
 
   $: availableMoves = $character.playbook.moves
     .filter(move => !$character.moves.map(it => it.name).includes(move.name))
+    .filter(move => !$character.playbook.startingMoves.raceOptions.includes(move.name))
     .filter(move => move.requiresLevel === undefined || ($character.level + 1) >= move.requiresLevel)
     .filter(move => move.requiresMove === undefined || $character.moves.some(it => it.name === move.requiresMove))
     .filter(move => move.replacesMove === undefined || $character.moves.some(it => it.name === move.replacesMove));

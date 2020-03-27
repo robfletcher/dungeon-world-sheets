@@ -47,6 +47,11 @@ export const theTemplar = {
   ],
   baseLoad: 12,
   startingMoves: {
+    raceOptions: [
+      'Dwarf',
+      'Elf',
+      'Human'
+    ],
     allOf: [
       "It's Not Them You Should Be Afraid Of",
       "I Am The Law",
@@ -55,6 +60,18 @@ export const theTemplar = {
     ]
   },
   moves: [
+    {
+      name: 'Human',
+      description: '<p>You tend to ignore wounds you shouldn\'t. When you <strong>suffer a debility</strong>, you may take 2 damage to take +1 forward to your next roll using that stat.</p>'
+    },
+    {
+      name: 'Elf',
+      description: '<p>You cling to life with sheer willpower. You roll +WIS instead of +CON when using Unrelenting.</p>'
+    },
+    {
+      name: 'Dwarf',
+      description: '<p>You\'re tough, so tough it\'s scary. You roll +CON instead of +CHA when using Inquisition.</p>'
+    },
     {
       name: "It's Not Them You Should Be Afraid Of",
       description: '<p>When you <strong>are at an ally\'s back and they flounder</strong>, you can give them some "encouragement." You can <em>Aid</em> an ally with any action as long as they can hear you threatening them. If you are also close enough you could hurt them, take +1 to your <em>Aid</em> roll.</p>'

@@ -47,6 +47,10 @@ export const theCleric = {
   ],
   baseLoad: 10,
   startingMoves: {
+    raceOptions: [
+      'Dwarf',
+      'Human'
+    ],
     allOf: [
       "Deity",
       "Divine Guidance",
@@ -56,6 +60,14 @@ export const theCleric = {
     ]
   },
   moves: [
+    {
+      name:  'Dwarf',
+      description: '<p>You are one with stone. When you <strong>Commune</strong> you are also granted a special version of <em>Words of the Unspeaking</em> as a rote which only works on stone.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>Your faith is diverse. Choose one wizard spell. You can cast and be granted that spell as if it was a cleric spell.</p>'
+    },
     {
       name: "Deity",
       description: '<p>You serve and worship some deity or power which grants you spells. Give your god a name and choose your deity’s domain:</p>' +

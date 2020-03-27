@@ -47,6 +47,10 @@ export const theMage = {
   ],
   baseLoad: 7,
   startingMoves: {
+    raceOptions: [
+      'Elf',
+      'Human'
+    ],
     allOf: [
       "Arcane Learning",
       "Cast A Spell (INT)",
@@ -58,6 +62,14 @@ export const theMage = {
     ]
   },
   moves: [
+    {
+      name: 'Elf',
+      description: '<p>Whenever a magical effect happens close by, you can feel it, and tell roughly which direction and how far it is from you.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>When you <strong>Parley</strong>, you can always offer to cast a spell as <em>Leverage</em>.</p>'
+    },
     {
       name: "Arcane Learning",
       description: '<p>You are a font of esoteric knowledge. When you <strong>Spout Lore or Discern Realities about something magical or otherwise arcane</strong>, on a 10+ the GM will also tell you a little-known secret about the subject.</p>'

@@ -47,6 +47,10 @@ export const theThief = {
   ],
   baseLoad: 9,
   startingMoves: {
+    raceOptions: [
+      'Halfling',
+      'Human'
+    ],
     allOf: [
       "Trap Expert",
       "Tricks Of The Trade",
@@ -56,6 +60,14 @@ export const theThief = {
     ]
   },
   moves: [
+    {
+      name: 'Halfling',
+      description: '<p>When you <strong>attack with a ranged weapon</strong>, deal +2 damage.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>You are a professional. When you <strong>Spout Lore or Discern Realities</strong> about criminal activities, take +1.</p>'
+    },
     {
       name: "Trap Expert",
       description: '<p>When you <strong>spend a moment to survey a dangerous area</strong>, roll+DEX.</p>' +

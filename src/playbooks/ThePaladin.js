@@ -48,6 +48,9 @@ export const thePaladin = {
   ],
   baseLoad: 12,
   startingMoves: {
+    raceOptions: [
+      'Human'
+    ],
     allOf: [
       "Quest",
       "Lay On Hands",
@@ -56,6 +59,10 @@ export const thePaladin = {
     ]
   },
   moves: [
+    {
+      name: 'Human',
+      description: '<p>When you <strong>pray for guidance, even for a moment and ask "what here is evil?"</strong> the GM will tell you, honestly.</p>'
+    },
     {
       name: "Quest",
       description: '<p>When you <strong>dedicate yourself to a mission</strong> through prayer and ritual cleansing, state what you set out to do:</p>' +

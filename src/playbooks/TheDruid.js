@@ -43,6 +43,11 @@ export const theDruid = {
   ],
   baseLoad: 6,
   startingMoves: {
+    raceOptions: [
+      'Elf',
+      'Human',
+      'Halfling'
+    ],
     allOf: [
       "Born Of The Soil",
       "By Nature Sustained",
@@ -52,6 +57,18 @@ export const theDruid = {
     ]
   },
   moves: [
+    {
+      name: 'Elf',
+      description: '<p>The sap of the elder trees flows within you. In addition to any other attunements, the <em>Great Forest</em> is always considered your land.</p>'
+    },
+    {
+      name: 'Human',
+      description: '<p>As your people learned to bind animals to field and farm, so too are you bound to them. You may always take the shape of any domesticated animal, in addition to your normal options.</p>'
+    },
+    {
+      name: 'Halfling',
+      description: '<p>You sing the healing songs of spring and brook. When you make camp, you and your allies heal +1d6.</p>'
+    },
     {
       name: "Born Of The Soil",
       description: '<p>You learned your magic in a place whose spirits are strong and ancient and they’ve marked you as one of their own. No matter where you go, they live within you and allow you to take their shape. Choose one of the following. It is the land to which you are attuned—when shapeshifting you may take the shape of any animal who might live in your Land.</p>' +

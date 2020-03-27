@@ -10,6 +10,7 @@
   const statValues = [16, 15, 13, 12, 9, 8];
 
   let form = {
+    raceMove: null,
     optionalStartingMove: null
   };
   statNames.forEach((it, i) => form[it] = null);
@@ -60,6 +61,7 @@
       form.wisdom,
       form.charisma
     );
+    c.moves.push({name: form.raceMove});
     if (form.optionalStartingMove !== null) {
       c.moves.push({name: form.optionalStartingMove});
     }
@@ -76,6 +78,7 @@
   $: valid = form.name != null && form.name.length > 0 &&
     statNames.every(it => form[it] != null) &&
     form.characterClass != null &&
+    form.raceMove != null &&
     (playbook.startingMoves.oneOf === undefined || form.optionalStartingMove != null);
 
   const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
@@ -130,6 +133,20 @@
       </fieldset>
 
       {#if playbook !== null}
+        <div class="racial-moves">
+          <fieldset>
+            <legend>Choose a race</legend>
+            {#each playbook.startingMoves.raceOptions as move}
+              <div class="move move-select">
+                <input type="radio" value={move} bind:group={form.raceMove} class="move-selector">
+                <article>
+                  <h2>{move}</h2>
+                  {@html moveDescription(move)}
+                </article>
+              </div>
+            {/each}
+          </fieldset>
+        </div>
         <div class="starting-moves">
           {#if playbook.startingMoves.oneOf !== undefined}
             <fieldset>
@@ -309,7 +326,7 @@
     @apply flex items-center justify-end col-span-2 w-full mt-2;
   }
 
-  .starting-moves {
+  .starting-moves, .racial-moves {
     @apply col-span-2;
   }
 

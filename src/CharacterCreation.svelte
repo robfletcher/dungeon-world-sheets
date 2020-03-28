@@ -32,11 +32,13 @@
 
     statNames.forEach((it, i) => {
       form[it] = values[i];
-    })
+    });
+
+    setTimeout(statChange);
   };
 
-  const statChange = (event) => {
-    const selectElements = [...event.target.form.getElementsByTagName("select")];
+  const statChange = () => {
+    const selectElements = document.querySelectorAll('.stats select');
     let usedValues = [];
     selectElements.forEach(it => {
       if (it.value !== "null") {

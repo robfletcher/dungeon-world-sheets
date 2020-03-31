@@ -45,6 +45,16 @@ export const theThief = {
       description: "Get someone to act on false information"
     }
   ],
+  bonds: [
+    'I stole something from ____',
+    '____ has my back when things go wrong.',
+    '____ knows incriminating details about me.',
+    '____ and I have a con running.',
+    '____ and I are the only survivors of a dubious adventure.',
+    '____ helped me steal something really valuable from someone who is really dangerous.',
+    '____ knows where I stashed some loot.',
+    '____ still owes me for some stuff they were supposed to fence for me.',
+  ],
   baseLoad: 9,
   startingMoves: {
     raceOptions: [

@@ -46,6 +46,16 @@ export const thePaladin = {
       description: "Suffer pain and hardship so that someone does not need to."
     }
   ],
+  bonds:  [
+    '____\'s misguided behavior endangers their very soul!',
+    '____ has stood by me in battle and can be trusted completely.',
+    'I respect the beliefs of ____ but hope they will someday see the true way.',
+    '____ is a brave soul, I have much to learn from them.',
+    'For what they have done, I have sworn to guide and protect ____.',
+    'I have heard of ____\'s exploits and am suitably impressed.',
+    '____ gave me food and shelter when I had nothing.',
+    '____ obviously doesn\'t trust me, and this needs to change.',
+  ],
   baseLoad: 12,
   startingMoves: {
     raceOptions: [

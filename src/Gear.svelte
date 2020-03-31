@@ -173,7 +173,7 @@
 
 <style>
   #gear {
-    @apply relative col-span-3;
+    @apply relative col-span-2;
   }
 
   #load .value {

@@ -18,6 +18,7 @@ export class Character {
     this.armor = 0;
     this.look = {};
     this.drive = {};
+    this.bonds = [];
     this.coin = 0;
     this.gear = [];
     this.moves = [];

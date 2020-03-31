@@ -116,6 +116,10 @@
     @apply border-b-2 border-solid border-gray-400 bg-gray-100;
   }
 
+  button[disabled] {
+    @apply text-gray-500;
+  }
+
   .bonus-positive {
     /* this is stupid but rollup (or something) discards the ::before rule if there's no rule for the base selector */
     cursor: inherit;

@@ -104,7 +104,9 @@
             </label>
           {/each}
         </div>
-        <div class="playbook-description">{@html playbookDescription}</div>
+        <div class="playbook-description">
+          {@html playbookDescription}
+        </div>
       </fieldset>
 
       <fieldset class="character-name">
@@ -208,11 +210,11 @@
   }
 
   .playbook {
-    @apply row-span-3 col-span-3 mr-0;
+    @apply col-span-5 mr-0 grid grid-cols-5;
   }
 
   .playbook-list {
-    @apply grid grid-cols-3 col-gap-2;
+    @apply col-span-3 grid grid-cols-3 col-gap-2 content-start;
   }
 
   .playbook-list label {
@@ -289,9 +291,8 @@
   }
 
   .playbook-description {
-    @apply m-2 text-lg;
+    @apply col-span-2 text-lg;
     columns: 2;
-    min-height: 10rem;
   }
 
   .character-name {

@@ -45,6 +45,12 @@ export const thePriest = {
       description: "Start trouble (for yourself or others) by adhering strictly to doctrine.",
     }
   ],
+  bonds: [
+    '____ has insulted my deity; I do not trust them.',
+    'I trust ____ implicitly; they are good and faithful.',
+    '____ is in constant danger, I will keep them safe.',
+    'I am working on converting ____ to my faith.',
+  ],
   baseLoad: 7,
   startingMoves: {
     raceOptions: [

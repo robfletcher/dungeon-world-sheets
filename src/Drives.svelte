@@ -31,9 +31,9 @@
   }
 </script>
 
-<section id="drives">
+<section id="drive">
   <header>
-    <h1>Drives</h1>
+    <h1>Drive</h1>
     <button on:click={editDrive}>Edit</button>
   </header>
   <h2>{$character.drive.name || ""}</h2>
@@ -42,7 +42,7 @@
 
 {#if showModal}
   <Modal on:cancel={() => showModal = false} on:ok={updateDrive}>
-    <h1 slot="header">Select Drive</h1>
+    <h1 slot="header">Edit Drive</h1>
     <fieldset>
         {#each $character.playbook.drives as it, i}
           <label>

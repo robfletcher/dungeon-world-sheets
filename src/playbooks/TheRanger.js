@@ -45,6 +45,16 @@ export const theRanger = {
       description: "Show someone a place or thing of natural beauty that they have not seen before."
     }
   ],
+  bonds: [
+    'I have guided ____ before and they owe me for it.',
+    '____ is a friend of nature, so I will be their friend as well.',
+    '____ has no respect for nature, so I have no respect for them.',
+    '____ does not understand life in the wild, so I will teach them.',
+    '____ and I took down a great beast once, and paid for it dearly.',
+    '____ left me in a pinch when they were supposed to come through for me.',
+    '____ once talked me into guiding some halflings on the run through dangerous territory, and never thanked me properly for it.',
+    '____ was once my enemy, but we’ve since reconciled.',
+  ],
   baseLoad: 11,
   startingMoves: {
     raceOptions: [

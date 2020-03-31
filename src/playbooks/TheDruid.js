@@ -41,6 +41,16 @@ export const theDruid = {
       description: "Deface, destroy, or bury a symbol or artifice of civilization."
     }
   ],
+  bonds: [
+    '____ smells more like prey than a hunter.',
+    'The spirits spoke to me of a great danger that follows ____.',
+    'I have showed ____ a secret rite of the land.',
+    '____ has tasted my blood and I theirs. We are bound by it.',
+    '____ and I are tracking the passage of a terrible monster through this land.',
+    '____ has fought in defence of my lands before and has my respect.',
+    '____ is familiar with the sickness that infects the land, which must be purged.',
+    '____ seems suitably impressed by my powers and I just can’t help showing off in front of them.'
+  ],
   baseLoad: 6,
   startingMoves: {
     raceOptions: [

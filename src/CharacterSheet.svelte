@@ -9,6 +9,7 @@
   import IncrementableValue from "./IncrementableValue.svelte";
   import LevelUp from "./LevelUp.svelte";
   import Move from "./Move.svelte";
+  import Bonds from "./Bonds.svelte";
 
   let showLevelUpModal = false;
 
@@ -55,6 +56,7 @@
   <Combat/>
   <Look/>
   <Drives/>
+  <Bonds/>
   <Gear/>
 
   <section id="moves">

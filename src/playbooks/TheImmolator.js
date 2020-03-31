@@ -46,6 +46,11 @@ export const theImmolator = {
       description: "Sacrifice an unwilling victim to the flames."
     }
   ],
+  bonds: [
+    '____ has felt the hellish touch of fire, now they know my strength.',
+    'I will teach ____ the true meaning of sacrifice.',
+    'I cast something into the fire for ____ and still owe them their due.',
+  ],
   baseLoad: 9,
   startingMoves: {
     raceOptions: [

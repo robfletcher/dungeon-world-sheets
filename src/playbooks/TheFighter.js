@@ -46,6 +46,16 @@ export const theFighter = {
       description: "Avenge a wrong or hurt done to you or your allies."
     }
   ],
+  bonds: [
+    '____ owes me their life, whether they admit it or not.',
+    'I have sworn to protect ____.',
+    'I worry about the ability of ____ to survive in the dungeon.',
+    '____ is soft, but I will make them hard like me.',
+    '____ and I were both hired by a boss who turned on us.',
+    '____ proved a worthy ally in the last war, even considering that one mistake they made.',
+    '____ saw me kill someone important.',
+    '____ stood up to me and got away with it. That’s how it is, I guess.',
+  ],
   baseLoad: 12,
   startingMoves: {
     raceOptions: [

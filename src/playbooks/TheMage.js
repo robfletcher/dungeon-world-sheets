@@ -45,6 +45,11 @@ export const theMage = {
       description: "Get an NPC to acknowledge your superiority."
     }
   ],
+  bonds: [
+    'I have shown ____ the power of the arcane arts.',
+    'I suspect ____ fears what they do not understand.',
+    '____ knows the secret to my powers'
+  ],
   baseLoad: 7,
   startingMoves: {
     raceOptions: [

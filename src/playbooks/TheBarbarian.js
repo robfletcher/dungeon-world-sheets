@@ -46,6 +46,16 @@ export const theBarbarian = {
       description: "Refuse an order or request that is beneath you."
     }
   ],
+  bonds: [
+    '____ is puny and foolish, but amusing to me.',
+    '____\'s ways are strange and confusing.',
+    '____ is always getting into trouble - I must protect them from themselves.',
+    '____ shares my hunger for glory; the earth will tremble at our passing!',
+    '____ does not understand me, or my culture. I will explain myself to them, no matter how long it takes.',
+    '____ got me involved in a questionable adventure and I’m having second thoughts about it now.',
+    '____ has seen the lands of my home, more recently than me.',
+    '____ showed me how to get high.'
+  ],
   baseLoad: 8,
   startingMoves: {
     raceOptions: [

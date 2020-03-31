@@ -47,6 +47,14 @@ export const theWizard = {
       description: "Get an NPC to acknowledge your superiority."
     }
   ],
+  bonds: [
+    '____ will play an important role in the events to come. I have foreseen it!',
+    '____ is keeping an important secret from me.',
+    '____ is woefully misinformed about the world; I will teach them all that I can.',
+    '____ and I shared a mystical vision, after drinking the blood of the demon world together.',
+    '____ has supplied me with forbidden tomes.',
+    '____ once brought me safely through the Haunted Forest.',
+  ],
   baseLoad: 7,
   startingMoves: {
     raceOptions: [

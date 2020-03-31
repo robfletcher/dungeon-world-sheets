@@ -45,6 +45,16 @@ export const theCleric = {
       description: "Start trouble (for yourself or others) by adhering strictly to doctrine.",
     }
   ],
+  bonds: [
+    '____ has insulted my deity; I do not trust them.',
+    '____ is a good and faithful person; I trust them implicitly.',
+    '____ is in constant danger, I will keep them safe.',
+    'I am working on converting ____ to my faith.',
+    'I have intervened with other priests on ____\'s behalf before.',
+    'My deity has marked out ____ as someone important. I must help them fulfill their destiny.',
+    '____ has been through hardships that would break me. They can stand against the darkness I see looming over the world.',
+    '____ has worked with servants of my deity before.',
+  ],
   baseLoad: 10,
   startingMoves: {
     raceOptions: [
@@ -61,7 +71,7 @@ export const theCleric = {
   },
   moves: [
     {
-      name:  'Dwarf',
+      name: 'Dwarf',
       description: '<p>You are one with stone. When you <strong>Commune</strong> you are also granted a special version of <em>Words of the Unspeaking</em> as a rote which only works on stone.</p>'
     },
     {

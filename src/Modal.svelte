@@ -60,6 +60,7 @@
   <footer>
     <button autofocus on:click={ok} disabled={!valid}>Ok</button>
     <button autofocus on:click={cancel}>Cancel</button>
+    <slot name="buttons"></slot>
   </footer>
 </div>
 

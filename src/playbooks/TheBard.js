@@ -45,6 +45,20 @@ export const theBard = {
       description: "Expose someone else to a thing of beauty, majesty, or awe."
     }
   ],
+  bonds: [
+    'This is not my first adventure with ____.',
+    'I sang stories of ____ long before I ever met them in person.',
+    '____ is often the butt of my jokes.',
+    'I am writing a ballad about the adventures of ____.',
+    '____ trusted me with a secret.',
+    '____ does not trust me, and for good reason.',
+    'I told ____ all about performing inside a rich noble’s home and saw the greed in their eyes.',
+    '____ helped me make some important contacts. I owe them.',
+    '____ is my lover, or was, or would have been, or… it’s complicated.',
+    '____ knows I have a secret map.',
+    '____ started a fight while I was performing, and payback’s a bitch.',
+    '____ would be an excellent subject for a ballad, if only they got into more adventures. So I’ll just help them out with that.'
+  ],
   baseLoad: 9,
   startingMoves: {
     raceOptions: [

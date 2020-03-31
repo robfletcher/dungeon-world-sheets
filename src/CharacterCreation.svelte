@@ -109,6 +109,19 @@
         </div>
       </fieldset>
 
+      <fieldset class="racial-moves">
+        <legend>Choose a race</legend>
+        {#each (playbook == null ? [] : playbook.startingMoves.raceOptions) as move}
+          <div class="move move-select">
+            <input type="radio" value={move} bind:group={form.raceMove} class="move-selector">
+            <article>
+              <h2>{move}</h2>
+              {@html moveDescription(move)}
+            </article>
+          </div>
+        {/each}
+      </fieldset>
+
       <fieldset class="character-name">
         <legend>Name your character</legend>
         <label>
@@ -136,48 +149,30 @@
         </footer>
       </fieldset>
 
-      {#if playbook !== null}
-        <div class="racial-moves">
-          <fieldset>
-            <legend>Choose a race</legend>
-            {#each playbook.startingMoves.raceOptions as move}
-              <div class="move move-select">
-                <input type="radio" value={move} bind:group={form.raceMove} class="move-selector">
-                <article>
-                  <h2>{move}</h2>
-                  {@html moveDescription(move)}
-                </article>
-              </div>
-            {/each}
-          </fieldset>
-        </div>
-        <div class="starting-moves">
-          {#if playbook.startingMoves.oneOf !== undefined}
-            <fieldset>
-              <legend>Start with one of&hellip;</legend>
-              {#each playbook.startingMoves.oneOf as move}
-                <div class="move move-select">
-                  <input type="radio" value={move} bind:group={form.optionalStartingMove} class="move-selector">
-                  <article>
-                    <h2>{move}</h2>
-                    {@html moveDescription(move)}
-                  </article>
-                </div>
-              {/each}
-            </fieldset>
-          {/if}
-          {#if playbook.startingMoves.allOf !== undefined}
-            <fieldset>
-              <legend>Start with all of&hellip;</legend>
-              {#each playbook.startingMoves.allOf as move}
-                <div class="move">
-                  <h2>{move}</h2>
-                  {@html moveDescription(move)}
-                </div>
-              {/each}
-            </fieldset>
-          {/if}
-        </div>
+      {#if playbook !== null && playbook.startingMoves.oneOf !== undefined}
+        <fieldset class="starting-moves">
+          <legend>Start with one of&hellip;</legend>
+          {#each playbook.startingMoves.oneOf as move}
+            <div class="move move-select">
+              <input type="radio" value={move} bind:group={form.optionalStartingMove} class="move-selector">
+              <article>
+                <h2>{move}</h2>
+                {@html moveDescription(move)}
+              </article>
+            </div>
+          {/each}
+        </fieldset>
+      {/if}
+      {#if playbook !== null &&  playbook.startingMoves.allOf !== undefined}
+        <fieldset class="starting-moves">
+          <legend>Start with all of&hellip;</legend>
+          {#each playbook.startingMoves.allOf as move}
+            <div class="move">
+              <h2>{move}</h2>
+              {@html moveDescription(move)}
+            </div>
+          {/each}
+        </fieldset>
       {/if}
 
       <footer>
@@ -194,7 +189,13 @@
   }
 
   .character-creation form {
-    @apply grid grid-cols-5 col-gap-0 pt-4;
+    @apply flex flex-col pt-4;
+  }
+
+  .racial-moves {
+    @apply mx-auto;
+    columns: 2;
+    max-width: 75%;
   }
 
   fieldset {
@@ -210,7 +211,7 @@
   }
 
   .playbook {
-    @apply col-span-5 mr-0 grid grid-cols-5;
+    @apply grid grid-cols-5;
   }
 
   .playbook-list {
@@ -291,12 +292,12 @@
   }
 
   .playbook-description {
-    @apply col-span-2 text-lg;
+    @apply col-span-2 text-lg ml-4;
     columns: 2;
   }
 
   .character-name {
-    @apply grid items-center col-span-2;
+    @apply mx-auto grid items-center;
   }
 
   .character-name label {
@@ -308,7 +309,7 @@
   }
 
   .stats {
-    @apply col-span-2 grid grid-cols-2 col-gap-2 row-gap-0;
+    @apply mx-auto grid grid-cols-2 col-gap-2 row-gap-0;
     justify-items: start;
   }
 
@@ -329,8 +330,10 @@
     @apply flex items-center justify-end col-span-2 w-full mt-2;
   }
 
-  .starting-moves, .racial-moves {
-    @apply col-span-2;
+  .starting-moves {
+    @apply mx-auto;
+    max-width: 75%;
+    columns: 2;
   }
 
   form > footer {

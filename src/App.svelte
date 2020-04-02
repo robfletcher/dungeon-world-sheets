@@ -8,6 +8,9 @@
   import {loadCharacter, setupDatabase, storeCharacter} from "./database";
   import router from "page";
 
+  import PouchDB from "pouchdb-browser";
+  let db = new PouchDB('characters');
+
   // routing setup
   let page;
   router('/create', () => {

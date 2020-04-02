@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import {terser} from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
+import builtins from 'rollup-plugin-node-builtins'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -32,6 +33,7 @@ export default {
     // some cases you'll need additional configuration -
     // consult the documentation for details:
     // https://github.com/rollup/plugins/tree/master/packages/commonjs
+    builtins(),
     resolve({
       browser: true,
       dedupe: ['svelte']

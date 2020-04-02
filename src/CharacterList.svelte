@@ -26,11 +26,11 @@
     <ul>
       {#each characterList as character}
         <li>
-          <a href="/character/{character.id}">
+          <a href="/character/{character._id}">
             <strong>{character.name} {character.characterClass}</strong>
           </a>
           Level: {character.level}
-          <button type="button" on:click={() => handleDelete(character.id)}>Delete</button>
+          <button type="button" on:click={() => handleDelete(character._id)}>Delete</button>
         </li>
       {/each}
     </ul>

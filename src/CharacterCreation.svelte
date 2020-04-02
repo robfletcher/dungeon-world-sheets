@@ -70,11 +70,11 @@
     playbook.startingMoves.allOf.forEach(name => {
       c.moves.push({name: name});
     });
-    c.id = shortid.generate();
+    c._id = shortid.generate();
 
     storeCharacter(c);
 
-    router.redirect(`/character/${c.id}`);
+    router.redirect(`/character/${c._id}`);
   };
 
   $: valid = form.name != null && form.name.length > 0 &&

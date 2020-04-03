@@ -29,7 +29,7 @@
     <ul>
       {#each $characters as character}
         <li>
-          <a href="/character/{character._id}">
+          <a href="/{game._id}/character/{character._id}">
             <strong>{character.name} {character.characterClass}</strong>
           </a>
           Level: {character.level}

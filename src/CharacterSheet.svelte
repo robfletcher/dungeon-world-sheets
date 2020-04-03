@@ -1,6 +1,7 @@
 <script>
   import {onDestroy, onMount} from "svelte";
   import {writable} from "svelte/store";
+  import {db} from './store';
   import Stat from "./Stat.svelte";
   import Look from "./Look.svelte";
   import Drives from "./Drives.svelte";
@@ -23,12 +24,21 @@
   let unsubscriber;
   onMount(() => {
     console.log('mounting character sheet page');
-    unsubscriber = character.subscribe(it => {
-      console.log('detected update', it)
+    unsubscriber = character.subscribe(c => {
+      console.log('detected update', c);
+      const i = game.characters.findIndex(it => it._id === c._id);
+      game.characters[i] = c;
+      db
+        .put(game)
+        .then(response => {
+          console.log('character updated in game', response);
+          game._rev = response.rev;
+        })
+        .catch(error => console.warn('character update failed', error));
     });
   });
 
-  onDestroy(() =>  {
+  onDestroy(() => {
     console.log('destroying character sheet page');
     if (typeof unsubscriber === 'function') {
       unsubscriber();
@@ -90,7 +100,7 @@
   </section>
 </main>
 
-<LevelUp  character={character} bind:show={showLevelUpModal}/>
+<LevelUp character={character} bind:show={showLevelUpModal}/>
 
 <style>
   #stats {

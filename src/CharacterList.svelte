@@ -1,17 +1,22 @@
 <script>
+  import {get} from 'svelte/store';
+  import {gameStore} from './store';
   import {allCharacters, deleteCharacter} from "./database";
   import {onMount} from "svelte";
 
   $: characterList = [];
 
+  let game = get(gameStore);
+  console.log(game);
+
   const refreshCharacterList = () => {
-    allCharacters().then(list => {
+    allCharacters(game._id).then(list => {
       characterList = list
     });
   };
 
-  const handleDelete = (id) => {
-    deleteCharacter(id)
+  const handleDelete = id => {
+    deleteCharacter(game._id, id)
       .then(refreshCharacterList);
   };
 
@@ -20,7 +25,7 @@
 
 <main class="container">
   <header>
-    <h1>Dungeon World Characters</h1>
+    <h1>{game.name} Characters</h1>
   </header>
   <section class="character-list">
     <ul>
@@ -35,7 +40,7 @@
       {/each}
     </ul>
     <footer>
-      <a href="/create">Create a new character</a>
+      <a href="/{game._id}/create">Create a new character</a>
     </footer>
   </section>
 </main>

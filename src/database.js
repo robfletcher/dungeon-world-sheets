@@ -3,40 +3,40 @@ import PouchDB from "pouchdb-browser";
 
 let db;
 
-export const setupDatabase = () => {
-  return new Promise((resolve) => {
+export const setupDatabase = gameId => {
+  return new Promise(resolve => {
     if (db == null) {
-      db = new PouchDB('characters', {auto_compaction: true});
+      db = new PouchDB(`characters_${gameId}`, {auto_compaction: true});
     }
     resolve(db);
   });
 };
 
-export const storeCharacter = (character) => {
-  return setupDatabase().then((db) => {
+export const storeCharacter = (gameId, character) => {
+  return setupDatabase(gameId).then(db => {
     return db.put(character);
   });
 };
 
-export const loadCharacter = (id) => {
-  return setupDatabase().then((db) => {
-    return db.get(id).then((character) => {
+export const loadCharacter = (gameId, id) => {
+  return setupDatabase(gameId).then(db => {
+    return db.get(id).then(character => {
       return Character.fromObject(character);
     });
   });
 };
 
-export const allCharacters = () => {
-  return setupDatabase().then((db) => {
-    return db.allDocs({include_docs: true}).then((list) => {
+export const allCharacters = gameId => {
+  return setupDatabase(gameId).then(db => {
+    return db.allDocs({include_docs: true}).then(list => {
       return list.rows.map(it => Character.fromObject(it.doc));
     });
   });
 };
 
-export const deleteCharacter = (id) => {
-  return setupDatabase().then((db) => {
-    return db.get(id).then((character) => {
+export const deleteCharacter = (gameId, id) => {
+  return setupDatabase(gameId).then(db => {
+    return db.get(id).then(character => {
       return db.remove(character);
     });
   });

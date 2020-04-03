@@ -6,7 +6,7 @@
   let index = -1;
   let bond = '';
 
-  const editBond = (i) => {
+  const editBond = i => {
     index = i;
     bond = $character.bonds[i];
     showModal = true;
@@ -38,7 +38,7 @@
     showModal = false;
   };
 
-  const selectBond = (event) => {
+  const selectBond = event => {
     bond = event.target.value;
   };
 </script>

@@ -1,49 +1,68 @@
 <script>
   import Tailwindcss from './Tailwindcss.svelte';
 
-  import {character} from "./store";
+  import {character, gameStore} from "./store";
   import CharacterCreation from "./CharacterCreation.svelte";
   import CharacterSheet from "./CharacterSheet.svelte";
   import CharacterList from "./CharacterList.svelte";
-  import {loadCharacter, setupDatabase, storeCharacter} from "./database";
+  import Home from "./Home.svelte";
+  import {loadCharacter, storeCharacter, setupDatabase} from "./database";
   import router from "page";
 
   // routing setup
   let page;
-  router('/create', () => {
+  router('/:gameId/create', context => {
+    const gameId = context.params.gameId;
     page = CharacterCreation;
+    gameStore.set({_id: gameId});
     character.set(null);
   });
-  router('/character/:id', (context) => {
+  router('/:gameId/character/:id', context => {
+    const gameId = context.params.gameId;
     const id = context.params.id;
-    loadCharacter(id)
-      .then((c) => {
+    gameStore.set({_id: gameId});
+    loadCharacter(gameId, id)
+      .then(c => {
         character.set(c);
         page = CharacterSheet;
       })
-      .catch((error) => {
+      .catch(error => {
         // TODO: implement 404 page
         console.warn(`character ${id} not found`);
-        router.redirect('/');
+        router.redirect(`/${gameId}`);
         character.set(null);
       });
   });
-  router('/', () => {
+  router('/:gameId/', context => {
+    const gameId = context.params.gameId;
+    gameStore.set({_id: gameId});
     page = CharacterList;
+    character.set(null);
+  });
+  router('/', () => {
+    page = Home;
+    gameStore.set(null);
     character.set(null);
   });
   router.start();
 
   // update the character in the database when it changes
-  setupDatabase()
-    .then(() => {
-      character.subscribe(c => {
-        if (c != null) {
-          storeCharacter(c);
-        }
-      });
-    });
-
+  let unsubscriber = null;
+  gameStore.subscribe(g => {
+    if (unsubscriber != null) {
+      unsubscriber();
+    }
+    if (g != null) {
+      setupDatabase(g._id)
+        .then(() => {
+          unsubscriber = character.subscribe(c => {
+            if (c != null) {
+              storeCharacter(g._id, c);
+            }
+          });
+        });
+    }
+  });
 </script>
 
 <Tailwindcss/>

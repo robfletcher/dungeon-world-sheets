@@ -5,6 +5,10 @@
   import * as shortid from 'shortid/lib/index';
   import {storeCharacter} from "./database";
   import router from "page";
+  import {get} from "svelte/store";
+  import {gameStore} from "./store";
+
+  let gameId = get(gameStore)._id;
 
   const statNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   const statValues = [16, 15, 13, 12, 9, 8];
@@ -18,7 +22,7 @@
   $: playbook = form.characterClass == null ? null : playbooks.find(it => it.name === form.characterClass);
   $: playbookDescription = playbook == null ? null : playbook.description || "<p>No description</p>";
 
-  const moveDescription = (name) => {
+  const moveDescription = name => {
     return playbook == null ? "" : playbook.moves.find(it => it.name === name).description;
   };
 
@@ -72,9 +76,9 @@
     });
     c._id = shortid.generate();
 
-    storeCharacter(c);
+    storeCharacter(gameId, c);
 
-    router.redirect(`/character/${c._id}`);
+    router.redirect(`/${gameId}/character/${c._id}`);
   };
 
   $: valid = form.name != null && form.name.length > 0 &&
@@ -83,7 +87,7 @@
     form.raceMove != null &&
     (playbook.startingMoves.oneOf === undefined || form.optionalStartingMove != null);
 
-  const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+  const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
 </script>
 
 <main class="container">

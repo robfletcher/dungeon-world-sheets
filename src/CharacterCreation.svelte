@@ -57,7 +57,7 @@
   };
 
   const create = () => {
-    const c = new Character(
+    const character = new Character(
       form.characterClass,
       form.name,
       form.strength,
@@ -67,26 +67,24 @@
       form.wisdom,
       form.charisma
     );
-    c.moves.push({name: form.raceMove});
+    character.moves.push({name: form.raceMove});
     if (form.optionalStartingMove !== null) {
-      c.moves.push({name: form.optionalStartingMove});
+      character.moves.push({name: form.optionalStartingMove});
     }
     playbook.startingMoves.allOf.forEach(name => {
-      c.moves.push({name: name});
+      character.moves.push({name: name});
     });
-    c._id = shortid.generate();
-
-    game.characters.push(c);
-    console.log('pushed character on to game', game);
+    character._id = shortid.generate();
+    character.gameid = game._id;
 
     db
-      .put(game)
+      .put(character)
       .then(() => {
-        console.log('update successful, redirecting to character', c);
-        router.redirect(`/${game._id}/character/${c._id}`);
+        console.log('update successful, redirecting to character', character);
+        router.redirect(`/${game._id}/character/${character._id}`);
       })
       .catch(error => {
-        console.warn('failed to update game', game._id, error);
+        console.warn('failed to insert character', character._id, error);
       });
   };
 

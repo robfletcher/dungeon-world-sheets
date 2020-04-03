@@ -5,17 +5,17 @@
   export let params;
   console.log('character list page', params);
   const game = params.game;
-  const characters = writable(game.characters);
+  const characters = writable(params.characters);
 
-  const handleDelete = id => {
-    const i = game.characters.findIndex(character => character._id === id);
-    game.characters.splice(i, 1);
+  const handleDelete = character => {
     db
-      .put(game)
-      .then(it => {
-        console.log('updated game', it);
-        game._rev = it.rev;
-        characters.set(game.characters)
+      .remove(character)
+      .then(_ => {
+        characters.update(list => {
+          const i = list.findIndex(it => it._id === character._id);
+          list.splice(i, 1);
+          return list;
+        });
       })
       .catch(error => console.error('update failed', error));
   };
@@ -33,7 +33,7 @@
             <strong>{character.name} {character.characterClass}</strong>
           </a>
           Level: {character.level}
-          <button type="button" on:click={() => handleDelete(character._id)}>Delete</button>
+          <button type="button" on:click={() => handleDelete(character)}>Delete</button>
         </li>
       {/each}
     </ul>

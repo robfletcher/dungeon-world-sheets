@@ -6,7 +6,7 @@
   import CharacterList from "./CharacterList.svelte";
   import Home from "./Home.svelte";
   import router from "page";
-  import {loadGame} from "./store";
+  import {loadCharacter, loadCharacters, loadGame} from "./store";
 
   // routing setup
   let page;
@@ -14,16 +14,17 @@
   router('/:game/character/:id', context => {
     loadGame(context.params.game)
       .then(game => {
-        const character = game.characters.find(it => it._id === context.params.id);
-        if (character == null) {
-          // TODO: 404 page
-          console.warn('character', context.params.id, 'not found');
-          router.redirect(`/${context.params.game}/`);
-        } else {
-          console.log('loaded character', context.params.id, character);
-          page = CharacterSheet;
-          params = {game: game, character: character};
-        }
+        loadCharacter(context.params.game, context.params.id)
+          .then(character => {
+            console.log('loaded character', game, character);
+            page = CharacterSheet;
+            params = {game: game, character: character};
+          })
+          .catch(error => {
+            // TODO: 404 page
+            console.warn('character', context.params.id, 'not found', error);
+            router.redirect(`/${context.params.game}/`);
+          });
       })
       .catch(error => {
         // TODO: 404 page
@@ -46,8 +47,15 @@
   router('/:game/', context => {
     loadGame(context.params.game)
       .then(game => {
-        page = CharacterList;
-        params = {game: game};
+        loadCharacters(context.params.game)
+          .then(characters => {
+            page = CharacterList;
+            params = {game: game, characters: characters};
+          })
+          .catch(error => {
+            console.warn('game', context.params.game, 'not found', error);
+            router.redirect('/');
+          });
       })
       .catch(error => {
         // TODO: 404 page

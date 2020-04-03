@@ -15,7 +15,7 @@
   export let params;
   console.log('character sheet page', params);
   const game = params.game;
-  let character = writable(params.character);
+  const character = writable(params.character);
 
   let showLevelUpModal = false;
 
@@ -26,13 +26,11 @@
     console.log('mounting character sheet page');
     unsubscriber = character.subscribe(c => {
       console.log('detected update', c);
-      const i = game.characters.findIndex(it => it._id === c._id);
-      game.characters[i] = c;
       db
-        .put(game)
+        .put(c)
         .then(response => {
-          console.log('character updated in game', response);
-          game._rev = response.rev;
+          console.log('character updated', response);
+          c._rev = response.rev;
         })
         .catch(error => console.warn('character update failed', error));
     });

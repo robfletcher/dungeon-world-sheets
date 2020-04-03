@@ -6,7 +6,7 @@
 
   const createGame = () => {
     if (name != null && name.trim() !== "") {
-      const g = {_id: shortid.generate(), name: name, characters: []};
+      const g = {_id: shortid.generate(), name: name};
       console.log('creating game', g);
       db
         .put(g)

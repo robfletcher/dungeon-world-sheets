@@ -3,12 +3,12 @@
   import {Character} from "./character";
   import {Stat} from "./stat";
   import * as shortid from 'shortid/lib/index';
-  import {storeCharacter} from "./database";
   import router from "page";
-  import {get} from "svelte/store";
-  import {gameStore} from "./store";
+  import {db} from './store';
 
-  let gameId = get(gameStore)._id;
+  export let params;
+  console.log('character creation page', params);
+  const game = params.game;
 
   const statNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
   const statValues = [16, 15, 13, 12, 9, 8];
@@ -57,7 +57,7 @@
   };
 
   const create = () => {
-    let c = new Character(
+    const c = new Character(
       form.characterClass,
       form.name,
       form.strength,
@@ -76,9 +76,18 @@
     });
     c._id = shortid.generate();
 
-    storeCharacter(gameId, c);
+    game.characters.push(c);
+    console.log('pushed character on to game', game);
 
-    router.redirect(`/${gameId}/character/${c._id}`);
+    db
+      .put(game)
+      .then(() => {
+        console.log('update successful, redirecting to character', c);
+        router.redirect(`/${game._id}/character/${c._id}`);
+      })
+      .catch(error => {
+        console.warn('failed to update game', game._id, error);
+      });
   };
 
   $: valid = form.name != null && form.name.length > 0 &&
@@ -92,7 +101,7 @@
 
 <main class="container">
   <header>
-    <h1>Create a Character</h1>
+    <h1>Create a Character for {game.name}</h1>
   </header>
 
   <section class="character-creation">

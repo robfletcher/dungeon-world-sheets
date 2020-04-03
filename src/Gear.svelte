@@ -1,9 +1,9 @@
 <script>
   import Modal from './Modal.svelte';
-
-  import {character} from "./store";
   import {Gear, standardGear} from "./gear";
   import IncrementableValue from "./IncrementableValue.svelte";
+
+  export let character;
 
   let showModal = false;
 
@@ -82,7 +82,8 @@
     <h1>Gear</h1>
 
     <IncrementableValue id="coin" bind:value={$character.coin}>Coin</IncrementableValue>
-    <IncrementableValue id="load" value={$character.load} max={$character.maxLoad} readonly={true}>Load</IncrementableValue>
+    <IncrementableValue id="load" value={$character.load} max={$character.maxLoad} readonly={true}>Load
+    </IncrementableValue>
   </header>
 
   <table>
@@ -97,18 +98,18 @@
     <tbody>
     {#each $character.gear as item, i}
       <tr>
-          {#if item.uses == null}
-            <td class="item" on:click={() => editGear(i, item)} colspan="2">{item.name} <span
-              class="tags">{(item.tags || []).join(", ")}</span></td>
-          {:else}
-            <td class="item" on:click={() => editGear(i, item)}>{item.name} <span
-              class="tags">{(item.tags || []).join(", ")}</span></td>
-            <td class="uses">
-              <button type="button" on:click={() => decrementUses(i)} disabled={item.uses < 1}>-</button>
-              <span>{item.uses}</span>
-              <button type="button" on:click={() => incrementUses(i)}>+</button>
-            </td>
-          {/if}
+        {#if item.uses == null}
+          <td class="item" on:click={() => editGear(i, item)} colspan="2">{item.name} <span
+            class="tags">{(item.tags || []).join(", ")}</span></td>
+        {:else}
+          <td class="item" on:click={() => editGear(i, item)}>{item.name} <span
+            class="tags">{(item.tags || []).join(", ")}</span></td>
+          <td class="uses">
+            <button type="button" on:click={() => decrementUses(i)} disabled={item.uses < 1}>-</button>
+            <span>{item.uses}</span>
+            <button type="button" on:click={() => incrementUses(i)}>+</button>
+          </td>
+        {/if}
         <td>{item.weight}</td>
         <td>
           <button type="button" on:click={() => removeGear(i)} class="remove">-</button>

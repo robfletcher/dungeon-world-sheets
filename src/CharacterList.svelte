@@ -1,26 +1,24 @@
 <script>
-  import {get} from 'svelte/store';
-  import {gameStore} from './store';
-  import {allCharacters, deleteCharacter} from "./database";
-  import {onMount} from "svelte";
+  import {db} from './store';
+  import {writable} from "svelte/store";
 
-  $: characterList = [];
-
-  let game = get(gameStore);
-  console.log(game);
-
-  const refreshCharacterList = () => {
-    allCharacters(game._id).then(list => {
-      characterList = list
-    });
-  };
+  export let params;
+  console.log('character list page', params);
+  const game = params.game;
+  const characters = writable(game.characters);
 
   const handleDelete = id => {
-    deleteCharacter(game._id, id)
-      .then(refreshCharacterList);
+    const i = game.characters.findIndex(character => character._id === id);
+    game.characters.splice(i, 1);
+    db
+      .put(game)
+      .then(it => {
+        console.log('updated game', it);
+        game._rev = it.rev;
+        characters.set(game.characters)
+      })
+      .catch(error => console.error('update failed', error));
   };
-
-  onMount(refreshCharacterList);
 </script>
 
 <main class="container">
@@ -29,7 +27,7 @@
   </header>
   <section class="character-list">
     <ul>
-      {#each characterList as character}
+      {#each $characters as character}
         <li>
           <a href="/character/{character._id}">
             <strong>{character.name} {character.characterClass}</strong>

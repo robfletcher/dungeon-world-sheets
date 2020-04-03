@@ -1,6 +1,6 @@
 <script>
-  import {character} from "./store";
-
+  import {onDestroy, onMount} from "svelte";
+  import {writable} from "svelte/store";
   import Stat from "./Stat.svelte";
   import Look from "./Look.svelte";
   import Drives from "./Drives.svelte";
@@ -11,9 +11,29 @@
   import Move from "./Move.svelte";
   import Bonds from "./Bonds.svelte";
 
+  export let params;
+  console.log('character sheet page', params);
+  const game = params.game;
+  let character = writable(params.character);
+
   let showLevelUpModal = false;
 
   $: canLevelUp = $character.xp >= $character.nextLevel && $character.level < 10;
+
+  let unsubscriber;
+  onMount(() => {
+    console.log('mounting character sheet page');
+    unsubscriber = character.subscribe(it => {
+      console.log('detected update', it)
+    });
+  });
+
+  onDestroy(() =>  {
+    console.log('destroying character sheet page');
+    if (typeof unsubscriber === 'function') {
+      unsubscriber();
+    }
+  });
 </script>
 
 <main class="container">
@@ -53,11 +73,11 @@
       bind:stat={$character.charisma}/>
   </section>
 
-  <Combat/>
-  <Look/>
-  <Drives/>
-  <Bonds/>
-  <Gear/>
+  <Combat character={character}/>
+  <Look character={character}/>
+  <Drives character={character}/>
+  <Bonds character={character}/>
+  <Gear character={character}/>
 
   <section id="moves">
     <header>
@@ -65,12 +85,12 @@
     </header>
 
     {#each $character.moves as move}
-      <Move name={move.name}/>
+      <Move character={character} name={move.name}/>
     {/each}
   </section>
 </main>
 
-<LevelUp bind:show={showLevelUpModal}/>
+<LevelUp  character={character} bind:show={showLevelUpModal}/>
 
 <style>
   #stats {

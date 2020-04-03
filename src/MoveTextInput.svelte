@@ -1,6 +1,5 @@
 <script>
-  import {character} from "./store";
-
+  export let character;
   export let move;
   export let id;
   export let label;

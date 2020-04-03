@@ -1,6 +1,5 @@
 import {playbooks} from "./Playbooks";
 import {Stat} from "./stat";
-import {Gear} from "./gear";
 
 export class Character {
   constructor(characterClass, name, strength, dexterity, constitution, intelligence, wisdom, charisma) {

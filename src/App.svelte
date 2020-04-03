@@ -1,73 +1,70 @@
 <script>
   import Tailwindcss from './Tailwindcss.svelte';
 
-  import {character, gameStore} from "./store";
   import CharacterCreation from "./CharacterCreation.svelte";
   import CharacterSheet from "./CharacterSheet.svelte";
   import CharacterList from "./CharacterList.svelte";
   import Home from "./Home.svelte";
-  import {loadCharacter, storeCharacter, setupDatabase} from "./database";
   import router from "page";
+  import {loadGame} from "./store";
 
   // routing setup
   let page;
-  router('/:gameId/create', context => {
-    const gameId = context.params.gameId;
-    page = CharacterCreation;
-    gameStore.set({_id: gameId});
-    character.set(null);
-  });
-  router('/:gameId/character/:id', context => {
-    const gameId = context.params.gameId;
-    const id = context.params.id;
-    gameStore.set({_id: gameId});
-    loadCharacter(gameId, id)
-      .then(c => {
-        character.set(c);
-        page = CharacterSheet;
+  let params;
+  router('/:game/character/:id', context => {
+    loadGame(context.params.game)
+      .then(game => {
+        const character = game.characters.find(it => it._id === context.params.id);
+        if (character == null) {
+          // TODO: 404 page
+          console.warn('character', context.params.id, 'not found');
+          router.redirect(`/${context.params.game}/`);
+        } else {
+          console.log('loaded character', context.params.id, character);
+          page = CharacterSheet;
+          params = {game: game, character: character};
+        }
       })
       .catch(error => {
-        // TODO: implement 404 page
-        console.warn(`character ${id} not found`);
-        router.redirect(`/${gameId}`);
-        character.set(null);
+        // TODO: 404 page
+        console.warn('game', context.params.game, 'not found', error);
+        router.redirect('/');
       });
   });
-  router('/:gameId/', context => {
-    const gameId = context.params.gameId;
-    gameStore.set({_id: gameId});
-    page = CharacterList;
-    character.set(null);
+  router('/:game/create', context => {
+    loadGame(context.params.game)
+      .then(game => {
+        page = CharacterCreation;
+        params = {game: game};
+      })
+      .catch(error => {
+        // TODO: 404 page
+        console.warn('game', context.params.game, 'not found', error);
+        router.redirect('/');
+      });
+  });
+  router('/:game/', context => {
+    loadGame(context.params.game)
+      .then(game => {
+        page = CharacterList;
+        params = {game: game};
+      })
+      .catch(error => {
+        // TODO: 404 page
+        console.warn('game', context.params.game, 'not found', error);
+        router.redirect('/');
+      });
   });
   router('/', () => {
     page = Home;
-    gameStore.set(null);
-    character.set(null);
+    params = {};
   });
   router.start();
-
-  // update the character in the database when it changes
-  let unsubscriber = null;
-  gameStore.subscribe(g => {
-    if (unsubscriber != null) {
-      unsubscriber();
-    }
-    if (g != null) {
-      setupDatabase(g._id)
-        .then(() => {
-          unsubscriber = character.subscribe(c => {
-            if (c != null) {
-              storeCharacter(g._id, c);
-            }
-          });
-        });
-    }
-  });
 </script>
 
 <Tailwindcss/>
 
-<svelte:component this={page}/>
+<svelte:component this={page} params={params}/>
 
 <style global>
   * {

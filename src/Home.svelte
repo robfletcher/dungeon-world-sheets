@@ -1,16 +1,22 @@
 <script>
   import * as shortid from 'shortid/lib/index';
-  import {gameStore} from './store';
   import router from "page";
 
   let name = "";
 
   const createGame = () => {
     if (name != null && name.trim() !== "") {
-      const game = {_id: shortid.generate(), name: name};
-      console.log(game);
-      gameStore.set(game);
-      router.redirect(`/${game._id}`);
+      const g = {_id: shortid.generate(), name: name, characters: []};
+      console.log('creating game', g);
+      db
+        .put(g)
+        .then(it => {
+          console.log('created game', it);
+          router.redirect(`/${g._id}`);
+        })
+        .catch((error) => {
+          console.log('failed to create game', error);
+        });
     }
   };
 </script>

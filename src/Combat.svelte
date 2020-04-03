@@ -1,7 +1,7 @@
 <script>
-  import {character} from "./store";
   import IncrementableValue from "./IncrementableValue.svelte";
 
+  export let character;
   let hitPoints = 0;
 
   function damage() {

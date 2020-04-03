@@ -1,7 +1,7 @@
 <script>
   import Modal from "./Modal.svelte";
 
-  import {character} from "./store";
+  export let character;
 
   let showModal = false;
   let look = {};

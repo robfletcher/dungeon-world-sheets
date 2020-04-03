@@ -1,8 +1,8 @@
 <script>
-  import {character} from "./store";
   import {Stat} from "./stat";
   import Modal from "./Modal.svelte";
 
+  export let character;
   export let show = false;
 
   let selectedStat = null;

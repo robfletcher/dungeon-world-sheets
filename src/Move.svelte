@@ -2,8 +2,8 @@
   import {onDestroy, onMount} from 'svelte';
   import MoveOption from './MoveOption.svelte';
   import MoveTextInput from './MoveTextInput.svelte';
-  import {character} from "./store";
 
+  export let character;
   export let name;
 
   const move = $character.playbook.moves.find(it => it.name === name);
@@ -21,6 +21,7 @@
         const option = new MoveTextInput({
           target: it,
           props: {
+            character: character,
             move: $character.moves.find(it => it.name === name),
             id: it.getAttribute('data-option-id'),
             label: label
@@ -31,6 +32,7 @@
         const option = new MoveOption({
           target: it,
           props: {
+            character: character,
             move: $character.moves.find(it => it.name === name),
             value: value,
             label: label

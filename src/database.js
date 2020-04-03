@@ -4,9 +4,9 @@ import PouchDB from "pouchdb-browser";
 let db;
 
 export const setupDatabase = () => {
-  return new Promise((resolve, _) => {
+  return new Promise((resolve) => {
     if (db == null) {
-      db = new PouchDB('characters');
+      db = new PouchDB('characters', {auto_compaction: true});
     }
     resolve(db);
   });

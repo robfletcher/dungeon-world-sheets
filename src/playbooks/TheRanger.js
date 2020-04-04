@@ -128,6 +128,10 @@ export const theRanger = {
         '<li data-value="medium"><em>medium</em>: Quality +1, d6 damage, 9 HP, Load 2</li>' +
         '<li data-value="large"><em>large</em>: Quality +1, d6 damage (<em>forceful</em>), 12 HP, Load 4</li>' +
         '</ul>' +
+        '<ul class="move-options">' +
+        '<li class="move-option-custom-value" data-option-id="companion-species">Species:</li>' +
+        '<li class="move-option-custom-value" data-option-id="companion-name">Name:</li>' +
+        '</ul>' +
         '<p>Choose tags and/or moves based on its size: 6 if tiny or small, 4 if medium, 3 if large:</p>' +
         '<h3>Tags:</h3>' +
         '<ul class="move-options move-options-inline">' +

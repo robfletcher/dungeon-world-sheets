@@ -77,7 +77,10 @@ export const theFighter = {
     },
     {
       name: 'Elf',
-      description: '<p>Choose one weapon—you can always treat weapons of that type as if they had the precise tag.</p>'
+      description: '<p>Choose one weapon—you can always treat weapons of that type as if they had the precise tag.</p>' +
+        '<ul class="move-options">' +
+        '<li class="move-option-custom-value" data-option-id="weapon-type">Weapon:</li>' +
+        '</ul>'
     },
     {
       name: 'Halfling',

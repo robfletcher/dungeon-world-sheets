@@ -17,6 +17,7 @@
 <style>
   .stat {
     @apply relative pr-10 bg-white border-solid border-2 border-gray-800 rounded-r-full;
+    margin-right: 2px;
   }
 
   .stat h1 {
@@ -32,9 +33,11 @@
   }
 
   .bonus {
-    @apply absolute flex items-center justify-center h-20 w-20 bg-white border-double border-8 border-gray-800 rounded-full text-3xl;
+    @apply absolute flex items-center justify-center bg-white border-double border-8 border-gray-800 rounded-full text-3xl;
+    width: 5.5rem;
+    height: 5.5rem;
     right: -2px;
-    top: -2px;
+    top: -6px;
   }
 
   .debility input[type=checkbox] {

@@ -113,7 +113,7 @@
   }
 
   .stats label {
-    @apply grid grid-cols-4 col-gap-2 row-gap-0 text-xl;
+    @apply grid grid-cols-4 col-gap-2 row-gap-0 text-xl m-2;
     grid-template-columns: 1.5rem 8rem 1.5rem 1.5rem;
   }
 

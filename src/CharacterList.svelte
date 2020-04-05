@@ -1,5 +1,5 @@
 <script>
-  import {db} from './store';
+  import {withDatabase} from './store';
   import {writable} from "svelte/store";
 
   export let params;
@@ -8,16 +8,18 @@
   const characters = writable(params.characters);
 
   const handleDelete = character => {
-    db
-      .remove(character)
-      .then(_ => {
-        characters.update(list => {
-          const i = list.findIndex(it => it._id === character._id);
-          list.splice(i, 1);
-          return list;
-        });
-      })
-      .catch(error => console.error('update failed', error));
+    withDatabase((db) => {
+      db
+        .remove(character)
+        .then(_ => {
+          characters.update(list => {
+            const i = list.findIndex(it => it._id === character._id);
+            list.splice(i, 1);
+            return list;
+          });
+        })
+        .catch(error => console.error('update failed', error));
+    });
   };
 </script>
 

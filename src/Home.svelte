@@ -1,6 +1,7 @@
 <script>
   import * as shortid from 'shortid/lib/index';
   import router from "page";
+  import {withDatabase} from "./store";
 
   let name = "";
 
@@ -8,15 +9,17 @@
     if (name != null && name.trim() !== "") {
       const g = {_id: shortid.generate(), name: name};
       console.log('creating game', g);
-      db
-        .put(g)
-        .then(it => {
-          console.log('created game', it);
-          router.redirect(`/${g._id}`);
-        })
-        .catch((error) => {
-          console.log('failed to create game', error);
-        });
+      withDatabase((db) => {
+        db
+          .put(g)
+          .then(it => {
+            console.log('created game', it);
+            router.redirect(`/${g._id}`);
+          })
+          .catch((error) => {
+            console.log('failed to create game', error);
+          });
+      });
     }
   };
 </script>

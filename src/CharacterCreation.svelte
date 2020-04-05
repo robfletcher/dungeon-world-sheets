@@ -4,7 +4,7 @@
   import {Stat} from "./stat";
   import * as shortid from 'shortid/lib/index';
   import router from "page";
-  import {db} from './store';
+  import {withDatabase} from './store';
 
   export let params;
   console.log('character creation page', params);
@@ -77,15 +77,17 @@
     character._id = shortid.generate();
     character.gameid = game._id;
 
-    db
-      .put(character)
-      .then(() => {
-        console.log('update successful, redirecting to character', character);
-        router.redirect(`/${game._id}/character/${character._id}`);
-      })
-      .catch(error => {
-        console.warn('failed to insert character', character._id, error);
-      });
+    withDatabase((db)=> {
+      db
+        .put(character)
+        .then(() => {
+          console.log('update successful, redirecting to character', character);
+          router.redirect(`/${game._id}/character/${character._id}`);
+        })
+        .catch(error => {
+          console.warn('failed to insert character', character._id, error);
+        });
+    });
   };
 
   $: valid = form.name != null && form.name.length > 0 &&

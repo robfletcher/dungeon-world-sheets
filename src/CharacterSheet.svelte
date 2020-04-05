@@ -1,7 +1,7 @@
 <script>
   import {onDestroy, onMount} from "svelte";
   import {writable} from "svelte/store";
-  import {db} from './store';
+  import {withDatabase} from './store';
   import Stat from "./Stat.svelte";
   import Look from "./Look.svelte";
   import Drives from "./Drives.svelte";
@@ -26,13 +26,15 @@
     console.log('mounting character sheet page');
     unsubscriber = character.subscribe(c => {
       console.log('detected update', c);
-      db
-        .put(c)
-        .then(response => {
-          console.log('character updated', response);
-          c._rev = response.rev;
-        })
-        .catch(error => console.warn('character update failed', error));
+      withDatabase((db) => {
+        db
+          .put(c)
+          .then(response => {
+            console.log('character updated', response);
+            c._rev = response.rev;
+          })
+          .catch(error => console.warn('character update failed', error));
+      });
     });
   });
 

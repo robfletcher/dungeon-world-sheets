@@ -1,7 +1,5 @@
 <script>
-  import {onDestroy, onMount} from "svelte";
-  import {writable} from "svelte/store";
-  import {withDatabase} from './store';
+  import {databaseStore} from './store';
   import Stat from "./Stat.svelte";
   import Look from "./Look.svelte";
   import Drives from "./Drives.svelte";
@@ -11,39 +9,17 @@
   import LevelUp from "./LevelUp.svelte";
   import Move from "./Move.svelte";
   import Bonds from "./Bonds.svelte";
+  import {get} from 'svelte/store';
 
   export let params;
+  let character = databaseStore(params.character);
+  console.log('get', get(character));
+
   console.log('character sheet page', params);
   const game = params.game;
-  const character = writable(params.character);
+  console.log('store', character, $character);
 
   let showLevelUpModal = false;
-
-  $: canLevelUp = $character.xp >= $character.nextLevel && $character.level < 10;
-
-  let unsubscriber;
-  onMount(() => {
-    console.log('mounting character sheet page');
-    unsubscriber = character.subscribe(c => {
-      console.log('detected update', c);
-      withDatabase((db) => {
-        db
-          .put(c)
-          .then(response => {
-            console.log('character updated', response);
-            c._rev = response.rev;
-          })
-          .catch(error => console.warn('character update failed', error));
-      });
-    });
-  });
-
-  onDestroy(() => {
-    console.log('destroying character sheet page');
-    if (typeof unsubscriber === 'function') {
-      unsubscriber();
-    }
-  });
 </script>
 
 <main class="container">
@@ -53,7 +29,7 @@
     <IncrementableValue id="level" bind:value={$character.level} readonly={true}>Level</IncrementableValue>
     <IncrementableValue id="xp" bind:value={$character.xp}>Experience</IncrementableValue>
 
-    <button on:click={() => showLevelUpModal = true} disabled={!canLevelUp}>Level Up</button>
+    <button on:click={() => showLevelUpModal = true} disabled={!$character.canLevelUp}>Level Up</button>
   </header>
 
   <section id="stats">

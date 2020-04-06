@@ -2,6 +2,7 @@ import PouchDB from "pouchdb-browser";
 import * as pouchDbUpsert from 'pouchdb-upsert';
 import {default as pouchDbFind} from 'pouchdb-find';
 import {Character} from "./character";
+import {get, writable} from "svelte/store";
 
 PouchDB.plugin(pouchDbFind);
 PouchDB.plugin(pouchDbUpsert);
@@ -11,9 +12,64 @@ db.createIndex({
     fields: ['gameid']
   }
 })
-  .then(response => console.log('created index', response))
   .catch(error => console.warn('error creating index', error));
-db.info().then(it => console.log(it));
+
+export const databaseStore = (initial) => {
+  const id = initial._id;
+  const backing  = writable(initial, (set) => {
+    const sub = db.changes({
+      since: 'now',
+      live: true,
+      include_docs: true,
+      doc_ids: [id]
+    })
+      .on('change', change => {
+        console.log('existing', get(backing)._rev);
+        console.log(' updated', change.doc._rev);
+        if (get(backing)._rev !== change.doc._rev) {
+          set(Character.fromObject(change.doc));
+        } else {
+          console.log('updated object is identical');
+        }
+      })
+      .on('error', error => {
+        console.error(`subscribe ${id} sync error`, error);
+      });
+    return () => sub.cancel();
+  });
+  const {subscribe, set, update} = backing;
+
+  return {
+    subscribe,
+
+    set: (value) => {
+      db.put(value)
+        .then(response => {
+          console.debug(`set ${id} succeeded`, response);
+        })
+        .catch(error => {
+          console.error(`set ${id} failed`, error);
+        });
+    },
+
+    update: (callback) => {
+      db.get(id)
+        .then(doc => {
+          const updated = callback(Character.fromObject(doc));
+          db.put(updated)
+            .then(response => {
+              console.debug(`update ${id} succeeded`, response);
+            })
+            .catch(error => {
+              console.error(`update ${id} failed`, error);
+            });
+        })
+        .catch(error => {
+          console.error(`get ${id} for update failed`, error);
+        });
+    }
+  };
+};
 
 const remoteDB = new PouchDB('http://localhost:5984/myremotedb');
 
@@ -35,6 +91,19 @@ export const withDatabase = (callback) => {
   dbReady
     .then((db) => callback(db))
     .catch((error) => console.warn('could not sync database', error));
+};
+
+export const subscribeToChanges = (id, callback, since = 'now') => {
+  db.changes({
+    since: since,
+    live: true,
+    include_docs: true,
+    doc_ids: [id]
+  }).on('change', function (change) {
+    callback(change.doc);
+  }).on('error', function (error) {
+    console.warn('subscribed sync error', error)
+  });
 };
 
 export const loadGame = (id) => {

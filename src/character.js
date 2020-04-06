@@ -55,6 +55,10 @@ export class Character {
     return this.playbook.baseLoad + this.strength.bonus;
   }
 
+  get canLevelUp() {
+    return this.xp > this.nextLevel && this.level < 10;
+  }
+
   static fromObject(obj) {
     ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].forEach(name =>
       obj[name] = Object.assign(new Stat, obj[name])

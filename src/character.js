@@ -56,7 +56,7 @@ export class Character {
   }
 
   get canLevelUp() {
-    return this.xp > this.nextLevel && this.level < 10;
+    return this.xp >= this.nextLevel && this.level < 10;
   }
 
   static fromObject(obj) {

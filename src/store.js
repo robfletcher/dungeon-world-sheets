@@ -2,7 +2,7 @@ import PouchDB from "pouchdb-browser";
 import * as pouchDbUpsert from 'pouchdb-upsert';
 import {default as pouchDbFind} from 'pouchdb-find';
 import {Character} from "./character";
-import {get, writable} from "svelte/store";
+import {derived, get, writable} from "svelte/store";
 
 PouchDB.plugin(pouchDbFind);
 PouchDB.plugin(pouchDbUpsert);
@@ -16,57 +16,78 @@ db.createIndex({
 
 export const databaseStore = (initial) => {
   const id = initial._id;
-  const backing  = writable(initial, (set) => {
-    const sub = db.changes({
-      since: 'now',
-      live: true,
-      include_docs: true,
-      doc_ids: [id]
-    })
-      .on('change', change => {
-        console.log('existing', get(backing)._rev);
-        console.log(' updated', change.doc._rev);
-        if (get(backing)._rev !== change.doc._rev) {
-          set(Character.fromObject(change.doc));
-        } else {
-          console.log('updated object is identical');
-        }
+  const rev = writable(initial._rev, (set) => {
+    let subscription;
+    withDatabase(db => {
+      subscription = db.changes({
+        since: 'now',
+        live: true,
+        include_docs: true,
+        doc_ids: [id]
       })
-      .on('error', error => {
-        console.error(`subscribe ${id} sync error`, error);
-      });
-    return () => sub.cancel();
+        .on('change', change => {
+          if (change.doc._rev > get(rev)) {
+            set(change.doc._rev);
+          }
+        })
+        .on('error', error => {
+          console.error(`subscribe ${id} sync error`, error);
+        });
+    });
+    return () => {
+      if (subscription !== undefined) {
+        subscription.cancel();
+      }
+    }
   });
+
+  const backing = derived(rev, ($rev, setFn) => {
+    withDatabase(db => {
+      db.get(id, {rev: $rev}).then(doc => {
+        previous = JSON.stringify(doc);
+        setFn(Character.fromObject(doc));
+      });
+    });
+  }, initial);
+
   const {subscribe, set, update} = backing;
+
+  let previous = JSON.stringify(initial);
 
   return {
     subscribe,
 
     set: (value) => {
-      db.put(value)
-        .then(response => {
-          console.debug(`set ${id} succeeded`, response);
-        })
-        .catch(error => {
-          console.error(`set ${id} failed`, error);
+      if (JSON.stringify(value) !== previous) {
+        withDatabase(db => {
+          db.put(value)
+            .then(response => {
+              console.debug(`set ${id} succeeded`, response);
+            })
+            .catch(error => {
+              console.error(`set ${id} failed`, error);
+            });
         });
+      }
     },
 
     update: (callback) => {
-      db.get(id)
-        .then(doc => {
-          const updated = callback(Character.fromObject(doc));
-          db.put(updated)
-            .then(response => {
-              console.debug(`update ${id} succeeded`, response);
-            })
-            .catch(error => {
-              console.error(`update ${id} failed`, error);
-            });
-        })
-        .catch(error => {
-          console.error(`get ${id} for update failed`, error);
-        });
+      withDatabase(db => {
+        db.get(id, {rev: get(rev)})
+          .then(doc => {
+            const updated = callback(Character.fromObject(doc));
+            db.put(updated)
+              .then(response => {
+                console.debug(`update ${id} succeeded`, response);
+              })
+              .catch(error => {
+                console.error(`update ${id} failed`, error);
+              });
+          })
+          .catch(error => {
+            console.error(`get ${id} for update failed`, error);
+          });
+      });
     }
   };
 };
@@ -124,24 +145,23 @@ export const loadGame = (id) => {
 };
 
 export const loadCharacter = (gameId, characterId) => {
-    return new Promise((resolve, reject) => {
-      withDatabase((db) => {
-        db
-          .find({selector: {_id: characterId, gameid: gameId}})
-          .then(response => {
-            console.log(response);
-            const character = Character.fromObject(response.docs[0]);
-            console.log('fetched character', character);
-            resolve(character);
-          })
-          .catch(error => {
-            console.warn('failed to fetch character', gameId, characterId, error);
-            reject(error);
-          });
-      });
+  return new Promise((resolve, reject) => {
+    withDatabase((db) => {
+      db
+        .find({selector: {_id: characterId, gameid: gameId}})
+        .then(response => {
+          console.log(response);
+          const character = Character.fromObject(response.docs[0]);
+          console.log('fetched character', character);
+          resolve(character);
+        })
+        .catch(error => {
+          console.warn('failed to fetch character', gameId, characterId, error);
+          reject(error);
+        });
     });
-  }
-;
+  });
+};
 
 export const loadCharacters = (gameId) => {
   return new Promise((resolve, reject) => {

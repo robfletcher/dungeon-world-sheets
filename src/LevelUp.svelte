@@ -47,11 +47,13 @@
           }
         });
       }
+
+      selectedStat = null;
+      selectedMove = null;
+      show = false;
+
       return c;
     });
-    selectedStat = null;
-    selectedMove = null;
-    show = false;
   };
 
   const cancel = () => {

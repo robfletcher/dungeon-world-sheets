@@ -92,7 +92,7 @@ export const databaseStore = (initial) => {
   };
 };
 
-const remoteDB = new PouchDB('http://localhost:5984/myremotedb');
+const remoteDB = new PouchDB('https://b2966220-1354-4a3d-861c-c30ee46e83db-bluemix:16752de3c55ea429a7b142d17f78473081bd41920683aa0c09661c8b23b1fff3@b2966220-1354-4a3d-861c-c30ee46e83db-bluemix.cloudantnosqldb.appdomain.cloud/dungeon-world');
 
 const dbReady = new Promise((resolve, reject) => {
   db.replicate.from(remoteDB)

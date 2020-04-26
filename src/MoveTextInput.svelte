@@ -11,6 +11,8 @@
       if (move != null) {
         move[id] = event.target.value;
       }
+      let i = c.moves.findIndex(it => it.name === move.name);
+      c.moves[i] = move;
       return c;
     });
   }
